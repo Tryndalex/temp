@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABCweb.ing | Official Website</title>
+
+    <meta name="description"
+        content="ABCweb.ing — dark, powerful and modern digital experience.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #070707;
+            color: #f1f1f1e5;
+        }
+
+
+        body {
+            min-height: 100vh;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            color: #fff;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 1rem 2rem;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(255, 255, 255, 0.13);
+
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           HERO CONTENT
+        ========================================================= */
+
+        .hero-content {
+            padding: 2rem;
+
+            position: relative;
+
+            z-index: 1;
+            isolation: isolate;
+            overflow: visible;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: #fafafa;
+            animation: hero-content-float 8s ease-in-out infinite;
+
+            border: 1px solid rgba(255, 255, 255, 0.16);
+
+            background: rgba(92, 31, 172, 0.1);
+
+            border-radius: 50%;
+
+            aspect-ratio: 1 / 1;
+
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            box-shadow:
+                0 12px 36px rgba(0, 0, 0, 0.18),
+                inset 0 0 24px rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-floater {
+            position: absolute;
+            z-index: -1;
+            width: var(--size);
+            height: var(--size);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 50%;
+            background: var(--color);
+            backdrop-filter: blur(10px) saturate(140%);
+            -webkit-backdrop-filter: blur(10px) saturate(140%);
+            box-shadow:
+                0 8px 28px rgba(0, 0, 0, 0.2),
+                inset 0 0 18px rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            animation: hero-float var(--duration) ease-in-out infinite;
+        }
+
+        .hero-floater-one {
+            --size: 58px;
+            --color: rgba(13, 217, 253, 0.2);
+            --duration: 7s;
+            top: 7%;
+            right: -8%;
+        }
+
+        .hero-floater-two {
+            --size: 42px;
+            --color: rgba(217, 241, 3, 0.18);
+            --duration: 8.5s;
+            top: 58%;
+            left: -11%;
+            animation-delay: -2s;
+        }
+
+        .hero-floater-three {
+            --size: 68px;
+            --color: rgba(255, 70, 140, 0.18);
+            --duration: 9s;
+            right: 12%;
+            bottom: -8%;
+            animation-delay: -4s;
+        }
+
+        .hero-floater-four {
+            --size: 32px;
+            --color: rgba(0, 255, 170, 0.18);
+            --duration: 6.5s;
+            top: 17%;
+            left: 9%;
+            animation-delay: -1s;
+        }
+
+        @keyframes hero-float {
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(8px, -14px, 0);
+            }
+        }
+
+        @keyframes hero-content-float {
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(0, -7px, 0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content,
+            .hero-floater {
+                animation: none;
+            }
+        }
+
+
+        .hero-subtitle {
+            margin: 0 0 0.5rem;
+
+            letter-spacing: 0.38rem;
+
+            text-transform: uppercase;
+
+            font-size: 0.75rem;
+
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        .hero-content h1 {
+            margin: 0;
+
+            font-size: clamp(1.5rem, 4vw, 3rem);
+
+            line-height: 0.96;
+
+            letter-spacing: 0.12rem;
+
+            text-transform: uppercase;
+
+            color: #f5f3f3;
+
+            text-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.45);
+        }
+
+
+        .hero-text {
+            margin: 1.25rem 0 1.75rem;
+
+            font-size: 1.1rem;
+
+            color: rgba(17, 205, 218, 0.507);
+        }
+
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 0.9rem 1.5rem;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.205);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08rem;
+
+            text-transform: uppercase;
+
+            transition: 0.3s ease;
+        }
+
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+
+        /* =========================================================
+           SHARED CIRCLE STYLE AND ORBIT INTERACTIONS
+        ========================================================= */
+
+        .circle-orbit {
+            position: absolute;
+            z-index: 3;
+            width: 190px;
+            height: 190px;
+        }
+
+        .circle-card,
+        .service-orbit-center,
+        .orbit-child {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            box-shadow:
+                0 12px 36px rgba(0, 0, 0, 0.18),
+                inset 0 0 24px rgba(255, 255, 255, 0.04);
+            transition:
+                transform 550ms cubic-bezier(.16,1,.3,1),
+                background-color 300ms ease,
+                box-shadow 300ms ease;
+        }
+
+        .circle-card {
+            z-index: 2;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.12rem;
+            will-change: transform;
+        }
+
+        .about-orbit {
+            top: 18%;
+            left: 14%;
+            animation: float1 9s ease-in-out infinite;
+        }
+
+        .about-orbit .card-1 {
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 140px;
+            background: rgba(3, 241, 142, 0.08);
+            transform: translate(-50%, -50%);
+        }
+
+        .contact-orbit {
+            bottom: 15%;
+            left: 20%;
+            animation: float3 10s ease-in-out infinite;
+        }
+
+        .contact-orbit .card-3 {
+            top: 50%;
+            left: 50%;
+            width: 115px;
+            height: 115px;
+            background: rgba(24, 119, 242, 0.12);
+            transform: translate(-50%, -50%);
+        }
+
+        .projects-orbit {
+            right: 17%;
+            bottom: 12%;
+            animation: float4 14s ease-in-out infinite;
+        }
+
+        .projects-orbit .card-4 {
+            top: 50%;
+            left: 50%;
+            width: 165px;
+            height: 165px;
+            background: rgba(255, 180, 0, 0.1);
+            transform: translate(-50%, -50%);
+        }
+
+        .services-orbit {
+            top: 12%;
+            right: 10%;
+            animation: float2 12s ease-in-out infinite;
+        }
+
+        .about-orbit .card-1:hover,
+        .about-orbit .card-1:focus-visible {
+            transform: translate(-50%, -50%) scale(1.06);
+        }
+
+        .service-orbit-menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: grid;
+            width: min(34vw, 420px);
+            aspect-ratio: 1;
+            place-items: center;
+            transform: translate(-50%, -50%);
+        }
+
+        .service-orbit-center {
+            z-index: 2;
+            width: 140px;
+            aspect-ratio: 1;
+            background-color: rgba(194, 82, 170, 0.12);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.12rem;
+        }
+
+        .orbit-child {
+            --x: 0px;
+            --y: 0px;
+            --size: 58px;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            width: var(--size);
+            height: var(--size);
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+            background-color: var(--circle-color, rgba(255, 255, 255, 0.1));
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 1.2;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) translate(0, 0) scale(0.25);
+            transition:
+                opacity 220ms ease var(--delay, 0ms),
+                transform 650ms cubic-bezier(.16,1,.3,1) var(--delay, 0ms),
+                background-color 250ms ease,
+                box-shadow 250ms ease;
+        }
+
+        .orbit-child span {
+            font: 8px "DM Mono", monospace;
+        }
+
+        .services-orbit .service-orbit-design {
+            --x: -115px;
+            --y: -90px;
+            --size: 62px;
+            --circle-color: rgba(244, 230, 198, 0.2);
+        }
+
+        .about-orbit .about-approach {
+            --x: -105px;
+            --y: -55px;
+            --size: 62px;
+            --circle-color: rgba(217, 241, 3, 0.16);
+        }
+
+        .about-orbit .about-portfolio {
+            --x: 95px;
+            --y: -75px;
+            --size: 72px;
+            --circle-color: rgba(13, 217, 253, 0.16);
+        }
+
+        .about-orbit .about-pricing {
+            --x: 40px;
+            --y: 95px;
+            --size: 58px;
+            --circle-color: rgba(255, 70, 140, 0.18);
+        }
+
+        .services-orbit .service-orbit-development {
+            --x: 97.5px;
+            --y: -92.5px;
+            --size: 74px;
+            --circle-color: rgba(83, 255, 77, 0.15);
+        }
+
+        .services-orbit .service-orbit-seo {
+            --x: 130px;
+            --y: 27.5px;
+            --size: 63px;
+            --circle-color: rgba(228, 224, 212, 0.2);
+        }
+
+        .services-orbit .service-orbit-social {
+            --x: 52.5px;
+            --y: 115px;
+            --size: 58px;
+            --circle-color: rgba(214, 232, 188, 0.2);
+        }
+
+        .services-orbit .service-orbit-ai {
+            --x: -105px;
+            --y: 92.5px;
+            --size: 71px;
+            --circle-color: rgba(244, 198, 214, 0.2);
+        }
+
+        .projects-orbit .project-1 {
+            --x: -120px;
+            --y: 0px;
+            --size: 64px;
+            --circle-color: rgba(255, 180, 0, 0.18);
+        }
+
+        .projects-orbit .project-2 {
+            --x: -105px;
+            --y: 60px;
+            --size: 56px;
+            --circle-color: rgba(13, 217, 253, 0.18);
+        }
+
+        .projects-orbit .project-3 {
+            --x: -65px;
+            --y: 110px;
+            --size: 60px;
+            --circle-color: rgba(0, 255, 170, 0.16);
+        }
+
+        .projects-orbit .project-4 {
+            --x: 0px;
+            --y: 125px;
+            --size: 68px;
+            --circle-color: rgba(255, 70, 140, 0.18);
+        }
+
+        .contact-orbit .contact-1 {
+            --x: -105px;
+            --y: -105px;
+            --size: 54px;
+            --circle-color: rgba(24, 119, 242, 0.2);
+        }
+
+        .contact-orbit .contact-2 {
+            --x: -145px;
+            --y: -50px;
+            --size: 62px;
+            --circle-color: rgba(225, 48, 108, 0.2);
+        }
+
+        .contact-orbit .contact-3 {
+            --x: -155px;
+            --y: 15px;
+            --size: 50px;
+            --circle-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .contact-orbit .contact-4 {
+            --x: -145px;
+            --y: 80px;
+            --size: 58px;
+            --circle-color: rgba(0, 180, 255, 0.2);
+        }
+
+        .contact-orbit .contact-5 {
+            --x: -105px;
+            --y: 135px;
+            --size: 66px;
+            --circle-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .circle-orbit:hover .orbit-child,
+        .circle-orbit:focus-within .orbit-child,
+        .circle-orbit.active .orbit-child {
+            opacity: 1;
+            pointer-events: auto;
+            transform:
+                translate(-50%, -50%)
+                translate(var(--x), var(--y))
+                scale(1);
+        }
+
+        .circle-card:hover,
+        .circle-card:focus-visible,
+        .service-orbit-center:hover,
+        .service-orbit-center:focus-visible {
+            z-index: 4;
+            box-shadow:
+                0 0 30px rgba(255, 255, 255, 0.12),
+                inset 0 0 24px rgba(255, 255, 255, 0.1);
+            transform: scale(1.06);
+        }
+
+        .contact-orbit .card-3:hover,
+        .contact-orbit .card-3:focus-visible,
+        .projects-orbit .card-4:hover,
+        .projects-orbit .card-4:focus-visible {
+            transform: translate(-50%, -50%) scale(1.06);
+        }
+
+        .orbit-child:hover,
+        .orbit-child:focus-visible {
+            z-index: 5;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.28);
+            box-shadow:
+                0 0 28px rgba(255, 255, 255, 0.18),
+                inset 0 0 24px rgba(255, 255, 255, 0.1);
+            transform:
+                translate(-50%, -50%)
+                translate(var(--x), var(--y))
+                scale(1.1);
+        }
+
+        .contact-orbit .orbit-child i {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+
+        /* =========================================================
+           CONTACT ICONS
+        ========================================================= */
+
+        .contact-subcard i {
+
+            font-size: 19px;
+
+            line-height: 1;
+        }
+
+
+        /* =========================================================
+           FLOAT ANIMATIONS
+        ========================================================= */
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+
+                transform:
+                    translate3d(0, 0, 0);
+            }
+
+            50% {
+
+                transform:
+                    translate3d(
+                        20px,
+                        -30px,
+                        0
+                    );
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+
+                transform:
+                    translate3d(0, 0, 0);
+            }
+
+            50% {
+
+                transform:
+                    translate3d(
+                        -18px,
+                        18px,
+                        0
+                    );
+            }
+        }
+
+
+        @keyframes float3 {
+
+            0%,
+            100% {
+
+                transform:
+                    translate3d(0, 0, 0);
+            }
+
+            50% {
+
+                transform:
+                    translate3d(
+                        25px,
+                        -20px,
+                        0
+                    );
+            }
+        }
+
+
+        @keyframes float4 {
+
+            0%,
+            100% {
+
+                transform:
+                    translate3d(0, 0, 0);
+            }
+
+            50% {
+
+                transform:
+                    translate3d(
+                        -20px,
+                        -25px,
+                        0
+                    );
+            }
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+
+            position: fixed;
+
+            bottom: 10px;
+
+            left: 0;
+
+            width: 100%;
+
+            text-align: center;
+
+            z-index: 5;
+
+            pointer-events: none;
+
+            font-size: 11px;
+
+            opacity: 0.45;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .header {
+
+                padding:
+                    0.9rem 1rem;
+            }
+
+            .about-orbit {
+                top: 3%;
+                left: 0;
+            }
+
+            .services-orbit {
+                top: 3%;
+                right: 0;
+            }
+
+            .contact-orbit {
+                bottom: 8%;
+                left: 0;
+            }
+
+            .projects-orbit {
+                right: 0;
+                bottom: 7%;
+            }
+
+
+
+
+
+            .hero-content {
+
+                min-width: 70vw;
+                max-width: 80vw;
+            }
+
+            .hero-floater-one {
+                --size: 42px;
+                right: -15%;
+            }
+
+            .hero-floater-two {
+                --size: 32px;
+                left: -15%;
+            }
+
+            .hero-floater-three {
+                --size: 48px;
+                right: 8%;
+            }
+
+            .hero-floater-four {
+                --size: 26px;
+            }
+
+
+            .card-1,
+            .card-3,
+            .card-4 {
+
+                width: 90px;
+                height: 90px;
+            }
+
+
+            .service-orbit-menu {
+                width: min(100vw, 380px);
+                transform: translate(-50%, -50%);
+            }
+
+            .service-orbit-center {
+                width: 90px;
+                font-size: 0.7rem;
+            }
+
+            .services-orbit .service-orbit-design {
+                --x: -64.1px;
+                --y: -37px;
+            }
+
+            .services-orbit .service-orbit-development {
+                --x: 0px;
+                --y: -74px;
+            }
+
+            .services-orbit .service-orbit-seo {
+                --x: 64.1px;
+                --y: -37px;
+            }
+
+            .services-orbit .service-orbit-social {
+                --x: 64.1px;
+                --y: 37px;
+            }
+
+            .services-orbit .service-orbit-ai {
+                --x: -64.1px;
+                --y: 37px;
+            }
+
+            .about-orbit .card-1 {
+                width: 90px;
+                height: 90px;
+            }
+
+            .about-orbit .about-approach {
+                --x: -64.1px;
+                --y: 37px;
+            }
+
+            .about-orbit .about-portfolio {
+                --x: 64.1px;
+                --y: -37px;
+            }
+
+            .about-orbit .about-pricing {
+                --x: 0px;
+                --y: 74px;
+            }
+
+            .contact-orbit .card-3,
+            .projects-orbit .card-4 {
+                width: 90px;
+                height: 90px;
+            }
+
+            .orbit-child {
+                --size: 42px;
+                font-size: 7px;
+            }
+
+            .orbit-child span {
+                font-size: 7px;
+            }
+
+            .projects-orbit .project-1 {
+                --x: -64.1px;
+                --y: -37px;
+            }
+
+            .projects-orbit .project-2 {
+                --x: -64.1px;
+                --y: 37px;
+            }
+
+            .projects-orbit .project-3 {
+                --x: 0px;
+                --y: 74px;
+            }
+
+            .projects-orbit .project-4 {
+                --x: 64.1px;
+                --y: -37px;
+            }
+
+            .contact-orbit .contact-1 {
+                --x: -64.1px;
+                --y: -37px;
+            }
+
+            .contact-orbit .contact-2 {
+                --x: -64.1px;
+                --y: 37px;
+            }
+
+            .contact-orbit .contact-3 {
+                --x: 0px;
+                --y: 74px;
+            }
+
+            .contact-orbit .contact-4 {
+                --x: 64.1px;
+                --y: 37px;
+            }
+
+            .contact-orbit .contact-5 {
+                --x: 64.1px;
+                --y: -37px;
+            }
+
+            .circle-orbit .orbit-child {
+                --size: 42px;
+            }
+
+            .contact-orbit .orbit-child i {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            ABCweb.ing
+        </div>
+
+    </header>
+
+
+    
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section id="home" class="hero">
+        
+
+
+        <!-- =====================================================
+             ABOUT
+        ===================================================== -->
+
+        <div class="circle-orbit about-orbit">
+            <a href="about.html" class="circle-card card-1">
+                <span>ABOUT</span>
+            </a>
+            <a href="pristup.html" class="orbit-child about-approach" style="--delay: 0ms">
+                <span>01</span>Approach
+            </a>
+            <a href="portfolio.html" class="orbit-child about-portfolio" style="--delay: 45ms">
+                <span>02</span>Portfolio
+            </a>
+            <a href="cennik.html" class="orbit-child about-pricing" style="--delay: 90ms">
+                <span>03</span>Pricing
+            </a>
+        </div>
+
+
+        <!-- =====================================================
+             SERVICES
+        ===================================================== -->
+
+        <div class="circle-orbit services-orbit">
+
+            <nav class="service-orbit-menu" aria-label="Services">
+                <a href="services.html" class="service-orbit-center">
+                    Services
+                </a>
+                <a href="design.html" class="orbit-child service-orbit-design" style="--delay: 0ms">
+                    <span>01</span>Design
+                </a>
+                <a href="development.html" class="orbit-child service-orbit-development" style="--delay: 35ms">
+                    <span>02</span>Development
+                </a>
+                <a href="seo.html" class="orbit-child service-orbit-seo" style="--delay: 70ms">
+                    <span>03</span>SEO
+                </a>
+                <a href="services.html" class="orbit-child service-orbit-social" style="--delay: 105ms">
+                    <span>04</span>Social Media
+                </a>
+                <a href="AI.html" class="orbit-child service-orbit-ai" style="--delay: 140ms">
+                    <span>05</span>AI implementation
+                </a>
+            </nav>
+
+        </div>
+
+
+        <!-- =====================================================
+             CONTACT
+        ===================================================== -->
+
+        <div class="circle-orbit contact-orbit">
+
+
+            <a
+                href="contact.html"
+                class="circle-card card-3">
+
+                <span>
+                    CONTACT
+                </span>
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="#"
+                class="orbit-child contact-subcard contact-1"
+                aria-label="Facebook">
+
+                <i class="fab fa-facebook-f"></i>
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="#"
+                class="orbit-child contact-subcard contact-2"
+                aria-label="Instagram">
+
+                <i class="fab fa-instagram"></i>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+                href="mailto:info@abcweb.ing"
+                class="orbit-child contact-subcard contact-3"
+                aria-label="Email">
+
+                <i class="fas fa-envelope"></i>
+
+            </a>
+
+
+            <!-- TELEPHONE -->
+
+            <a
+                href="tel:+440000000000"
+                class="orbit-child contact-subcard contact-4"
+                aria-label="Telephone">
+
+                <i class="fas fa-phone"></i>
+
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/440000000000"
+                class="orbit-child contact-subcard contact-5"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp">
+
+                <i class="fab fa-whatsapp"></i>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =====================================================
+             PROJECTS
+        ===================================================== -->
+
+        <div class="circle-orbit projects-orbit">
+
+
+            <a
+                href="projects.html"
+                class="circle-card card-4">
+
+                <span>
+                    PROJECTS
+                </span>
+
+            </a>
+
+
+            <!-- TATICLEAN -->
+
+            <a
+                href="https://taticlean.co.uk"
+                class="orbit-child project-subcard project-1"
+                target="_blank"
+                rel="noopener">
+
+                TATICLEAN
+
+            </a>
+
+
+            <!-- ABCTIP -->
+
+            <a
+                href="https://abctip.sk"
+                class="orbit-child project-subcard project-2"
+                target="_blank"
+                rel="noopener">
+
+                ABCTIP
+
+            </a>
+
+
+            <!-- KELTEX -->
+
+            <a
+                href="https://keltex.sk"
+                class="orbit-child project-subcard project-3"
+                target="_blank"
+                rel="noopener">
+
+                KELTEX
+
+            </a>
+
+
+            <!-- WRAP & ROLL -->
+
+            <a
+                href="#"
+                class="orbit-child project-subcard project-4">
+
+                WRAP&ROLL
+
+            </a>
+
+
+        </div>
+
+        <!-- =====================================================
+             HERO CONTENT
+        ===================================================== -->
+
+        <div class="hero-content">
+
+            <span class="hero-floater hero-floater-one" aria-hidden="true"></span>
+            <span class="hero-floater hero-floater-two" aria-hidden="true"></span>
+            <span class="hero-floater hero-floater-three" aria-hidden="true"></span>
+            <span class="hero-floater hero-floater-four" aria-hidden="true"></span>
+
+            <p class="hero-subtitle">
+                WELCOME TO
+            </p>
+
+
+            <h1>
+                ABCweb.ing
+            </h1>
+
+
+            <p class="hero-text">
+                Dark. Powerful. Unforgettable.
+            </p>
+
+
+            <a
+                href="about.html"
+                class="hero-button">
+
+                Explore
+
+            </a>
+
+        </div>
+
+
+    </section>
+<!-- BACKGROUND -->
+
+    <iframe
+        src="fluid.html"
+        frameborder="0"
+        style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            border:0;
+            z-index:0;
+        ">
+    </iframe>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 ABCweb.ing. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        /*
+         * Všetky tri skupiny:
+         * SERVICES
+         * PROJECTS
+         * CONTACT
+         */
+
+        const orbits = document.querySelectorAll('.circle-orbit');
+        let touchInput = window.matchMedia('(hover: none)').matches;
+
+        document.addEventListener('pointerdown', (event) => {
+            touchInput =
+                event.pointerType === 'touch' ||
+                window.matchMedia('(hover: none)').matches;
+        });
+
+        document.addEventListener('click', (event) => {
+            const target = event.target;
+
+            if (!(target instanceof Element)) {
+                return;
+            }
+
+            const center = target.closest(
+                '.circle-orbit > .circle-card, .circle-orbit .service-orbit-center'
+            );
+
+            if (center && touchInput && event.detail > 0) {
+                const orbit = center.closest('.circle-orbit');
+
+                if (!orbit.classList.contains('active')) {
+                    event.preventDefault();
+                    orbits.forEach((item) => {
+                        item.classList.toggle('active', item === orbit);
+                    });
+                    return;
+                }
+            }
+
+            if (!target.closest('.circle-orbit')) {
+                orbits.forEach((orbit) => orbit.classList.remove('active'));
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>
