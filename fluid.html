@@ -338,7 +338,8 @@ function update() {
   gl.viewport(0, 0, textureWidth, textureHeight);
 
   if (splatStack.length > 0) {
-    for (let m = 0; m < splatStack.pop(); m++) {
+    const splatCount = splatStack.pop();
+    for (let m = 0; m < splatCount; m++) {
       const color = [Math.random() * 10, Math.random() * 10, Math.random() * 10];
       const x = canvas.width * Math.random();
       const y = canvas.height * Math.random();
@@ -516,35 +517,14 @@ canvas.addEventListener("touchend", function () {
   pointers.forEach(p => p.down = false);
 });
 
-// Uvodny "splat" efekt pri nacitani stranky, aby bolo hned vidno co to robi
-splatStack.push(4);
+// The opening splashes fade naturally; recurring splashes start after three seconds.
+splatStack.push(20);
 
-// Automatický fluid efekt po 3 sekundách nečinnosti
-let idleTimer;
-
-function resetIdleTimer() {
-    clearTimeout(idleTimer);
-
-    idleTimer = setTimeout(() => {
-
-        // Spustí nový náhodný fluid efekt
+window.setTimeout(() => {
+    window.setInterval(() => {
         splatStack.push(3);
-
-        // Znovu začne odpočítavať 3 sekundy
-        resetIdleTimer();
-
     }, 3000);
-}
-
-// Pohyb myši
-window.addEventListener("mousemove", resetIdleTimer);
-
-// Dotyk na displeji
-window.addEventListener("touchstart", resetIdleTimer);
-window.addEventListener("touchmove", resetIdleTimer);
-
-// Spusti časovač po načítaní stránky
-resetIdleTimer();
+}, 3000);
 </script>
 
 </body>
