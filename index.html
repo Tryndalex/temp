@@ -27,9 +27,9 @@
         body {
             margin: 0;
             padding: 0;
-            
+
             font-family: Arial, sans-serif;
-            
+
             background: #070707;
             color: #f1f1f1e5;
         }
@@ -37,9 +37,8 @@
 
         body {
             min-height: 100vh;
-            
         }
-        
+
 
         /* =========================================================
            HEADER
@@ -87,11 +86,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             overflow: hidden;
         }
 
-        
+
         .hero::before {
             content: "";
 
@@ -130,7 +129,7 @@
             color: #fafafa;
             animation: hero-content-float 8s ease-in-out infinite;
 
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0);
 
             background: rgba(92, 31, 172, 0.1);
 
@@ -150,7 +149,7 @@
             z-index: -1;
             width: var(--size);
             height: var(--size);
-            border: 1px solid rgba(255, 255, 255, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0);
             border-radius: 50%;
             background: var(--color);
             backdrop-filter: blur(10px) saturate(140%);
@@ -241,7 +240,7 @@
 
 
         .hero-content h1 {
-            margin: 0;
+            margin-top: 8;
 
             font-size: clamp(1.5rem, 4vw, 3rem);
 
@@ -317,7 +316,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0);
             border-radius: 50%;
             color: #fff;
             text-align: center;
@@ -587,7 +586,6 @@
                 0 0 30px rgba(255, 255, 255, 0.12),
                 inset 0 0 24px rgba(255, 255, 255, 0.1);
             transform: scale(1.06);
-            outline: none;
         }
 
         .contact-orbit .card-3:hover,
@@ -748,6 +746,7 @@
 
         @media (max-width: 600px) {
 
+    
             .header {
 
                 padding:
@@ -755,23 +754,23 @@
             }
 
             .about-orbit {
-                top: 3%;
-                left: 0;
+                top: 13%;
+                left: 10;
             }
 
             .services-orbit {
-                top: 3%;
-                right: 0;
+                top: 16%;
+                right: 15;
             }
 
             .contact-orbit {
-                bottom: 8%;
+                bottom: 28%;
                 left: 0;
             }
 
             .projects-orbit {
-                right: 0;
-                bottom: 7%;
+                right: 10;
+                bottom: 23%;
             }
 
 
@@ -780,36 +779,28 @@
 
             .hero-content {
 
-                min-width: 70vw;
-                max-width: 80vw;
+                min-width: 40vw;
+                max-width: 45vw;
+                bottom: 50px;
             }
 
             .hero-floater-one {
-                --size: 42px;
+                --size: 28px;
                 right: -15%;
             }
 
             .hero-floater-two {
-                --size: 32px;
+                --size: 22px;
                 left: -15%;
             }
 
             .hero-floater-three {
-                --size: 48px;
+                --size: 28px;
                 right: 8%;
             }
 
             .hero-floater-four {
                 --size: 26px;
-            }
-
-
-            .card-1,
-            .card-3,
-            .card-4 {
-
-                width: 90px;
-                height: 90px;
             }
 
 
@@ -1194,17 +1185,11 @@
 
 
             <p class="hero-text">
-                Fast, SEO-Optimized Websites That Grow Your Business
+                Web, SEO, <br> Social Media, AI, <br> e-commerce,
             </p>
 
 
-            <a
-                href="about.html"
-                class="hero-button">
-
-                Explore
-
-            </a>
+            
 
         </div>
 
