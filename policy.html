@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | ABCweb.ing</title>
+    <meta name="description" content="Privacy Policy for ABCweb.ing. Learn how we handle personal data, contact form submissions, cookies and your rights.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #070707;
+            --bg-soft: #0d0d0f;
+            --surface: rgba(255,255,255,0.045);
+            --surface-hover: rgba(255,255,255,0.075);
+            --border: rgba(255,255,255,0.10);
+            --text: #f5f5f5;
+            --text-soft: #a5a5a5;
+            --cyan: #00e5ff;
+            --violet: #8b5cf6;
+            --header-height: 76px;
+            --radius: 18px;
+            --transition: 300ms cubic-bezier(.16,1,.3,1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0,229,255,0.035), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(139,92,246,0.045), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+            transition: background var(--transition), backdrop-filter var(--transition), height var(--transition), border-color var(--transition);
+        }
+
+        .site-header.scrolled {
+            height: 64px;
+            background: rgba(7,7,7,0.78);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 1250px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            position: relative;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.12rem;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 24px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
+            border-radius: 10px;
+            transition: width var(--transition);
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.025);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .main-nav a {
+            position: relative;
+            padding: 9px 15px;
+            border-radius: 999px;
+            color: var(--text-soft);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+            transition: color var(--transition), background var(--transition), transform var(--transition);
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(139,92,246,0.14));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07), 0 0 18px rgba(0,229,255,0.06);
+        }
+
+        .menu-toggle {
+            display: none;
+            position: relative;
+            z-index: 2001;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(#0d0d0f, #0d0d0f) padding-box, linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+            color: #fff;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 24px rgba(0,229,255,0.10);
+        }
+
+        .menu-toggle i {
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 86px;
+            left: 15px;
+            right: 15px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: auto;
+            z-index: 2000;
+            background-color: #0d0d0f;
+            background-image: radial-gradient(circle at 50% 0%, rgba(0,229,255,0.15), transparent 38%), radial-gradient(circle at 58% 0%, rgba(139,92,246,0.11), transparent 52%);
+            border: 1px solid transparent;
+            border-radius: 20px;
+            border-image: linear-gradient(135deg, var(--cyan), var(--violet)) 1;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.75);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-10px) scale(.98);
+            transition: opacity 300ms ease, transform 300ms ease, visibility 300ms ease;
+        }
+
+        .mobile-nav.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        .mobile-nav a {
+            position: relative;
+            padding: 15px 17px;
+            border-radius: 13px;
+            color: #eeeeee;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.09rem;
+            text-transform: uppercase;
+            transition: color 250ms ease, background 250ms ease, padding-left 250ms ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: #fff;
+            background: linear-gradient(90deg, rgba(0,229,255,0.11), rgba(139,92,246,0.11));
+            box-shadow: inset 2px 0 0 var(--cyan);
+        }
+
+        .page {
+            position: relative;
+            min-height: 100vh;
+            padding-top: var(--header-height);
+        }
+
+        .page-hero {
+            position: relative;
+            min-height: 42vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 25px 60px;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: -240px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(0,229,255,0.10), rgba(139,92,246,0.05), transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .page-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 7px 13px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.035);
+            color: var(--cyan);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.2rem);
+            line-height: 0.95;
+            letter-spacing: -0.045em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .page-hero h1 span {
+            background: linear-gradient(90deg, #fff, var(--cyan), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            to { background-position: 200% center; }
+        }
+
+        .page-intro {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-soft);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.75;
+        }
+
+        .content {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 0 0 80px;
+        }
+
+        .policy-card {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.045);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+            padding: 32px;
+        }
+
+        .policy-card h2 {
+            margin-bottom: 12px;
+            font-size: clamp(1.3rem, 2vw, 1.9rem);
+            letter-spacing: -0.03em;
+        }
+
+        .policy-card h3 {
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+            color: #fff;
+        }
+
+        .policy-card p,
+        .policy-card li {
+            color: var(--text-soft);
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+
+        .policy-card ul {
+            padding-left: 18px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .policy-card a {
+            color: var(--cyan);
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: rgba(255,255,255,.4);
+            font-size: .75rem;
+        }
+
+        @media (max-width: 800px) {
+            .site-header {
+                padding: 0 18px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page-hero {
+                min-height: 36vh;
+                padding: 100px 20px 50px;
+            }
+
+            .policy-card {
+                padding: 22px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo">ABCweb.ing</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main class="page">
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <div class="page-label">ABCweb.ing</div>
+                <h1><span>Privacy</span> Policy</h1>
+                <p class="page-intro">
+                    How we collect, use and protect personal data under UK data protection law.
+                </p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="policy-card">
+                <h2>Privacy Policy</h2>
+                <p>
+                    This notice explains how personal data is handled when you visit ABCweb.ing or contact us. It is intended to provide information under the UK GDPR and Data Protection Act 2018.
+                </p>
+
+                <h3>1. Who is responsible for your data</h3>
+                <p>
+                    The data controller is Alexander Bohuš, trading as ABCweb.ing. For privacy questions or requests, contact
+                    <a href="mailto:info@abcweb.ing">info@abcweb.ing</a>.
+                </p>
+
+                <h3>2. Information we collect</h3>
+                <p>Depending on how you use the website, we may process:</p>
+                <ul>
+                    <li>Your name</li>
+                    <li>Your email address</li>
+                    <li>Your selected enquiry type and any information you include in your message</li>
+                    <li>Technical information that your browser sends when loading the site, such as IP address, browser and device details, and request time</li>
+                </ul>
+                <p>Information in an enquiry is collected directly from you. Technical information is received from your browser or the services that deliver and host the website.</p>
+
+                <h3>3. Why we use it and our lawful bases</h3>
+                <ul>
+                    <li>To respond to an enquiry or take steps requested before entering a contract: processing is necessary to take steps at your request.</li>
+                    <li>To deliver and administer services, communicate about work, and keep appropriate business records: processing is necessary for a contract or our legal obligations.</li>
+                    <li>To protect, maintain and secure the website and prevent misuse: processing is based on our legitimate interests, balanced against your rights.</li>
+                </ul>
+
+                <h3>4. Contact form and service providers</h3>
+                <p>
+                    The contact form is submitted to FormSubmit, a third-party form delivery service, and forwarded to our business email. The information you choose to enter is used to respond to your enquiry and, where relevant, discuss or provide requested services. FormSubmit and our email or website hosting providers may process data on our behalf under their own terms and privacy notices. Please do not include sensitive personal information in the form.
+                </p>
+
+                <h3>5. Sharing and international transfers</h3>
+                <p>
+                    We do not sell personal data. We share it only with service providers involved in operating the website, delivering form messages, providing email or hosting, or where disclosure is required by law. Some providers may process data outside the UK. Where this happens, we will take steps to ensure a valid transfer mechanism and appropriate safeguards are in place where required. Check the relevant provider's privacy information for details.
+                </p>
+
+                <h3>6. Cookies and external resources</h3>
+                <p>
+                    This site does not currently use advertising or analytics cookies. Strictly necessary technologies may be used to deliver and secure the site. The site also loads Font Awesome styles from a third-party CDN; your browser may send technical data, including your IP address, to that provider when loading those files. If optional cookies or analytics are introduced, this notice and any required consent controls will be updated before they are used.
+                </p>
+
+                <h3>7. How long we keep data</h3>
+                <p>
+                    Enquiry correspondence is normally kept for up to 24 months after our last meaningful contact. If an enquiry leads to a project, relevant records may be kept for the duration of the relationship and for any additional period required by law or needed to establish or defend legal claims. Data is securely deleted or anonymised when no longer needed.
+                </p>
+
+                <h3>8. Your data protection rights</h3>
+                <p>Subject to legal conditions and exceptions, you may:</p>
+                <ul>
+                    <li>Request access to, or correction or deletion of, your personal data</li>
+                    <li>Ask us to restrict or object to certain processing</li>
+                    <li>Request a copy of data you provided in a portable format, where the right applies</li>
+                    <li>Complain to the UK Information Commissioner's Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ico.org.uk/make-a-complaint</a></li>
+                </ul>
+                <p>To exercise a right, email <a href="mailto:info@abcweb.ing">info@abcweb.ing</a>. We may need to verify your identity and will respond within the time required by law. There is no charge unless a request is manifestly unfounded or excessive.</p>
+
+                <h3>9. Automated decisions</h3>
+                <p>We do not use your personal data to make decisions about you solely by automated means, including profiling, that produce legal or similarly significant effects.</p>
+
+                <h3>10. Security and children</h3>
+                <p>
+                    We use reasonable measures to protect personal data, but no internet transmission or storage system can be guaranteed to be completely secure. This website and its services are not directed at children, and we do not knowingly collect children's personal data.
+                </p>
+
+                <h3>11. Changes to this notice</h3>
+                <p>
+                    We may update this notice when our practices or legal requirements change. The current version will be published on this page.
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>Last updated:</strong> 6 October 2026</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        © 2026 ABCweb.ing. All rights reserved.
+    </footer>
+
+    <script>
+        const header = document.getElementById("siteHeader");
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileNav = document.getElementById("mobileNav");
+
+        function updateHeader() {
+            if (window.scrollY > 30) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        }
+
+        window.addEventListener("scroll", updateHeader, { passive: true });
+        updateHeader();
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mobileNav.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+            menuToggle.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open menu");
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        mobileNav.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+        document.addEventListener("click", event => {
+            if (!menuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
