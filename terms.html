@@ -1,99 +1,2080 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Všeobecné obchodné podmienky | abcweb.ing</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Terms &amp; Conditions | ABCweb.ing</title>
+
+    <meta name="description"
+          content="Terms and Conditions for ABCweb.ing web design, web development, SEO, social media and AI search optimisation services in the UK.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#070707">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #070707;
+            --bg-soft: #0d0d0f;
+            --surface: rgba(255,255,255,0.045);
+            --surface-hover: rgba(255,255,255,0.075);
+            --border: rgba(255,255,255,0.10);
+            --border-hover: rgba(0,229,255,0.35);
+            --text: #f5f5f5;
+            --text-soft: #a5a5a5;
+            --cyan: #00e5ff;
+            --violet: #8b5cf6;
+            --header-height: 76px;
+            --radius: 20px;
+            --transition: 300ms cubic-bezier(.16,1,.3,1);
+            --mouse-x: 0px;
+            --mouse-y: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0,229,255,0.035), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(139,92,246,0.045), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(
+                    circle 360px at
+                    calc(50% + var(--mouse-x) * 2)
+                    calc(25% + var(--mouse-y) * 2),
+                    rgba(0,229,255,.035),
+                    transparent 70%
+                );
+            transition:
+                background-position 900ms cubic-bezier(.16,1,.3,1);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           HEADER — SAME SYSTEM AS PROJECTS
+        ========================================================= */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 30px;
+
+            transition:
+                background var(--transition),
+                backdrop-filter var(--transition),
+                height var(--transition),
+                border-color var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .site-header.scrolled {
+            height: 64px;
+            background: rgba(7,7,7,0.78);
+
+            backdrop-filter:
+                blur(18px)
+                saturate(140%);
+
+            -webkit-backdrop-filter:
+                blur(18px)
+                saturate(140%);
+
+            border-bottom:
+                1px solid var(--border);
+
+            box-shadow:
+                0 10px 40px rgba(0,0,0,.18);
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 1250px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .logo {
+            position: relative;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.12rem;
+            color: #fff;
+            white-space: nowrap;
+
+            transition:
+                transform 300ms ease,
+                text-shadow 300ms ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+            text-shadow: 0 0 18px rgba(0,229,255,.35);
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 24px;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--cyan),
+                    var(--violet)
+                );
+
+            border-radius: 10px;
+
+            transition:
+                width var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .logo:hover::after {
+            width: 100%;
+            box-shadow:
+                0 0 12px
+                rgba(0,229,255,.55);
+        }
+
+
+        /* =========================================================
+           DESKTOP NAVIGATION
+        ========================================================= */
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            box-shadow:
+                inset 0 0 20px
+                rgba(255,255,255,.015);
+        }
+
+        .main-nav a {
+            position: relative;
+            padding: 9px 15px;
+            border-radius: 999px;
+            color: var(--text-soft);
+
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .08rem;
+            text-transform: uppercase;
+
+            transition:
+                color var(--transition),
+                background var(--transition),
+                transform var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: #fff;
+            background: rgba(255,255,255,.07);
+            transform: translateY(-1px);
+        }
+
+        .main-nav a.active {
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,.12),
+                    rgba(139,92,246,.14)
+                );
+
+            box-shadow:
+                inset 0 0 0 1px
+                rgba(255,255,255,.07),
+
+                0 0 18px
+                rgba(0,229,255,.06);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU BUTTON — SAME AS PROJECTS
+        ========================================================= */
+
+        .menu-toggle {
+            display: none;
+            position: relative;
+            z-index: 1;
+
+            flex-direction: column;
+            gap: 5px;
+
+            width: 42px;
+            height: 42px;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid transparent;
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.045)
+                ) padding-box,
+
+                linear-gradient(
+                    135deg,
+                    var(--cyan),
+                    var(--violet)
+                ) border-box;
+
+            color: #fff;
+            cursor: pointer;
+
+            transition:
+                background var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .menu-toggle:hover {
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.12),
+                    rgba(255,255,255,0.12)
+                ) padding-box,
+
+                linear-gradient(
+                    135deg,
+                    var(--cyan),
+                    var(--violet)
+                ) border-box;
+
+            transform:
+                scale(1.05)
+                rotate(3deg);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,229,255,.12);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: currentColor;
+            pointer-events: none;
+
+            transition:
+                transform 200ms ease,
+                opacity 200ms ease;
+        }
+
+        .menu-toggle.open span:first-child {
+            transform:
+                translateY(7px)
+                rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:last-child {
+            transform:
+                translateY(-7px)
+                rotate(-45deg);
+        }
+
+
+        /* =========================================================
+           MOBILE GLASS MENU — SAME AS PROJECTS
+        ========================================================= */
+
+        .mobile-nav {
+            position: fixed;
+            top: 86px;
+            left: 15px;
+            right: 15px;
+
+            padding: 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            width: auto;
+
+            background:
+                linear-gradient(
+                    rgba(17,17,17,0.72),
+                    rgba(17,17,17,0.72)
+                ) padding-box,
+
+                linear-gradient(
+                    135deg,
+                    var(--cyan),
+                    var(--violet)
+                ) border-box !important;
+
+            backdrop-filter:
+                blur(22px)
+                saturate(140%);
+
+            -webkit-backdrop-filter:
+                blur(22px)
+                saturate(140%);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform:
+                translateY(-14px)
+                scale(.97);
+
+            z-index: 9999 !important;
+
+            border:
+                1px solid transparent;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 20px 60px
+                #000000;
+
+            transition:
+                opacity 300ms ease,
+                transform 300ms
+                cubic-bezier(.16,1,.3,1),
+                visibility 300ms ease;
+        }
+
+        .mobile-nav.open {
+            opacity: .9 !important;
+            visibility: visible !important;
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+        .mobile-nav a {
+            position: relative;
+
+            padding:
+                15px 17px;
+
+            border-radius:
+                13px;
+
+            color:
+                #eeeeee;
+
+            font-size:
+                .82rem;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                .09rem;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                color 250ms ease,
+                background 250ms ease,
+                padding-left 250ms ease,
+                transform 250ms ease;
+        }
+
+        .mobile-nav.open a {
+            animation:
+                menuItemIn
+                420ms
+                cubic-bezier(.16,1,.3,1)
+                both;
+        }
+
+        .mobile-nav.open a:nth-child(1) {
+            animation-delay: 40ms;
+        }
+
+        .mobile-nav.open a:nth-child(2) {
+            animation-delay: 80ms;
+        }
+
+        .mobile-nav.open a:nth-child(3) {
+            animation-delay: 120ms;
+        }
+
+        .mobile-nav.open a:nth-child(4) {
+            animation-delay: 160ms;
+        }
+
+        .mobile-nav.open a:nth-child(5) {
+            animation-delay: 200ms;
+        }
+
+        @keyframes menuItemIn {
+            from {
+                opacity: 0;
+                transform: translateX(-12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .mobile-nav a:hover {
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,229,255,.08),
+                    rgba(139,92,246,.08)
+                );
+
+            padding-left: 21px;
+            transform:
+                translateX(3px);
+        }
+
+        .mobile-nav a.active {
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,229,255,.11),
+                    rgba(139,92,246,.11)
+                );
+
+            box-shadow:
+                inset 2px 0 0
+                var(--cyan);
+        }
+
+
+        /* =========================================================
+           PAGE / HERO
+        ========================================================= */
+
+        .page {
+            position: relative;
+            min-height: 100vh;
+            padding-top: var(--header-height);
+        }
+
+        .page-hero {
+            position: relative;
+
+            min-height: 48vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                100px 25px 70px;
+
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .page-hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            pointer-events:
+                none;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    rgba(7,7,7,.78) 100%
+                );
+
+            z-index: 0;
+        }
+
+        .page-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 580px;
+            height: 580px;
+
+            top: -300px;
+            left: 50%;
+
+            transform:
+                translateX(
+                    calc(-50% + var(--mouse-x))
+                )
+                translateY(
+                    var(--mouse-y)
+                );
+
+            background:
+                conic-gradient(
+                    from 120deg,
+                    rgba(0,229,255,.07),
+                    rgba(139,92,246,.09),
+                    rgba(255,74,180,.055),
+                    rgba(0,229,255,.07)
+                );
+
+            border-radius:
+                50%;
+
+            filter:
+                blur(52px);
+
+            opacity:
+                .9;
+
+            pointer-events:
+                none;
+
+            transition:
+                transform
+                900ms cubic-bezier(.16,1,.3,1);
+
+            animation:
+                legalOrb
+                15s
+                linear
+                infinite;
+        }
+
+        @keyframes legalOrb {
+            to {
+                rotate:
+                    360deg;
+            }
+        }
+
+        .page-hero-content {
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            max-width:
+                900px;
+
+            animation:
+                heroEnter
+                1.1s
+                cubic-bezier(.16,1,.3,1)
+                both;
+        }
+
+        @keyframes heroEnter {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(30px)
+                    scale(.98);
+
+                filter:
+                    blur(9px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                filter:
+                    blur(0);
+            }
+        }
+
+        .page-label {
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            margin-bottom:
+                20px;
+
+            padding:
+                7px 13px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color:
+                var(--cyan);
+
+            font-size:
+                .7rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .18rem;
+
+            text-transform:
+                uppercase;
+        }
+
+        .page-label::before {
+            content:
+                "";
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--cyan);
+
+            box-shadow:
+                0 0 10px
+                var(--cyan);
+
+            animation:
+                pulseDot
+                2s
+                ease-in-out
+                infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% {
+                opacity: .55;
+                scale: .8;
+            }
+
+            50% {
+                opacity: 1;
+                scale: 1.25;
+            }
+        }
+
+        .page-hero h1 {
+            font-size:
+                clamp(
+                    2.45rem,
+                    7vw,
+                    5rem
+                );
+
+            line-height:
+                .94;
+
+            letter-spacing:
+                -.045em;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                22px;
+        }
+
+        .page-hero h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #fff,
+                    var(--cyan),
+                    #fff,
+                    #c4a7ff,
+                    #fff
+                );
+
+            background-size:
+                280% auto;
+
+            -webkit-background-clip:
+                text;
+
+            background-clip:
+                text;
+
+            color:
+                transparent;
+
+            animation:
+                legalGradient
+                8s
+                ease-in-out
+                infinite;
+        }
+
+        @keyframes legalGradient {
+            0%, 100% {
+                background-position:
+                    0% center;
+            }
+
+            50% {
+                background-position:
+                    100% center;
+            }
+        }
+
+        .page-intro {
+            max-width:
+                740px;
+
+            margin:
+                0 auto;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                clamp(
+                    .98rem,
+                    2vw,
+                    1.1rem
+                );
+
+            line-height:
+                1.75;
+        }
+
+
+        /* =========================================================
+           TERMS CONTENT
+        ========================================================= */
+
+        .terms-wrap {
+            width:
+                min(
+                    920px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                2.5rem 0 5rem;
+        }
+
+        .terms-updated {
+            margin:
+                0 0 24px;
+
+            text-align:
+                center;
+
+            color:
+                rgba(255,255,255,.38);
+
+            font-size:
+                .72rem;
+
+            letter-spacing:
+                .05rem;
+
+            text-transform:
+                uppercase;
+        }
+
+        .terms-card {
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                34px 38px;
+
+            margin-bottom:
+                16px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius);
+
+            background:
+                var(--surface);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+                0 18px 55px
+                rgba(0,0,0,.13);
+
+            opacity:
+                0;
+
+            transform:
+                translateY(28px);
+
+            filter:
+                blur(5px);
+
+            transition:
+                opacity 700ms
+                cubic-bezier(.16,1,.3,1),
+
+                transform 700ms
+                cubic-bezier(.16,1,.3,1),
+
+                filter 700ms
+                cubic-bezier(.16,1,.3,1),
+
+                border-color 300ms ease;
+        }
+
+        .terms-card.visible {
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+
+            filter:
+                blur(0);
+        }
+
+        .terms-card:hover {
+            border-color:
+                rgba(0,229,255,.20);
+        }
+
+        .terms-card::before {
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                190px;
+
+            height:
+                190px;
+
+            top:
+                -100px;
+
+            right:
+                -80px;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,229,255,.055),
+                    transparent 70%
+                );
+
+            pointer-events:
+                none;
+        }
+
+        .terms-card h2 {
+            padding:
+                0 0 12px;
+
+            margin:
+                0;
+
+            color:
+                var(--cyan);
+
+            font-size:
+                clamp(
+                    1.2rem,
+                    2.5vw,
+                    1.55rem
+                );
+
+            letter-spacing:
+                -.02em;
+        }
+
+        .terms-card p {
+            margin-bottom:
+                10px;
+
+            color:
+                var(--text-soft);
+
+            line-height:
+                1.78;
+
+            font-size:
+                .95rem;
+        }
+
+        .terms-card p:last-child {
+            margin-bottom:
+                0;
+        }
+
+        .terms-card strong {
+            color:
+                #e9e9e9;
+        }
+
+        .terms-card ul {
+            margin:
+                5px 0 5px;
+
+            padding-left:
+                20px;
+        }
+
+        .terms-card li {
+            padding:
+                4px 0 7px 4px;
+
+            color:
+                var(--text-soft);
+
+            line-height:
+                1.65;
+        }
+
+        .terms-card li::marker {
+            color:
+                var(--cyan);
+        }
+
+        .important-note {
+            border-color:
+                rgba(0,229,255,.18);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,.045),
+                    rgba(139,92,246,.045)
+                );
+        }
+
+        .contact-link {
+            color:
+                var(--cyan);
+
+            transition:
+                color 250ms ease,
+                text-shadow 250ms ease;
+        }
+
+        .contact-link:hover {
+            color:
+                #fff;
+
+            text-shadow:
+                0 0 15px
+                rgba(0,229,255,.4);
+        }
+
+
+        /* =========================================================
+           FOOTER — SAME AS PROJECTS
+        ========================================================= */
+
+        .site-footer {
+            padding:
+                30px 20px;
+
+            text-align:
+                center;
+
+            border-top:
+                1px solid var(--border);
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size:
+                .75rem;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .site-header {
+                padding:
+                    0 18px;
+            }
+
+            .main-nav {
+                display:
+                    none;
+            }
+
+            .menu-toggle {
+                display:
+                    flex;
+            }
+
+            .page-hero {
+                min-height:
+                    45vh;
+
+                padding:
+                    90px 20px 55px;
+            }
+
+            .terms-wrap {
+                width:
+                    min(
+                        calc(100% - 30px),
+                        700px
+                    );
+
+                padding:
+                    2rem 0 3.5rem;
+            }
+
+            .terms-card {
+                padding:
+                    27px 22px;
+
+                border-radius:
+                    18px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior:
+                    auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation:
+                    none !important;
+
+                transition:
+                    none !important;
+            }
+
+            .terms-card {
+                opacity:
+                    1;
+
+                transform:
+                    none;
+
+                filter:
+                    none;
+            }
+        }
+    </style>
 </head>
+
+
 <body>
 
-    <!-- Navigácia -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">abcweb<span>.ing</span></a>
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
-            <button class="menu-toggle" aria-label="Otvoriť menu" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-                
-                <div class="lang-switch">
-                    <button class="lang-btn active" onclick="setLanguage('sk')">SK</button>
-                    <span>|</span>
-                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-                </div>
+    <header class="site-header" id="siteHeader">
+
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                ABCweb.ing
+            </a>
+
+
+            <!-- DESKTOP NAV -->
+
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
 
             </nav>
+
+
+            <!-- MOBILE BUTTON -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobileNav">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
         </div>
+
     </header>
 
-    <!-- Content Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-key="legal-tag">Právne informácie</span>
-                <h1 data-key="terms-main-title">Všeobecné obchodné podmienky</h1>
-                <p data-key="terms-main-desc">Platné a účinné pre služby poskytované prostredníctvom abcweb.ing.</p>
-            </div>
 
-            <div class="card legal-content" style="padding: 2.5rem; max-width: 900px; margin: 0 auto; line-height: 1.7;">
-                <p><strong>Provider:</strong><br>
-                ABCweb.ing (Alexander Bohuš)<br>
-                Email: <a href="mailto:info@abcweb.ing">info@abcweb.ing</a><br>
-                Phone: <a href="tel:+447748608115">+44 7748 608115</a></p>
+    <!-- =========================================================
+         MOBILE NAV
+    ========================================================= -->
 
-                <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border-color, #eaecf0);">
+    <nav
+        class="mobile-nav"
+        id="mobileNav"
+        aria-label="Mobile navigation">
 
-                <h3>1. Scope of services</h3>
-                <p>These Terms and Conditions apply to website design, development, hosting support, SEO guidance, maintenance packages and related digital services provided by ABCweb.ing.</p>
+        <a href="index.html">
+            Home
+        </a>
 
-                <h3 style="margin-top: 1.5rem;">2. Order and agreement</h3>
-                <p>Services are ordered by email, contact form, or direct communication. A project begins only after the scope, timeline and fee are confirmed in writing by both parties.</p>
+        <a href="about.html">
+            About
+        </a>
 
-                <h3 style="margin-top: 1.5rem;">3. Pricing and payment</h3>
-                <p>All project fees are agreed before work begins. Prices are in GBP unless otherwise stated. Payment is due according to the invoice terms and may include a deposit before project start. Maintenance plans are billed in advance for the relevant period.</p>
-                <p>We reserve the right to pause work or withhold final delivery if payment is not received according to the agreed terms.</p>
+        <a href="services.html">
+            Services
+        </a>
 
-                <h3 style="margin-top: 1.5rem;">4. Client responsibilities</h3>
-                <p>The client is responsible for providing clear requirements, content, assets, access, approvals and timely feedback. Delays caused by missing information or late responses may affect the project timeline.</p>
+        <a href="projects.html">
+            Projects
+        </a>
 
-                <h3 style="margin-top: 1.5rem;">5. Intellectual property</h3>
-                <p>Custom work created for a project becomes the client’s property only after all agreed fees are paid, unless otherwise stated in writing. ABCweb.ing may use completed projects as portfolio references unless the client expressly objects.</p>
+        <a href="contact.html">
+            Contact
+        </a>
 
-                <h3 style="margin-top: 1.5rem;">6. Delivery and support</h3>
-                <p>We aim to deliver the agreed work in a professional manner and within the confirmed timeline. Any support, changes or additional work outside the original scope are subject to separate quotation and approval.</p>
+    </nav>
 
-                <h3 style="margin-top: 1.5rem;">7. Warranties and limitations</h3>
-                <p>We provide services in good faith and with reasonable care. We do not guarantee specific search engine rankings, business results, downloads, conversions or outcomes beyond the agreed scope. ABCweb.ing is not liable for indirect, incidental, consequential or punitive damages arising from project delays, third-party platform issues, client delays, or factors beyond our reasonable control.</p>
 
-                <h3 style="margin-top: 1.5rem;">8. Termination</h3>
-                <p>Either party may end the project relationship in accordance with the written agreement. Any work completed and unpaid fees remain due upon termination.</p>
+    <!-- =========================================================
+         PAGE
+    ========================================================= -->
 
-                <h3 style="margin-top: 1.5rem;">9. Privacy and data</h3>
-                <p>We process client information in accordance with our <a href="policy.html">Privacy Policy</a>. We do not sell personal data to third parties for marketing purposes.</p>
+    <main class="page">
 
-                <h3 style="margin-top: 1.5rem;">10. Governing law</h3>
-                <p>These terms are governed by the laws of England and Wales, and any disputes will be subject to the jurisdiction of the courts in England and Wales.</p>
 
-                <p style="margin-top: 1.5rem;"><strong>Last updated:</strong> 2026</p>
-            </div>
-        </div>
-    </section>
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
 
-    <!-- Pätička -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom" style="border: none; padding-top: 0;">
-                <p data-key="footer-rights">&copy; 2026 abcweb.ing. Všetky práva vyhradené.</p>
-                <div class="footer-legal">
-                    <a href="terms.html" data-key="footer-terms">Všeobecné podmienky</a>
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-label">
+                    ABCweb.ing / Legal
                 </div>
+
+                <h1>
+                    <span>Terms &amp; Conditions</span><br>
+                    Simple terms. Clear expectations.
+                </h1>
+
+                <p class="page-intro">
+                    These Terms &amp; Conditions apply to web design, web development,
+                    SEO, social media, AI search optimisation and related digital
+                    services provided by ABCweb.ing.
+                </p>
+
             </div>
-        </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             TERMS
+        ===================================================== -->
+
+        <section class="terms-wrap">
+
+            <p class="terms-updated">
+                Last updated: 6 October 2026
+            </p>
+
+
+            <article class="terms-card important-note">
+
+                <h2>1. General</h2>
+
+                <p>
+                    These Terms &amp; Conditions ("Terms") set out the basis on which
+                    ABCweb.ing ("we", "us", "our") provides services to a client
+                    ("you", "your").
+                </p>
+
+                <p>
+                    By accepting a quotation, proposal, invoice, written agreement
+                    or otherwise instructing us to begin work, you agree to these
+                    Terms unless different terms have been agreed with you in writing.
+                </p>
+
+                <p>
+                    If you are a consumer, nothing in these Terms is intended to
+                    remove or limit any rights that cannot lawfully be excluded
+                    under UK consumer law.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>2. Services and Scope</h2>
+
+                <p>
+                    The agreed quotation or written proposal will normally define the
+                    services, deliverables, price and expected timescale.
+                </p>
+
+                <p>
+                    Anything outside the agreed scope may be charged separately,
+                    including additional pages, features, revisions, content,
+                    integrations, troubleshooting or substantial changes requested
+                    after approval.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>3. Quotes and Payment</h2>
+
+                <p>
+                    Unless otherwise stated, a quotation is based on the requirements
+                    known at the time it is prepared and may be revised if the scope
+                    or requirements materially change.
+                </p>
+
+                <p>
+                    A deposit or advance payment may be required before work begins.
+                    It secures the project slot and may be used towards work already
+                    carried out and reasonable costs committed for the project.
+                </p>
+
+                <p>
+                    Invoices must be paid by the due date shown on the invoice.
+                    We may pause work, delay delivery or delay launch while an invoice
+                    remains overdue.
+                </p>
+
+                <p>
+                    For business customers, we reserve the right to use any statutory
+                    rights available to us in respect of late commercial payments,
+                    including statutory interest and applicable compensation.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>4. Client Responsibilities</h2>
+
+                <p>
+                    You are responsible for providing accurate and timely information,
+                    text, images, logos, passwords, account access and other material
+                    reasonably required to complete the project.
+                </p>
+
+                <p>
+                    You confirm that you have the necessary rights and permissions
+                    to use material you provide to us.
+                </p>
+
+                <p>
+                    You are responsible for checking and approving your website's
+                    content, prices, contact details, claims, legal information and
+                    other business information before publication.
+                </p>
+
+                <p>
+                    Delays caused by missing information, unavailable access or late
+                    feedback may move the agreed delivery date.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>5. Revisions and Approval</h2>
+
+                <p>
+                    Any included revisions will be limited to the number and scope
+                    stated in the quotation or proposal.
+                </p>
+
+                <p>
+                    Changes requested after approval, or requests that substantially
+                    change the original specification, may be treated as additional
+                    work and charged accordingly.
+                </p>
+
+                <p>
+                    You remain responsible for final approval of the content and
+                    functionality supplied for your website.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>6. Hosting, Domains and Third-Party Services</h2>
+
+                <p>
+                    Domain names, hosting, email services, payment providers, APIs,
+                    plugins, fonts, analytics, social platforms and other third-party
+                    services may have separate fees and terms.
+                </p>
+
+                <p>
+                    Unless explicitly included in our quotation, third-party charges
+                    are your responsibility.
+                </p>
+
+                <p>
+                    We are not responsible for outages, account restrictions, price
+                    changes, security incidents, policy changes or loss of service
+                    caused by third-party providers outside our reasonable control.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>7. Website Delivery and Launch</h2>
+
+                <p>
+                    We will aim to deliver the agreed website in accordance with the
+                    agreed scope and reasonable timescale.
+                </p>
+
+                <p>
+                    A website may require your final approval before launch. Once
+                    approved and launched, further changes may be chargeable unless
+                    they relate to a genuine defect or an agreed warranty/support
+                    arrangement.
+                </p>
+
+                <p>
+                    Unless otherwise agreed, you are responsible for maintaining
+                    ownership and access to your domain, hosting and third-party
+                    accounts.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>8. SEO and AI Search Optimisation</h2>
+
+                <p>
+                    SEO, local SEO, AI search optimisation and GEO are optimisation
+                    services. They do not guarantee a specific search ranking,
+                    traffic level, lead volume, AI citation, inclusion in an AI
+                    answer or other search result.
+                </p>
+
+                <p>
+                    Search engines and AI systems can change their algorithms,
+                    policies and ranking methods without notice.
+                </p>
+
+                <p>
+                    We will apply reasonable professional care to the agreed work,
+                    but results are affected by factors outside our control.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>9. Intellectual Property</h2>
+
+                <p>
+                    You retain ownership of materials that you supply to us.
+                </p>
+
+                <p>
+                    Subject to full payment, you may use the final bespoke website
+                    and project deliverables created specifically for you.
+                </p>
+
+                <p>
+                    Our pre-existing code, reusable components, development methods,
+                    templates, know-how and general-purpose tools remain ours unless
+                    expressly transferred in writing.
+                </p>
+
+                <p>
+                    Third-party software, libraries, fonts, images and other assets
+                    remain subject to their respective licences and terms.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>10. Cancellation</h2>
+
+                <p>
+                    You may request cancellation of a project at any time. You remain
+                    responsible for work properly completed up to cancellation and
+                    for reasonable non-refundable or committed third-party costs,
+                    subject to any rights you have under applicable law.
+                </p>
+
+                <p>
+                    We may suspend or terminate work if invoices remain unpaid,
+                    required information is repeatedly withheld, the project is
+                    materially delayed by the client, or you materially breach
+                    these Terms.
+                </p>
+
+                <p>
+                    Where statutory consumer cancellation rights apply, those rights
+                    will apply. For distance or online service contracts, consumers
+                    may have a 14-day cancellation period. Where a consumer expressly
+                    asks us to begin services during that period, payment may be due
+                    for the proportion of services supplied before cancellation,
+                    where permitted by law.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>11. Defects and Corrections</h2>
+
+                <p>
+                    If you believe a delivered item contains a genuine defect against
+                    the agreed specification, please notify us with reasonable details
+                    so that we can investigate.
+                </p>
+
+                <p>
+                    Where appropriate, we will have a reasonable opportunity to
+                    correct the defect.
+                </p>
+
+                <p>
+                    We are not responsible for problems caused by unauthorised edits,
+                    third-party services, incorrect information supplied by you,
+                    unsupported software or changes made after delivery.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>12. Liability</h2>
+
+                <p>
+                    We will provide our services with reasonable care and skill.
+                </p>
+
+                <p>
+                    To the fullest extent permitted by law, we will not be liable
+                    for indirect or consequential loss, loss of profit, loss of
+                    revenue, loss of business, loss of opportunity, loss of anticipated
+                    savings or loss of goodwill.
+                </p>
+
+                <p>
+                    For business customers, our total liability arising from a
+                    specific project or service will, to the fullest extent permitted
+                    by law, be limited to the amount paid or payable to us for the
+                    specific services giving rise to the claim.
+                </p>
+
+                <p>
+                    Nothing in these Terms excludes or limits liability that cannot
+                    lawfully be excluded or limited, including liability for fraud,
+                    fraudulent misrepresentation, death or personal injury caused by
+                    negligence, or mandatory consumer rights.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>13. Client Materials and Claims</h2>
+
+                <p>
+                    You are responsible for ensuring that content, images, trademarks,
+                    data and other material you provide do not infringe the rights
+                    of another person or breach applicable law.
+                </p>
+
+                <p>
+                    To the extent permitted by law, you agree to cover reasonable
+                    losses, costs or claims arising from unlawful or infringing
+                    material supplied by you or from instructions given by you,
+                    except to the extent caused by our own breach or negligence.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>14. Confidentiality and Access</h2>
+
+                <p>
+                    We will take reasonable steps to keep confidential information
+                    supplied by you confidential, except where disclosure is required
+                    by law or reasonably necessary to provide the agreed service.
+                </p>
+
+                <p>
+                    You remain responsible for the security of your own accounts,
+                    passwords and credentials. Please do not send passwords in plain
+                    text where a more secure method is available.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>15. Events Outside Our Control</h2>
+
+                <p>
+                    We are not responsible for delay or failure caused by events
+                    reasonably outside our control, including major infrastructure
+                    failures, third-party outages, cyber incidents, natural events,
+                    government action or other circumstances that could not reasonably
+                    have been prevented.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>16. Portfolio and Marketing</h2>
+
+                <p>
+                    Unless you have agreed otherwise in writing, we may identify a
+                    completed project as work created by ABCweb.ing and display
+                    screenshots or a link to the public website in our portfolio
+                    and marketing materials.
+                </p>
+
+                <p>
+                    We will not intentionally disclose confidential information that
+                    is not publicly available.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>17. Privacy</h2>
+
+                <p>
+                    Personal data will be handled in accordance with applicable UK
+                    data protection law and our privacy information where applicable.
+                </p>
+
+                <p>
+                    Our website may use third-party services that have their own
+                    privacy policies and terms.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card">
+
+                <h2>18. Governing Law</h2>
+
+                <p>
+                    These Terms are governed by the laws of England and Wales.
+                </p>
+
+                <p>
+                    Subject to any mandatory consumer rights, the courts of England
+                    and Wales will have jurisdiction over disputes arising from
+                    these Terms or the services.
+                </p>
+
+            </article>
+
+
+            <article class="terms-card important-note">
+
+                <h2>19. Contact</h2>
+
+                <p>
+                    Questions about these Terms or your project should be sent through
+                    the
+                    <a
+                        class="contact-link"
+                        href="contact.html">
+                        ABCweb.ing Contact page
+                    </a>.
+                </p>
+
+                <p>
+                    <strong>Important:</strong>
+                    These Terms are a general website-services template, not a
+                    substitute for advice from a UK solicitor. Before publishing,
+                    add the correct legal business name, trading or registered address
+                    and contact details for the business operating ABCweb.ing.
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+        © <span id="year"></span> ABCweb.ing. All rights reserved.
     </footer>
 
-    <script src="script.js"></script>
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+        const header =
+            document.getElementById("siteHeader");
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mobileNav =
+            document.getElementById("mobileNav");
+
+
+        /* =========================
+           HEADER SCROLL
+        ========================= */
+
+        function updateHeader() {
+
+            if (window.scrollY > 30) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            { passive: true }
+        );
+
+        updateHeader();
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        function setMenuState(isOpen) {
+
+            mobileNav.classList.toggle(
+                "open",
+                isOpen
+            );
+
+            menuToggle.classList.toggle(
+                "open",
+                isOpen
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close menu"
+                    : "Open menu"
+            );
+        }
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    mobileNav.classList.contains("open");
+
+                setMenuState(!isOpen);
+            }
+        );
+
+        function closeMobileMenu() {
+            setMenuState(false);
+        }
+
+        document.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    !menuToggle.contains(event.target) &&
+                    !mobileNav.contains(event.target)
+                ) {
+                    closeMobileMenu();
+                }
+
+            }
+        );
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Escape") {
+                    closeMobileMenu();
+                }
+
+            }
+        );
+
+        mobileNav.querySelectorAll("a").forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+
+            }
+        );
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const termsCards =
+            document.querySelectorAll(".terms-card");
+
+        const termsObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                                termsObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold:
+                        .08,
+
+                    rootMargin:
+                        "0px 0px -35px 0px"
+                }
+            );
+
+        termsCards.forEach(
+            (card, index) => {
+
+                card.style.transitionDelay =
+                    `${Math.min(index * 45, 250)}ms`;
+
+                termsObserver.observe(card);
+            }
+        );
+
+
+        /* =========================
+           HERO PARALLAX
+        ========================= */
+
+        const hero =
+            document.querySelector(".page-hero");
+
+        if (hero) {
+
+            hero.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        hero.getBoundingClientRect();
+
+                    const x =
+                        (event.clientX - rect.left)
+                        / rect.width - .5;
+
+                    const y =
+                        (event.clientY - rect.top)
+                        / rect.height - .5;
+
+                    hero.style.setProperty(
+                        "--mouse-x",
+                        `${x * 45}px`
+                    );
+
+                    hero.style.setProperty(
+                        "--mouse-y",
+                        `${y * 35}px`
+                    );
+
+                    document.documentElement.style.setProperty(
+                        "--mouse-x",
+                        `${x * 30}px`
+                    );
+
+                    document.documentElement.style.setProperty(
+                        "--mouse-y",
+                        `${y * 30}px`
+                    );
+
+                }
+            );
+
+            hero.addEventListener(
+                "mouseleave",
+                () => {
+
+                    hero.style.setProperty(
+                        "--mouse-x",
+                        "0px"
+                    );
+
+                    hero.style.setProperty(
+                        "--mouse-y",
+                        "0px"
+                    );
+
+                    document.documentElement.style.setProperty(
+                        "--mouse-x",
+                        "0px"
+                    );
+
+                    document.documentElement.style.setProperty(
+                        "--mouse-y",
+                        "0px"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           ACTIVE PAGE
+        ========================= */
+
+        document.querySelectorAll(
+            ".main-nav a, .mobile-nav a"
+        ).forEach(
+            link => {
+
+                const currentPage =
+                    window.location.pathname
+                    .split("/")
+                    .pop() ||
+                    "index.html";
+
+                const linkPage =
+                    link.getAttribute("href")
+                    .split("/")
+                    .pop();
+
+                if (
+                    linkPage === currentPage
+                ) {
+                    link.classList.add("active");
+                }
+
+            }
+        );
+
+
+        /* =========================
+           YEAR
+        ========================= */
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+    </script>
+
 </body>
 </html>
