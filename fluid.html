@@ -329,12 +329,52 @@ const blit = (function () {
 })();
 
 let lastTime = Date.now();
-update();
+let animationPaused = false;
+let animationFrameId = null;
+
+animationFrameId = requestAnimationFrame(update);
+
+window.addEventListener('message', (event) => {
+
+    if (!event.data || !event.data.type) return;
+
+    if (event.data.type === 'pause') {
+
+        animationPaused = true;
+
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+
+        pointers.forEach(pointer => {
+            pointer.moved = false;
+            pointer.down = false;
+        });
+    }
+
+    if (event.data.type === 'play') {
+
+        if (!animationPaused) return;
+
+        animationPaused = false;
+        lastTime = Date.now();
+
+        animationFrameId = requestAnimationFrame(update);
+    }
+});
 
 function update() {
-  resizeCanvas();
-  const dt = Math.min((Date.now() - lastTime) / 1000, 0.016);
-  lastTime = Date.now();
+  if (animationPaused) return;
+
+    resizeCanvas();
+
+    const dt = Math.min(
+        (Date.now() - lastTime) / 1000,
+        0.016
+    );
+
+    lastTime = Date.now();
   gl.viewport(0, 0, textureWidth, textureHeight);
 
   if (splatStack.length > 0) {
@@ -424,7 +464,7 @@ function update() {
   gl.uniform1i(displayProgram.uniforms.uTexture, density.first[2]);
   blit(null);
 
-  requestAnimationFrame(update);
+  animationFrameId = requestAnimationFrame(update);
 }
 
 function splat(x, y, dx, dy, color) {
@@ -522,8 +562,10 @@ splatStack.push(20);
 
 window.setTimeout(() => {
     window.setInterval(() => {
+    if (!animationPaused) {
         splatStack.push(3);
-    }, 3000);
+    }
+}, 3000);
 }, 3000);
 </script>
 

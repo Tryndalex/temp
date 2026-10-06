@@ -288,6 +288,90 @@
             color: rgba(17, 205, 218, 0.507);
         }
 
+        /* =========================================================
+           stop / play button
+        ========================================================= */
+        .animation-control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .animation-hint {
+            display: flex;
+            width: 2rem;
+            height: 2rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            line-height: 1;
+            user-select: none;
+            -webkit-user-select: none;
+            color: #ffffffb4;
+        }
+
+        .animation-hint-arrow {
+            color: #ffffff3d;
+            font-size: 1.2rem;
+        }
+
+        .animation-control {
+            width: 2.5rem;
+            height: 2.5rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0);
+            border-radius: 50%;
+
+            background: rgba(161, 20, 20, 0.733);
+            color: #ffffff81;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            cursor: pointer;
+
+            transition:
+                transform 250ms ease,
+                background 250ms ease,
+                border-color 250ms ease;
+        }
+
+        .animation-control:hover {
+            transform: scale(1.08);
+            background: rgba(20, 20, 20, 0.75);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .animation-control i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .animation-control-group {
+                gap: 0.25rem;
+            }
+
+            .animation-hint,
+            .animation-control {
+                width: 38px;
+                height: 38px;
+            }
+
+            .animation-hint {
+                font-size: 2.2rem;
+            }
+
+            .animation-hint-arrow {
+                font-size: 1.15rem;
+            }
+        }
+
+
 
         /* =========================================================
            SHARED CIRCLE STYLE AND ORBIT INTERACTIONS
@@ -980,6 +1064,18 @@
             ABCweb.ing
         </div>
 
+        <div class="animation-control-group">
+            <span class="animation-hint" alt="Animation switch" aria-hidden="true">😵‍💫</span>
+            <i class="animation-hint-arrow fas fa-arrow-right" aria-hidden="true"></i>
+            <button
+                id="animationControl"
+                class="animation-control"
+                type="button"
+                aria-label="Pause animation">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
+
     </header>
 
 
@@ -1305,6 +1401,30 @@
             if (!target.closest('.circle-orbit')) {
                 orbits.forEach((orbit) => orbit.classList.remove('active'));
             }
+        });
+                const fluidFrame = document.querySelector('.hero-background');
+        const animationControl = document.getElementById('animationControl');
+
+        let animationPaused = false;
+
+        animationControl.addEventListener('click', () => {
+            animationPaused = !animationPaused;
+
+            fluidFrame.contentWindow.postMessage(
+                {
+                    type: animationPaused ? 'pause' : 'play'
+                },
+                '*'
+            );
+
+            animationControl.innerHTML = animationPaused
+                ? '<i class="fas fa-play"></i>'
+                : '<i class="fas fa-pause"></i>';
+
+            animationControl.setAttribute(
+                'aria-label',
+                animationPaused ? 'Play animation' : 'Pause animation'
+            );
         });
 
     </script>

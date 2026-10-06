@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABCweb.ing | Page</title>
+
+    <meta name="description"
+          content="ABCweb.ing — modern digital solutions, web development, SEO, social media and AI.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+
+            --bg: #070707;
+            --bg-soft: #0d0d0f;
+
+            --surface: rgba(255,255,255,0.045);
+            --surface-hover: rgba(255,255,255,0.075);
+
+            --border: rgba(255,255,255,0.10);
+            --border-hover: rgba(0,229,255,0.35);
+
+            --text: #f5f5f5;
+            --text-soft: #a5a5a5;
+
+            --cyan: #00e5ff;
+            --violet: #8b5cf6;
+
+            --header-height: 76px;
+
+            --radius: 18px;
+
+            --transition:
+                300ms cubic-bezier(.16,1,.3,1);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(0,229,255,0.035),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(139,92,246,0.045),
+                    transparent 30%
+                ),
+
+                var(--bg);
+
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: var(--header-height);
+
+            z-index: 1000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 30px;
+
+            transition:
+                background var(--transition),
+                backdrop-filter var(--transition),
+                height var(--transition),
+                border-color var(--transition);
+        }
+
+
+        .site-header.scrolled {
+
+            height: 64px;
+
+            background:
+                rgba(7,7,7,0.78);
+
+            backdrop-filter:
+                blur(18px)
+                saturate(140%);
+
+            -webkit-backdrop-filter:
+                blur(18px)
+                saturate(140%);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .header-inner {
+
+            width: 100%;
+
+            max-width: 1250px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .logo {
+
+            position: relative;
+
+            font-size: 1.15rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.12rem;
+
+            color: #fff;
+
+            white-space: nowrap;
+        }
+
+
+        .logo::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -5px;
+
+            width: 24px;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--cyan),
+                    var(--violet)
+                );
+
+            border-radius: 10px;
+
+            transition: width var(--transition);
+        }
+
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           DESKTOP NAVIGATION
+        ========================================================= */
+
+        .main-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 5px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+
+        .main-nav a {
+
+            position: relative;
+
+            padding:
+                9px 15px;
+
+            border-radius: 999px;
+
+            color:
+                var(--text-soft);
+
+            font-size: 0.78rem;
+
+            font-weight: 600;
+
+            letter-spacing: 0.08rem;
+
+            text-transform: uppercase;
+
+            transition:
+                color var(--transition),
+                background var(--transition),
+                transform var(--transition);
+        }
+
+
+        .main-nav a:hover {
+
+            color: #fff;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .main-nav a.active {
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,0.12),
+                    rgba(139,92,246,0.14)
+                );
+
+            box-shadow:
+                inset 0 0 0 1px
+                rgba(255,255,255,0.07),
+
+                0 0 18px
+                rgba(0,229,255,0.06);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU BUTTON
+        ========================================================= */
+
+        .menu-toggle {
+
+            display: none;
+
+            position: relative;
+            z-index: 1;
+
+            width: 42px;
+            height: 42px;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid transparent;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(rgba(255,255,255,0.045), rgba(255,255,255,0.045)) padding-box,
+                linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+
+            color: #fff;
+
+            cursor: pointer;
+
+            transition:
+                background var(--transition),
+                transform var(--transition);
+        }
+
+
+        .menu-toggle:hover {
+
+            background:
+                linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)) padding-box,
+                linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+
+            transform: scale(1.05);
+        }
+
+
+        .menu-toggle i {
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+
+       /* =========================================================
+   MOBILE GLASS MENU
+========================================================= */
+
+.mobile-nav {
+    position: fixed;
+
+    top: 86px;
+    left: 15px;
+    right: 15px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    width: auto;
+
+    background:
+        linear-gradient(rgba(17,17,17,0.72), rgba(17,17,17,0.72)) padding-box,
+        linear-gradient(135deg, var(--cyan), var(--violet)) border-box !important;
+    backdrop-filter: blur(22px) saturate(140%);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    z-index: 9999 !important;
+
+    border: 1px solid transparent;
+
+    border-radius: 20px;
+
+    box-shadow: 0 20px 60px #000000;
+
+    transition:
+        opacity 300ms ease,
+        transform 300ms ease,
+        visibility 300ms ease;
+}
+
+.mobile-nav.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE MENU LINKS
+========================================================= */
+
+.mobile-nav a {
+
+    position: relative;
+
+    padding:
+        15px 17px;
+
+    border-radius: 13px;
+
+    color:
+        #eeeeee;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.09rem;
+
+    text-transform: uppercase;
+
+    transition:
+        color 250ms ease,
+        background 250ms ease,
+        padding-left 250ms ease;
+}
+
+
+.mobile-nav a:hover {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,0.08),
+            rgba(139,92,246,0.08)
+        );
+
+    padding-left: 21px;
+}
+
+
+/* ACTIVE PAGE */
+
+.mobile-nav a.active {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,0.11),
+            rgba(139,92,246,0.11)
+        );
+
+    box-shadow:
+        inset 2px 0 0 var(--cyan);
+}
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+
+            position: relative;
+
+            min-height: 100vh;
+
+            padding-top:
+                var(--header-height);
+        }
+
+
+        /* =========================================================
+           PAGE HERO
+        ========================================================= */
+
+        .page-hero {
+
+            position: relative;
+
+            min-height: 55vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                100px 25px 80px;
+
+            overflow: hidden;
+        }
+
+
+        .page-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -250px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,229,255,0.10),
+                    rgba(139,92,246,0.05),
+                    transparent 70%
+                );
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
+
+
+        .page-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+
+        .page-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 20px;
+
+            padding:
+                7px 13px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color:
+                var(--cyan);
+
+            font-size: 0.7rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.18rem;
+
+            text-transform: uppercase;
+        }
+
+
+        .page-label::before {
+
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background:
+                var(--cyan);
+
+            box-shadow:
+                0 0 10px
+                var(--cyan);
+        }
+
+
+        .page-hero h1 {
+
+            font-size:
+                clamp(2.4rem, 7vw, 5.5rem);
+
+            line-height: 0.95;
+
+            letter-spacing:
+                -0.04em;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+
+        .page-hero h1 span {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #fff,
+                    var(--cyan),
+                    #fff
+                );
+
+            background-size: 200% auto;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            animation:
+                gradientMove 6s linear infinite;
+        }
+
+
+        @keyframes gradientMove {
+
+            to {
+                background-position: 200% center;
+            }
+        }
+
+
+        .page-intro {
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                clamp(1rem, 2vw, 1.15rem);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           CONTENT
+        ========================================================= */
+
+        .content {
+
+            position: relative;
+
+            width:
+                min(1100px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding:
+                60px 0 100px;
+        }
+
+
+        .content-section {
+
+            margin-bottom: 80px;
+        }
+
+
+        .section-title {
+
+            margin-bottom: 18px;
+
+            font-size:
+                clamp(1.6rem, 3vw, 2.3rem);
+
+            letter-spacing:
+                -0.02em;
+        }
+
+
+        .section-text {
+
+            max-width: 750px;
+
+            color:
+                var(--text-soft);
+
+            line-height: 1.8;
+
+            font-size: 1rem;
+        }
+
+
+        /* =========================================================
+           GLASS CARD
+        ========================================================= */
+
+        .glass-card {
+
+            padding: 30px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
+
+            background:
+                var(--surface);
+
+            backdrop-filter:
+                blur(14px);
+
+            -webkit-backdrop-filter:
+                blur(14px);
+
+            transition:
+                transform var(--transition),
+                background var(--transition),
+                border-color var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .glass-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            background:
+                var(--surface-hover);
+
+            border-color:
+                var(--border-hover);
+
+            box-shadow:
+                0 15px 45px
+                rgba(0,0,0,0.25),
+
+                0 0 30px
+                rgba(0,229,255,0.04);
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta {
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-top: 16px;
+
+            padding:
+                60px 40px;
+
+            text-align: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,0.06),
+                    rgba(139,92,246,0.07)
+                );
+        }
+
+
+        .cta::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            top: -150px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background:
+                var(--cyan);
+
+            opacity: 0.05;
+
+            filter: blur(60px);
+
+            border-radius: 50%;
+        }
+
+
+        .cta h2 {
+
+            position: relative;
+
+            margin-bottom: 15px;
+
+            font-size:
+                clamp(1.7rem, 4vw, 2.7rem);
+        }
+
+
+        .cta p {
+
+            position: relative;
+
+            max-width: 600px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                var(--text-soft);
+
+            line-height: 1.6;
+        }
+
+
+        .cta-button {
+
+            position: relative;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                12px 20px;
+
+            border-radius: 999px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--cyan),
+                    var(--violet)
+                );
+
+            color: #050505;
+
+            font-weight: 700;
+
+            font-size: 0.8rem;
+
+            letter-spacing: 0.08rem;
+
+            text-transform: uppercase;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .cta-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,229,255,0.18);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .site-footer {
+
+            padding:
+                30px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid var(--border);
+
+            color:
+                rgba(255,255,255,0.4);
+
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .site-header {
+
+                padding:
+                    0 18px;
+            }
+
+
+            .main-nav {
+                display: none;
+            }
+
+
+            .menu-toggle {
+
+                display: flex;
+            }
+
+
+            .page-hero {
+
+                min-height: 48vh;
+
+                padding:
+                    90px 20px 60px;
+            }
+
+
+            .content {
+
+                width:
+                    min(100% - 30px, 1100px);
+
+                padding-top: 40px;
+            }
+
+
+            .glass-card {
+
+                padding: 22px;
+            }
+
+
+            .cta {
+
+                padding:
+                    45px 22px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+
+                animation: none !important;
+
+                transition: none !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="site-header" id="siteHeader">
+
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                ABCweb.ing
+            </a>
+
+
+            <!-- DESKTOP NAV -->
+
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- MOBILE BUTTON -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobileNav">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MOBILE NAV -->
+
+    <nav class="mobile-nav" id="mobileNav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="projects.html">
+            Projects
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================================
+         PAGE
+    ========================================================= -->
+
+    <main class="page">
+
+
+        <!-- =====================================================
+             PAGE HERO
+        ===================================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-label">
+                    ABCweb.ing
+                </div>
+
+
+                <h1>
+                    Page <span>Title</span>
+                </h1>
+
+
+                <p class="page-intro">
+
+                    Short description of this page.
+                    This area will be replaced depending
+                    on the individual subpage.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTENT
+        ===================================================== -->
+
+        <section class="content">
+
+
+            <div class="content-section">
+
+                <h2 class="section-title">
+                    Section heading
+                </h2>
+
+
+                <p class="section-text">
+
+                    This is the main content area of the
+                    universal ABCweb.ing subpage template.
+
+                    Each individual page can replace this
+                    content with its own structure.
+
+                </p>
+
+            </div>
+
+
+            <div class="glass-card">
+
+                <h2 class="section-title">
+                    Content block
+                </h2>
+
+                <p class="section-text">
+
+                    Glass cards can be used for services,
+                    information, features, portfolio items,
+                    pricing or any other content.
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CTA
+            ================================================= -->
+
+            <div class="cta">
+
+                <h2>
+                    Let's build something
+                </h2>
+
+                <p>
+
+                    A reusable call-to-action area
+                    for the bottom of the page.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="cta-button">
+
+                    Get in touch
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+
+        © 2026 ABCweb.ing. All rights reserved.
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        const header =
+            document.getElementById("siteHeader");
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mobileNav =
+            document.getElementById("mobileNav");
+
+
+        /* HEADER SCROLL */
+
+        function updateHeader() {
+
+            if (window.scrollY > 30) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            { passive: true }
+        );
+
+
+        updateHeader();
+
+
+        /* MOBILE MENU */
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    mobileNav.classList.toggle("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                menuToggle.innerHTML = isOpen
+
+                    ? '<i class="fas fa-xmark"></i>'
+
+                    : '<i class="fas fa-bars"></i>';
+            }
+        );
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+
+        document.addEventListener(
+            "click",
+            event => {
+                if (
+                    !menuToggle.contains(event.target) &&
+                    !mobileNav.contains(event.target)
+                ) {
+                    closeMobileMenu();
+                }
+            }
+        );
+
+
+        /* CLOSE MOBILE MENU */
+
+        mobileNav.querySelectorAll("a").forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
