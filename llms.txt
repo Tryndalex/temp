@@ -1,0 +1,69 @@
+# ABCweb.ing
+
+## Business overview
+ABCweb.ing is a UK-based web development studio focused on creating modern, fast, responsive and SEO-friendly websites for businesses, brands and individuals. The company combines website design, development, search visibility and AI discoverability to help clients build a stronger digital presence.
+
+Primary focus:
+- Web design and branding
+- Custom website development
+- Performance and accessibility
+- SEO and technical search optimisation
+- Social media presence support
+- AI search optimisation / GEO for modern answer engines
+
+## Brand positioning
+- Name: ABCweb.ing
+- Domain: https://abcweb.ing
+- Location: UK, with London positioning and services available worldwide
+- Speciality: creating digital experiences that are visually distinctive, technically strong, easy to use and ready to be discovered online
+
+## Services
+### Web Design
+Modern, clear and distinctive website design with a strong digital identity. Focus on UI/UX, responsiveness and consistent experience across desktop, tablet and mobile.
+
+### Web Development
+Fast, responsive and custom-built websites using clean HTML, CSS and JavaScript. Emphasis on performance, usability, accessibility and a solid technical foundation.
+
+### SEO & Search
+Search-friendly website structure designed to help content be easier for search engines to understand and easier for potential customers to discover. Includes technical SEO, on-page SEO and local SEO.
+
+### Social Media
+Support for brand visibility across social platforms with content and digital assets that help businesses stay recognisable and consistent.
+
+### AI Search Optimisation
+Optimisation for AI-powered search and answer engines. Structuring website content and information so AI systems can better understand the business, expertise and offerings.
+
+## Website pages
+- Homepage: https://abcweb.ing/
+- About: https://abcweb.ing/about.html
+- Services: https://abcweb.ing/services.html
+- Projects: https://abcweb.ing/projects.html
+- Contact: https://abcweb.ing/contact.html
+- Privacy policy: https://abcweb.ing/policy.html
+- Terms: https://abcweb.ing/terms.html
+- Thank you page: https://abcweb.ing/thankyou.html
+
+## Contact information
+- Email: info@abcweb.ing
+- Contact page: https://abcweb.ing/contact.html
+- Inquiry intent: new projects, redesigns, SEO foundations, custom digital solutions and website improvements
+
+## Legal and policy
+- Privacy policy: https://abcweb.ing/policy.html
+- Terms and conditions: https://abcweb.ing/terms.html
+
+## Suggested AI interpretation
+ABCweb.ing is a boutique digital studio helping businesses establish or improve their online presence through modern website creation, search optimisation and AI visibility strategy. The company positions itself as a bridge between creative design, technical web development and digital discoverability.
+
+## Content quality signals
+The site emphasizes:
+- modern web standards
+- responsiveness
+- fast-loading experiences
+- clean code
+- search engine readiness
+- AI discoverability
+- custom solutions instead of one-size-fits-all templates
+
+## Summary for indexing
+ABCweb.ing provides web design, development, SEO, social media support and AI search optimisation for UK businesses and brands. It is positioned as a modern digital agency/studio serving London and worldwide clients with a strong emphasis on performance, usability, SEO and discoverability in AI-driven search.

@@ -92,9 +92,16 @@ function pointerPrototype() {
   this.dy = 0;
   this.down = false;
   this.moved = false;
-  this.color = [30, 0, 300];
+  this.color = [0.08, 0.78, 1.0];
 }
 pointers.push(new pointerPrototype());
+
+const palette = [
+  [0.08, 0.78, 1.0],  // cyan
+  [0.16, 0.35, 1.0],  // electric blue
+  [0.48, 0.2, 1.0],   // violet
+  [0.82, 0.18, 1.0]   // neon purple
+];
 
 function GLProgram(vertexShader, fragmentShader) {
   this.uniforms = {};
@@ -380,7 +387,7 @@ function update() {
   if (splatStack.length > 0) {
     const splatCount = splatStack.pop();
     for (let m = 0; m < splatCount; m++) {
-      const color = [Math.random() * 10, Math.random() * 10, Math.random() * 10];
+      const color = palette[Math.floor(Math.random() * palette.length)];
       const x = canvas.width * Math.random();
       const y = canvas.height * Math.random();
       const dx = 1000 * (Math.random() - 0.5);
@@ -491,16 +498,6 @@ function resizeCanvas() {
   }
 }
 
-// --- Farebna paleta - zivé, sytne farby ako farbivo vo vode ---
-const palette = [
-  [1.0, 0.15, 0.55],  // ružová/magenta
-  [0.1, 0.7, 1.0],    // azúrová
-  [1.0, 0.75, 0.1],   // zlatá/oranžová
-  [0.55, 0.15, 1.0],  // fialová
-  [0.1, 1.0, 0.55],   // smaragdová
-  [1.0, 0.35, 0.1]    // koralová
-];
-
 let count = 0;
 let colorArr = palette[Math.floor(Math.random() * palette.length)];
 
@@ -568,6 +565,21 @@ window.setTimeout(() => {
 }, 3000);
 }, 3000);
 </script>
+
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie preferences">
+  <div class="cookie-content">
+    <p class="cookie-text">
+      We use Google Analytics cookies only if you accept. See our
+      <a href="policy.html" class="cookie-link">Privacy Policy</a>.
+    </p>
+    <div class="cookie-buttons">
+      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Decline</button>
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="cookies.css">
+<script src="cookies.js" defer></script>
 
 </body>
 </html>

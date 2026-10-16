@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | ABCweb.ing</title>
-    <meta name="description" content="Privacy Policy for ABCweb.ing. Learn how we handle personal data, contact form submissions, cookies and your rights.">
+
+    <title>Privacy Policy | ABCweb.ing — UK GDPR</title>
+    <meta name="description" content="ABCweb.ing Privacy Policy explaining how personal data is collected, used, stored and protected under UK data protection law.">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
         :root {
             --bg: #070707;
@@ -13,6 +17,7 @@
             --surface: rgba(255,255,255,0.045);
             --surface-hover: rgba(255,255,255,0.075);
             --border: rgba(255,255,255,0.10);
+            --border-hover: rgba(0,229,255,0.35);
             --text: #f5f5f5;
             --text-soft: #a5a5a5;
             --cyan: #00e5ff;
@@ -55,6 +60,9 @@
             font: inherit;
         }
 
+        /* =========================================================
+           HEADER
+        ========================================================= */
         .site-header {
             position: fixed;
             top: 0;
@@ -66,7 +74,11 @@
             align-items: center;
             justify-content: center;
             padding: 0 30px;
-            transition: background var(--transition), backdrop-filter var(--transition), height var(--transition), border-color var(--transition);
+            transition:
+                background var(--transition),
+                backdrop-filter var(--transition),
+                height var(--transition),
+                border-color var(--transition);
         }
 
         .site-header.scrolled {
@@ -110,6 +122,9 @@
             width: 100%;
         }
 
+        /* =========================================================
+           DESKTOP NAVIGATION
+        ========================================================= */
         .main-nav {
             display: flex;
             align-items: center;
@@ -134,13 +149,23 @@
             transition: color var(--transition), background var(--transition), transform var(--transition);
         }
 
-        .main-nav a:hover,
+        .main-nav a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-1px);
+        }
+
         .main-nav a.active {
             color: #fff;
             background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(139,92,246,0.14));
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07), 0 0 18px rgba(0,229,255,0.06);
+            box-shadow:
+                inset 0 0 0 1px rgba(255,255,255,0.07),
+                0 0 18px rgba(0,229,255,0.06);
         }
 
+        /* =========================================================
+           MOBILE MENU BUTTON
+        ========================================================= */
         .menu-toggle {
             display: none;
             position: relative;
@@ -151,7 +176,9 @@
             justify-content: center;
             border: 1px solid transparent;
             border-radius: 50%;
-            background: linear-gradient(#0d0d0f, #0d0d0f) padding-box, linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+            background:
+                linear-gradient(#0d0d0f, #0d0d0f) padding-box,
+                linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
             color: #fff;
             cursor: pointer;
             transition: transform var(--transition), box-shadow var(--transition);
@@ -167,6 +194,9 @@
             pointer-events: none;
         }
 
+        /* =========================================================
+           MOBILE NAV
+        ========================================================= */
         .mobile-nav {
             position: fixed;
             top: 86px;
@@ -178,12 +208,18 @@
             gap: 4px;
             width: auto;
             z-index: 2000;
+
+            /* Deliberately opaque: no see-through panel. */
             background-color: #0d0d0f;
-            background-image: radial-gradient(circle at 50% 0%, rgba(0,229,255,0.15), transparent 38%), radial-gradient(circle at 58% 0%, rgba(139,92,246,0.11), transparent 52%);
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(0,229,255,0.15), transparent 38%),
+                radial-gradient(circle at 58% 0%, rgba(139,92,246,0.11), transparent 52%);
+
             border: 1px solid transparent;
             border-radius: 20px;
             border-image: linear-gradient(135deg, var(--cyan), var(--violet)) 1;
             box-shadow: 0 20px 60px rgba(0,0,0,0.75);
+
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -210,27 +246,38 @@
             transition: color 250ms ease, background 250ms ease, padding-left 250ms ease;
         }
 
-        .mobile-nav a:hover,
+        .mobile-nav a:hover {
+            color: #fff;
+            background: linear-gradient(90deg, rgba(0,229,255,0.08), rgba(139,92,246,0.08));
+            padding-left: 21px;
+        }
+
         .mobile-nav a.active {
             color: #fff;
             background: linear-gradient(90deg, rgba(0,229,255,0.11), rgba(139,92,246,0.11));
             box-shadow: inset 2px 0 0 var(--cyan);
         }
 
+        /* =========================================================
+           PAGE
+        ========================================================= */
         .page {
             position: relative;
             min-height: 100vh;
             padding-top: var(--header-height);
         }
 
+        /* =========================================================
+           PAGE HERO
+        ========================================================= */
         .page-hero {
             position: relative;
-            min-height: 42vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 25px 60px;
+            padding: 100px 25px 65px;
             overflow: hidden;
         }
 
@@ -239,7 +286,7 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            top: -240px;
+            top: -250px;
             left: 50%;
             transform: translateX(-50%);
             background: radial-gradient(circle, rgba(0,229,255,0.10), rgba(139,92,246,0.05), transparent 70%);
@@ -269,12 +316,21 @@
             text-transform: uppercase;
         }
 
+        .page-label::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
         .page-hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5.2rem);
+            font-size: clamp(2.8rem, 8vw, 6rem);
             line-height: 0.95;
             letter-spacing: -0.045em;
             text-transform: uppercase;
-            margin-bottom: 18px;
+            margin-bottom: 25px;
         }
 
         .page-hero h1 span {
@@ -298,67 +354,394 @@
             line-height: 1.75;
         }
 
-        .content {
+        /* =========================================================
+           CONTACT AREA
+        ========================================================= */
+        .contact-section {
+            position: relative;
             width: min(1100px, calc(100% - 40px));
             margin: 0 auto;
             padding: 0 0 80px;
         }
 
-        .policy-card {
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .contact-card,
+        .contact-form-card {
             position: relative;
+            overflow: hidden;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: rgba(255,255,255,0.045);
+            background: var(--surface);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             box-shadow: 0 18px 50px rgba(0,0,0,0.18);
-            padding: 32px;
         }
 
-        .policy-card h2 {
+        .contact-card::before,
+        .contact-form-card::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            top: -170px;
+            left: 45%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,229,255,0.10), rgba(139,92,246,0.06), transparent 70%);
+            filter: blur(28px);
+            pointer-events: none;
+        }
+
+        .contact-card {
+            padding: 30px;
+        }
+
+        .contact-form-card {
+            padding: 30px;
+        }
+
+        .eyebrow {
+            position: relative;
+            color: var(--cyan);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.16rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h2,
+        .contact-form-card h2 {
+            position: relative;
             margin-bottom: 12px;
-            font-size: clamp(1.3rem, 2vw, 1.9rem);
+            font-size: clamp(1.55rem, 3vw, 2rem);
             letter-spacing: -0.03em;
         }
 
-        .policy-card h3 {
+        .contact-card > p,
+        .contact-form-card > p {
+            position: relative;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            position: relative;
+            display: grid;
+            gap: 13px;
             margin-top: 28px;
-            margin-bottom: 10px;
-            font-size: 1.08rem;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.025);
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-hover);
+            background: rgba(255,255,255,0.055);
+        }
+
+        .info-icon {
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .icon-cyan {
+            background: linear-gradient(135deg, rgba(0,229,255,0.20), rgba(0,229,255,0.06));
+            box-shadow: inset 0 0 0 1px rgba(0,229,255,0.18);
+        }
+
+        .icon-violet {
+            background: linear-gradient(135deg, rgba(139,92,246,0.20), rgba(139,92,246,0.06));
+            box-shadow: inset 0 0 0 1px rgba(139,92,246,0.18);
+        }
+
+        .icon-gradient {
+            background: linear-gradient(135deg, rgba(0,229,255,0.18), rgba(139,92,246,0.18));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
+        }
+
+        .info-copy {
+            min-width: 0;
+        }
+
+        .info-copy h3 {
+            margin-bottom: 3px;
+            font-size: 0.82rem;
             color: #fff;
         }
 
-        .policy-card p,
-        .policy-card li {
+        .info-copy a,
+        .info-copy p {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .info-copy a:hover {
+            color: var(--cyan);
+        }
+
+        .availability {
+            position: relative;
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(0,229,255,0.13);
+            background: linear-gradient(135deg, rgba(0,229,255,0.05), rgba(139,92,246,0.05));
+        }
+
+        .availability strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.82rem;
+            color: #fff;
+        }
+
+        .availability span {
+            color: var(--text-soft);
+            font-size: 0.85rem;
+        }
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+        .contact-form {
+            position: relative;
+            margin-top: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d8d8d8;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.03rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            background: #0b0b0e;
+            color: #fff;
+            padding: 13px 14px;
+            transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #6f6f76;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image:
+                linear-gradient(45deg, transparent 50%, var(--cyan) 50%),
+                linear-gradient(135deg, var(--cyan) 50%, transparent 50%);
+            background-position:
+                calc(100% - 18px) 50%,
+                calc(100% - 12px) 50%;
+            background-size: 6px 6px, 6px 6px;
+            background-repeat: no-repeat;
+            padding-right: 38px;
+        }
+
+        .form-group textarea {
+            min-height: 145px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: rgba(0,229,255,0.48);
+            box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
+            background: #0d0d11;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: 0;
+            border-radius: 12px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, var(--cyan), var(--violet));
+            color: #050505;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.09rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,229,255,0.16);
+            filter: brightness(1.05);
+        }
+
+        .form-note {
+            margin-top: 11px;
+            color: #707078;
+            font-size: 0.72rem;
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+        .site-footer {
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        /* =========================================================
+           PRIVACY POLICY
+        ========================================================= */
+        .privacy-content {
+            position: relative;
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 10px 0 80px;
+        }
+
+        .privacy-meta {
+            margin-bottom: 28px;
+            color: rgba(255,255,255,0.48);
+            font-size: 0.78rem;
+            letter-spacing: 0.04rem;
+        }
+
+        .privacy-card {
+            padding: 30px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .privacy-card:hover {
+            transform: translateY(-3px);
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.22), 0 0 30px rgba(0,229,255,0.035);
+        }
+
+        .privacy-card h2 {
+            margin: 0 0 14px;
+            padding: 0;
+            color: #fff;
+            font-size: clamp(1.35rem, 3vw, 2rem);
+            line-height: 1.15;
+        }
+
+        .privacy-card h3 {
+            margin: 22px 0 8px;
+            padding: 0;
+            color: var(--cyan);
+            font-size: 1rem;
+        }
+
+        .privacy-card p {
+            padding: 0;
+            margin: 0 0 12px;
             color: var(--text-soft);
             line-height: 1.8;
             font-size: 0.98rem;
         }
 
-        .policy-card ul {
-            padding-left: 18px;
-            margin-top: 12px;
-            margin-bottom: 8px;
+        .privacy-card p:last-child {
+            margin-bottom: 0;
         }
 
-        .policy-card a {
+        .privacy-card ul {
+            margin: 10px 0 0;
+            padding-left: 22px;
+            color: var(--text-soft);
+        }
+
+        .privacy-card li {
+            margin-bottom: 8px;
+            padding: 0;
+            line-height: 1.65;
+        }
+
+        .privacy-card a {
             color: var(--cyan);
             text-decoration: underline;
+            text-decoration-color: rgba(0,229,255,0.35);
+            text-underline-offset: 3px;
         }
 
-        .site-footer {
-            padding: 30px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: rgba(255,255,255,.4);
-            font-size: .75rem;
+        .privacy-card a:hover {
+            color: #fff;
+            text-decoration-color: var(--cyan);
+        }
+
+        .privacy-highlight {
+            padding: 18px 20px;
+            margin-top: 18px;
+            border-left: 2px solid var(--cyan);
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(0,229,255,0.06), rgba(139,92,246,0.04));
+            color: #ddd;
+            line-height: 1.7;
+        }
+
+        .privacy-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            font-weight: 700;
         }
 
         @media (max-width: 800px) {
-            .site-header {
-                padding: 0 18px;
-            }
-
             .main-nav {
                 display: none;
             }
@@ -366,21 +749,66 @@
             .menu-toggle {
                 display: flex;
             }
+
+            .site-header {
+                padding: 0 18px;
+            }
+
+            .page-hero {
+                min-height: 44vh;
+                padding: 90px 20px 50px;
+            }
+
+            .contact-section {
+                width: min(100% - 30px, 1100px);
+                padding-bottom: 60px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card,
+            .contact-form-card {
+                padding: 22px;
+            }
         }
 
         @media (max-width: 560px) {
-            .page-hero {
-                min-height: 36vh;
-                padding: 100px 20px 50px;
+            .page-hero h1 {
+                font-size: clamp(2.45rem, 15vw, 4.2rem);
             }
 
-            .policy-card {
-                padding: 22px 18px;
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .mobile-nav {
+                top: 76px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
+    <link rel="stylesheet" href="brand-theme.css">
 </head>
+
 <body>
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
             <a href="index.html" class="logo">ABCweb.ing</a>
@@ -393,12 +821,21 @@
                 <a href="contact.html">Contact</a>
             </nav>
 
-            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobileNav">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
+    <!-- =========================================================
+         MOBILE NAV
+    ========================================================= -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -407,99 +844,216 @@
         <a href="contact.html">Contact</a>
     </nav>
 
+    <!-- =========================================================
+         PAGE
+    ========================================================= -->
     <main class="page">
+        <!-- =========================================================
+             PAGE HERO
+        ========================================================= -->
         <section class="page-hero">
             <div class="page-hero-content">
                 <div class="page-label">ABCweb.ing</div>
-                <h1><span>Privacy</span> Policy</h1>
+
+                <h1>
+                    Privacy <span>Policy</span>
+                </h1>
+
                 <p class="page-intro">
-                    How we collect, use and protect personal data under UK data protection law.
+                    How ABCweb.ing collects, uses, stores and protects personal information when you use this website or contact us.
                 </p>
             </div>
         </section>
 
-        <section class="content">
-            <div class="policy-card">
-                <h2>Privacy Policy</h2>
-                <p>
-                    This notice explains how personal data is handled when you visit ABCweb.ing or contact us. It is intended to provide information under the UK GDPR and Data Protection Act 2018.
-                </p>
+        <!-- =========================================================
+             PRIVACY CONTENT
+        ========================================================= -->
+        <section class="privacy-content">
+            <p class="privacy-meta">Effective date: 6 October 2026</p>
 
-                <h3>1. Who is responsible for your data</h3>
+            <article class="privacy-card">
+                <h2>1. Who we are</h2>
                 <p>
-                    The data controller is Alexander Bohuš, trading as ABCweb.ing. For privacy questions or requests, contact
-                    <a href="mailto:info@abcweb.ing">info@abcweb.ing</a>.
+                    ABCweb.ing is the data controller for personal information processed through this website and in connection with enquiries sent to us.
                 </p>
+                <p>
+                    <strong>Contact:</strong>
+                    <a class="privacy-contact" href="mailto:info@abcweb.ing">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        info@abcweb.ing
+                    </a>
+                </p>
+                <p>
+                    This policy is intended to explain how we handle personal data in accordance with the UK GDPR, the Data Protection Act 2018 and other applicable UK data protection law.
+                </p>
+            </article>
 
-                <h3>2. Information we collect</h3>
-                <p>Depending on how you use the website, we may process:</p>
+            <article class="privacy-card">
+                <h2>2. Personal data we collect</h2>
+                <p>When you contact us through the website, we may collect:</p>
                 <ul>
-                    <li>Your name</li>
-                    <li>Your email address</li>
-                    <li>Your selected enquiry type and any information you include in your message</li>
-                    <li>Technical information that your browser sends when loading the site, such as IP address, browser and device details, and request time</li>
+                    <li>Your name.</li>
+                    <li>Your email address.</li>
+                    <li>The service or package you are interested in.</li>
+                    <li>The contents of your message and any information you choose to include in it.</li>
                 </ul>
-                <p>Information in an enquiry is collected directly from you. Technical information is received from your browser or the services that deliver and host the website.</p>
+                <p class="privacy-highlight">
+                    We ask you not to send sensitive personal information through the general contact form unless it is genuinely necessary for your enquiry.
+                </p>
+            </article>
 
-                <h3>3. Why we use it and our lawful bases</h3>
+            <article class="privacy-card">
+                <h2>3. How we use your information</h2>
+                <p>We use personal information only where there is a lawful basis to do so, including to:</p>
                 <ul>
-                    <li>To respond to an enquiry or take steps requested before entering a contract: processing is necessary to take steps at your request.</li>
-                    <li>To deliver and administer services, communicate about work, and keep appropriate business records: processing is necessary for a contract or our legal obligations.</li>
-                    <li>To protect, maintain and secure the website and prevent misuse: processing is based on our legitimate interests, balanced against your rights.</li>
+                    <li>Respond to enquiries and requests for information.</li>
+                    <li>Discuss, prepare or manage potential website and digital projects.</li>
+                    <li>Provide services and communicate with clients where a contract exists.</li>
+                    <li>Maintain the security and proper operation of the website and our business systems.</li>
+                    <li>Meet legal, regulatory or accounting obligations where applicable.</li>
                 </ul>
 
-                <h3>4. Contact form and service providers</h3>
+                <h3>Lawful basis</h3>
                 <p>
-                    The contact form is submitted to FormSubmit, a third-party form delivery service, and forwarded to our business email. The information you choose to enter is used to respond to your enquiry and, where relevant, discuss or provide requested services. FormSubmit and our email or website hosting providers may process data on our behalf under their own terms and privacy notices. Please do not include sensitive personal information in the form.
+                    Depending on the circumstances, the lawful basis may be that processing is necessary to take steps at your request before entering into a contract, necessary to perform a contract, or necessary for our legitimate interests in responding to business enquiries and operating our services, provided those interests are not overridden by your rights and freedoms.
                 </p>
+            </article>
 
-                <h3>5. Sharing and international transfers</h3>
+            <article class="privacy-card">
+                <h2>4. Contact form and FormSubmit</h2>
                 <p>
-                    We do not sell personal data. We share it only with service providers involved in operating the website, delivering form messages, providing email or hosting, or where disclosure is required by law. Some providers may process data outside the UK. Where this happens, we will take steps to ensure a valid transfer mechanism and appropriate safeguards are in place where required. Check the relevant provider's privacy information for details.
+                    Our contact form is submitted to FormSubmit.co, a third-party form delivery service. The information entered into the form is transmitted to that service so that the submission can be delivered to our designated email address.
                 </p>
-
-                <h3>6. Cookies and external resources</h3>
                 <p>
-                    This site does not currently use advertising or analytics cookies. Strictly necessary technologies may be used to deliver and secure the site. The site also loads Font Awesome styles from a third-party CDN; your browser may send technical data, including your IP address, to that provider when loading those files. If optional cookies or analytics are introduced, this notice and any required consent controls will be updated before they are used.
+                    FormSubmit states that it processes form information for managing the platform and fulfilling the requested service, and its current documentation states that form submissions are retained for 30 days for its submission archive.
                 </p>
-
-                <h3>7. How long we keep data</h3>
                 <p>
-                    Enquiry correspondence is normally kept for up to 24 months after our last meaningful contact. If an enquiry leads to a project, relevant records may be kept for the duration of the relationship and for any additional period required by law or needed to establish or defend legal claims. Data is securely deleted or anonymised when no longer needed.
+                    You can review FormSubmit's own privacy information here:
+                    <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener noreferrer">FormSubmit Privacy Policy</a>.
                 </p>
+            </article>
 
-                <h3>8. Your data protection rights</h3>
-                <p>Subject to legal conditions and exceptions, you may:</p>
+            <article class="privacy-card">
+                <h2>5. Who we share personal data with</h2>
+                <p>
+                    We do not sell or rent your personal information. We may share information with service providers where this is necessary to operate our website or deliver our services, including the form delivery provider described above.
+                </p>
+                <p>
+                    We may also disclose information where required by law, legal process, or to protect our rights, systems, users or property.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>6. International processing</h2>
+                <p>
+                    Some service providers we use may process personal information outside the United Kingdom. Where UK data protection law requires safeguards for an international transfer, we will rely on an applicable adequacy mechanism or other lawful transfer safeguard.
+                </p>
+                <p>
+                    Where relevant, the third-party provider's own privacy information will give further details about its processing and international arrangements.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>7. How long we keep your information</h2>
+                <p>
+                    We keep personal information only for as long as it is reasonably necessary for the purpose for which it was collected, including handling an enquiry, managing an ongoing client relationship, resolving disputes, protecting legal rights, and meeting legal or accounting obligations.
+                </p>
+                <p>
+                    Where we do not need to keep information any longer, we will delete it or securely dispose of it. Third-party services may apply their own retention periods; for example, FormSubmit currently states that submissions in its archive are retained for 30 days.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>8. Your data protection rights</h2>
+                <p>
+                    Subject to the conditions and exemptions that apply under UK data protection law, you may have the right to:
+                </p>
                 <ul>
-                    <li>Request access to, or correction or deletion of, your personal data</li>
-                    <li>Ask us to restrict or object to certain processing</li>
-                    <li>Request a copy of data you provided in a portable format, where the right applies</li>
-                    <li>Complain to the UK Information Commissioner's Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ico.org.uk/make-a-complaint</a></li>
+                    <li>Request access to the personal data we hold about you.</li>
+                    <li>Request correction of inaccurate or incomplete information.</li>
+                    <li>Request deletion of your personal data in certain circumstances.</li>
+                    <li>Request restriction of processing in certain circumstances.</li>
+                    <li>Object to processing where the law gives you that right.</li>
+                    <li>Request data portability where the legal requirements are met.</li>
                 </ul>
-                <p>To exercise a right, email <a href="mailto:info@abcweb.ing">info@abcweb.ing</a>. We may need to verify your identity and will respond within the time required by law. There is no charge unless a request is manifestly unfounded or excessive.</p>
-
-                <h3>9. Automated decisions</h3>
-                <p>We do not use your personal data to make decisions about you solely by automated means, including profiling, that produce legal or similarly significant effects.</p>
-
-                <h3>10. Security and children</h3>
                 <p>
-                    We use reasonable measures to protect personal data, but no internet transmission or storage system can be guaranteed to be completely secure. This website and its services are not directed at children, and we do not knowingly collect children's personal data.
+                    To exercise a right, contact us at <a href="mailto:info@abcweb.ing">info@abcweb.ing</a>. We may need to verify your identity before responding.
                 </p>
+            </article>
 
-                <h3>11. Changes to this notice</h3>
+            <article class="privacy-card">
+                <h2>9. Complaints</h2>
                 <p>
-                    We may update this notice when our practices or legal requirements change. The current version will be published on this page.
+                    Please contact us first if you have a concern about how we use your personal data so that we can try to resolve it.
                 </p>
+                <p>
+                    You also have the right to complain to the UK's data protection regulator, the Information Commissioner's Office (ICO), if you believe your personal data has been handled unlawfully.
+                </p>
+                <p>
+                    ICO website:
+                    <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">ico.org.uk</a>
+                </p>
+            </article>
 
-                <p style="margin-top: 1.5rem;"><strong>Last updated:</strong> 6 October 2026</p>
-            </div>
+            <article class="privacy-card">
+                <h2>10. Cookies and third-party resources</h2>
+                <p>
+                    We use Google Analytics 4 to understand how visitors use this website. Google Analytics is loaded only after you accept analytics cookies using the consent banner; if you decline, analytics is not loaded. Google may process technical information, including your IP address, when providing this service.
+                </p>
+                <p>
+                    Your choice is stored in your browser so we can remember it on future visits. You can clear this choice at any time by deleting this website's local storage data. Your browser may also store standard technical data such as cached files.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>11. Security</h2>
+                <p>
+                    We take reasonable technical and organisational measures to protect personal information against unauthorised access, loss, misuse, alteration or disclosure. No internet transmission or storage system can be guaranteed to be completely secure.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>12. Automated decision-making</h2>
+                <p>
+                    We do not use personal information submitted through the website for solely automated decision-making or profiling that produces legal or similarly significant effects on you.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>13. Changes to this policy</h2>
+                <p>
+                    We may update this Privacy Policy from time to time to reflect changes to our services, technology or legal obligations. The latest version will be published on this page with the relevant effective date.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <h2>14. Contact us about privacy</h2>
+                <p>
+                    For privacy questions, data protection requests or concerns about how we handle your information, contact:
+                </p>
+                <p>
+                    <a class="privacy-contact" href="mailto:info@abcweb.ing">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        info@abcweb.ing
+                    </a>
+                </p>
+            </article>
         </section>
     </main>
 
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
     <footer class="site-footer">
         © 2026 ABCweb.ing. All rights reserved.
+        <span style="display:inline-block; margin-left:12px;">
+            <a href="policy.html" aria-current="page" style="color:var(--text-soft);">Privacy Policy</a>
+        </span>
     </footer>
 
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
     <script>
         const header = document.getElementById("siteHeader");
         const menuToggle = document.getElementById("menuToggle");
@@ -518,9 +1072,12 @@
 
         menuToggle.addEventListener("click", () => {
             const isOpen = mobileNav.classList.toggle("open");
+
             menuToggle.setAttribute("aria-expanded", String(isOpen));
             menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-            menuToggle.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fas fa-xmark"></i>'
+                : '<i class="fas fa-bars"></i>';
         });
 
         function closeMobileMenu() {
@@ -540,27 +1097,19 @@
             }
         });
     </script>
-    <!-- COOKIE BANNER -->
-<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookies">
-  <div class="cookie-content">
-    <p class="cookie-text">
-      Táto stránka používa cookies na analýzu návštevnosti (Google Analytics).
-      Pomáhajú nám pochopiť, ako návštevníci stránku využívajú.
-      <a href="privacy.html" class="cookie-link" target="_blank" rel="noopener">
-        Viac informácií
-      </a>.
-    </p>
-    <div class="cookie-buttons">
-      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">
-        Odmietnuť
-      </button>
-      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">
-        Prijať
-      </button>
+    <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie preferences">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                We use Google Analytics cookies only if you accept. See our
+                <a href="policy.html" class="cookie-link">Privacy Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Decline</button>
+                <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<link rel="stylesheet" href="cookies.css">
-<script src="cookies.js" defer></script>
+    <link rel="stylesheet" href="cookies.css">
+    <script src="cookies.js" defer></script>
 </body>
 </html>

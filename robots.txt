@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Povolí OpenAI (ChatGPT, SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Povolí Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Povolí Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Povolí používanie dát pre AI trénovanie od Google (Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# Public sitemap
+Sitemap: https://www.abcweb.ing/sitemap.xml
+
+# Do not block public pages unless needed later
+# Disallow: /private/
+# Disallow: /tmp/
+# Disallow: /admin/

@@ -105,6 +105,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="brand-theme.css">
 </head>
 <body>
 
@@ -141,6 +142,21 @@
       }, 400);
     });
   </script>
+
+  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <p class="cookie-text">
+        We use Google Analytics cookies only if you accept. See our
+        <a href="policy.html" class="cookie-link">Privacy Policy</a>.
+      </p>
+      <div class="cookie-buttons">
+        <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Decline</button>
+        <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="cookies.css">
+  <script src="cookies.js" defer></script>
 
 </body>
 </html>

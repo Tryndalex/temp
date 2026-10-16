@@ -6,16 +6,6 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RT343C3H6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9RT343C3H6');
-</script>
-
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -964,14 +954,6 @@ h2, h3 {
     --accent-rgb: 244,114,182;
 }
 
-.service-card:nth-child(5) {
-    --accent: #c084fc;
-    --accent-rgb: 192,132,252;
-    grid-column: 1 / -1;
-    width: min(560px, 100%);
-    justify-self: center;
-}
-
 .service-card::before {
     content: "";
     position: absolute;
@@ -1182,11 +1164,6 @@ h2, h3 {
         width: min(calc(100% - 30px), 700px);
     }
 
-    .service-card:nth-child(5) {
-        grid-column: auto;
-        width: 100%;
-    }
-
     .service-card {
         min-height: 270px;
     }
@@ -1212,8 +1189,7 @@ h2, h3 {
 }
 
 </style>
-
-
+<link rel="stylesheet" href="brand-theme.css">
 
 </head>
 
@@ -1584,6 +1560,37 @@ h2, h3 {
 
         </article>
 
+        <article class="service-card reveal reveal-delay-3">
+
+            <div class="service-card-inner">
+
+                <div class="service-top">
+                    <span class="service-number">06 / TVA</span>
+
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+
+                <h2>Technological <span>Virtual Assistant</span></h2>
+
+                <p>
+                    Reliable, hands-on support with the technology behind your business.
+                    From website updates and troubleshooting to setting up digital tools
+                    and integrations, your TVA helps keep everything running smoothly
+                    so you can focus on your work.
+                </p>
+
+                <div class="service-tags">
+                    <span class="service-tag">Tech Support</span>
+                    <span class="service-tag">Website Updates</span>
+                    <span class="service-tag">Digital Tools</span>
+                </div>
+
+            </div>
+
+        </article>
+
     </section>
 
     <div class="services-divider"></div>
@@ -1906,18 +1913,17 @@ window.addEventListener("load", () => {
 <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookies">
   <div class="cookie-content">
     <p class="cookie-text">
-      Táto stránka používa cookies na analýzu návštevnosti (Google Analytics).
-      Pomáhajú nám pochopiť, ako návštevníci stránku využívajú.
-      <a href="privacy.html" class="cookie-link" target="_blank" rel="noopener">
-        Viac informácií
+      We use Google Analytics cookies only if you accept. See our
+      <a href="policy.html" class="cookie-link">
+        Privacy Policy
       </a>.
     </p>
     <div class="cookie-buttons">
       <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">
-        Odmietnuť
+        Decline
       </button>
       <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">
-        Prijať
+        Accept
       </button>
     </div>
   </div>

@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RT343C3H6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9RT343C3H6');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -1073,26 +1064,26 @@
 
         .project-card:nth-of-type(2) {
             --accent:
-                #38bdf8;
-
-            --accent-rgb:
-                56,189,248;
-        }
-
-        .project-card:nth-of-type(3) {
-            --accent:
                 #f59e0b;
 
             --accent-rgb:
                 245,158,11;
         }
 
-        .project-card:nth-of-type(4) {
+        .project-card:nth-of-type(3) {
             --accent:
                 #22c55e;
 
             --accent-rgb:
                 34,197,94;
+        }
+
+        .project-card:nth-of-type(4) {
+            --accent:
+                #38bdf8;
+
+            --accent-rgb:
+                56,189,248;
         }
 
         .project-card::before {
@@ -2091,7 +2082,7 @@
 
                 border-bottom:
                     1px solid
-                    rgba(255,255,255,.07);
+                    rgba(255, 255, 255, 0);
             }
 
             .project-content {
@@ -2252,6 +2243,8 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="brand-theme.css">
+
 </head>
 
 
@@ -2463,11 +2456,7 @@
                     <div class="project-mark">
 
                         <div class="project-mark-main">
-                            TC
-                        </div>
-
-                        <div class="project-mark-sub">
-                            CLEAN
+                            <img src="images/Tati Cleaning Sparkle Logo.png" alt="TatiClean Logo" width="160" height="100rem">
                         </div>
 
                     </div>
@@ -2539,12 +2528,10 @@
                     <div class="project-mark">
 
                         <div class="project-mark-main">
-                            K
+                            <img src="images/keltex.sk.png" alt="Keltex.sk Logo"  width="140rem" height="100rem">
                         </div>
 
-                        <div class="project-mark-sub">
-                            KELTEX.SK
-                        </div>
+                        
 
                     </div>
 
@@ -2614,13 +2601,10 @@
                     <div class="project-mark">
 
                         <div class="project-mark-main">
-                            W&amp;R
+                            <img src="images/Wrap&Roll.png" alt="wrap&roll Logo" width="150" height="120rem" href="https://tryndalex.github.io/WrapAndRoll/" target="_blank" rel="noopener">
                         </div>
 
-                        <div class="project-mark-sub">
-                            HELSINKI
-                        </div>
-
+                        
                     </div>
 
                     <div class="project-domain">
@@ -2691,13 +2675,7 @@
 
                     <div class="project-mark">
 
-                        <div class="project-mark-main">
-                            ABC
-                        </div>
-
-                        <div class="project-mark-sub">
-                            TIP.SK
-                        </div>
+                       <img src="images/ABCtip.sk Logo.png" alt="abctip Logo" width="160" height="100rem">
 
                     </div>
 
@@ -2738,15 +2716,20 @@
                         <span class="project-tool">Content Structure</span>
                         <span class="project-tool">Usability</span>
                     </div>
+                    <div>
+                        <a
+                            href="https://abctip.sk/"
+                            class="project-link"
+                            target="_blank"
+                            rel="noopener">
+                            Visit project
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
 
-                    <a
-                        href="https://abctip.sk/"
-                        class="project-link"
-                        target="_blank"
-                        rel="noopener">
-                        Visit project
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
+                        <span class="project-status">
+                            In progress
+                        </span>
+                    </div>
 
                 </div>
 
@@ -3165,18 +3148,17 @@
 <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookies">
   <div class="cookie-content">
     <p class="cookie-text">
-      Táto stránka používa cookies na analýzu návštevnosti (Google Analytics).
-      Pomáhajú nám pochopiť, ako návštevníci stránku využívajú.
-      <a href="privacy.html" class="cookie-link" target="_blank" rel="noopener">
-        Viac informácií
+      We use Google Analytics cookies only if you accept. See our
+      <a href="policy.html" class="cookie-link">
+        Privacy Policy
       </a>.
     </p>
     <div class="cookie-buttons">
       <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">
-        Odmietnuť
+        Decline
       </button>
       <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">
-        Prijať
+        Accept
       </button>
     </div>
   </div>

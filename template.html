@@ -23,20 +23,21 @@
 
         :root {
 
-            --bg: #070707;
-            --bg-soft: #0d0d0f;
+            --bg: #070910;
+            --bg-soft: #071126;
 
-            --surface: rgba(255,255,255,0.045);
-            --surface-hover: rgba(255,255,255,0.075);
+            --surface: rgba(5,12,31,0.76);
+            --surface-hover: rgba(10,18,42,0.9);
 
-            --border: rgba(255,255,255,0.10);
-            --border-hover: rgba(0,229,255,0.35);
+            --border: rgba(82,109,255,0.2);
+            --border-hover: rgba(18,223,255,0.55);
 
             --text: #f5f5f5;
-            --text-soft: #a5a5a5;
+            --text-soft: #b8c4dc;
 
-            --cyan: #00e5ff;
-            --violet: #8b5cf6;
+            --cyan: #12dfff;
+            --blue: #526dff;
+            --violet: #e34cff;
 
             --header-height: 76px;
 
@@ -70,17 +71,17 @@
             background:
                 radial-gradient(
                     circle at 15% 20%,
-                    rgba(0,229,255,0.035),
-                    transparent 30%
+                    rgba(18,223,255,0.09),
+                    transparent 34%
                 ),
 
                 radial-gradient(
                     circle at 85% 70%,
-                    rgba(139,92,246,0.045),
-                    transparent 30%
+                    rgba(227,76,255,0.08),
+                    transparent 36%
                 ),
 
-                var(--bg);
+                linear-gradient(145deg, #070910, #090b1c 58%, #100a20);
 
             color: var(--text);
 
@@ -129,6 +130,12 @@
 
             padding: 0 30px;
 
+            background: rgba(7,11,28,0.42);
+
+            backdrop-filter: blur(12px) saturate(140%);
+
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+
             transition:
                 background var(--transition),
                 backdrop-filter var(--transition),
@@ -142,7 +149,7 @@
             height: 64px;
 
             background:
-                rgba(7,7,7,0.78);
+                rgba(7,11,28,0.88);
 
             backdrop-filter:
                 blur(18px)
@@ -152,8 +159,8 @@
                 blur(18px)
                 saturate(140%);
 
-            border-bottom:
-                1px solid var(--border);
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(90deg, rgba(18,223,255,0.4), rgba(82,109,255,0.25), rgba(227,76,255,0.4)) 1;
         }
 
 
@@ -188,6 +195,13 @@
             color: #fff;
 
             white-space: nowrap;
+
+            transition: transform var(--transition), text-shadow var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+            text-shadow: 0 0 18px rgba(18,223,255,0.38);
         }
 
 
@@ -212,12 +226,14 @@
 
             border-radius: 10px;
 
-            transition: width var(--transition);
+            box-shadow: 0 0 10px rgba(18,223,255,0.35);
+            transition: width var(--transition), box-shadow var(--transition);
         }
 
 
         .logo:hover::after {
             width: 100%;
+            box-shadow: 0 0 14px rgba(18,223,255,0.65), 0 0 20px rgba(227,76,255,0.35);
         }
 
 
@@ -235,17 +251,21 @@
 
             padding: 5px;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid transparent;
 
             border-radius: 999px;
 
             background:
-                rgba(255,255,255,0.025);
+                linear-gradient(rgba(5,12,31,0.9), rgba(10,8,27,0.9)) padding-box,
+                linear-gradient(110deg, rgba(18,223,255,0.55), rgba(82,109,255,0.4), rgba(227,76,255,0.55)) border-box;
 
             backdrop-filter: blur(12px);
 
             -webkit-backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 0 20px rgba(18,223,255,0.08),
+                0 0 28px rgba(183,62,255,0.06);
         }
 
 
@@ -259,7 +279,7 @@
             border-radius: 999px;
 
             color:
-                var(--text-soft);
+                rgba(213,226,255,0.72);
 
             font-size: 0.78rem;
 
@@ -281,10 +301,14 @@
             color: #fff;
 
             background:
-                rgba(255,255,255,0.07);
+                linear-gradient(110deg, rgba(18,223,255,0.2), rgba(82,109,255,0.16), rgba(227,76,255,0.2));
 
             transform:
                 translateY(-1px);
+
+            box-shadow:
+                0 0 16px rgba(18,223,255,0.16),
+                0 0 22px rgba(183,62,255,0.12);
         }
 
 
@@ -295,16 +319,15 @@
             background:
                 linear-gradient(
                     135deg,
-                    rgba(0,229,255,0.12),
-                    rgba(139,92,246,0.14)
+                    rgba(18,223,255,0.2),
+                    rgba(82,109,255,0.16),
+                    rgba(227,76,255,0.2)
                 );
 
             box-shadow:
-                inset 0 0 0 1px
-                rgba(255,255,255,0.07),
-
-                0 0 18px
-                rgba(0,229,255,0.06);
+                inset 0 0 0 1px rgba(162,215,255,0.16),
+                0 0 16px rgba(18,223,255,0.16),
+                0 0 22px rgba(183,62,255,0.12);
         }
 
 
@@ -330,8 +353,8 @@
             border-radius: 50%;
 
             background:
-                linear-gradient(rgba(255,255,255,0.045), rgba(255,255,255,0.045)) padding-box,
-                linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+                linear-gradient(#071126, #100a24) padding-box,
+                linear-gradient(135deg, var(--cyan), var(--blue) 52%, var(--violet)) border-box;
 
             color: #fff;
 
@@ -346,10 +369,14 @@
         .menu-toggle:hover {
 
             background:
-                linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)) padding-box,
-                linear-gradient(135deg, var(--cyan), var(--violet)) border-box;
+                linear-gradient(#0b1935, #170d31) padding-box,
+                linear-gradient(135deg, var(--cyan), var(--blue) 52%, var(--violet)) border-box;
 
             transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px rgba(18,223,255,0.32),
+                0 0 32px rgba(183,62,255,0.24);
         }
 
 
@@ -379,8 +406,9 @@
     width: auto;
 
     background:
-        linear-gradient(rgba(17,17,17,0.72), rgba(17,17,17,0.72)) padding-box,
-        linear-gradient(135deg, var(--cyan), var(--violet)) border-box !important;
+        radial-gradient(circle at 12% 0%, rgba(18,223,255,0.16), transparent 42%),
+        radial-gradient(circle at 88% 0%, rgba(227,76,255,0.16), transparent 48%),
+        linear-gradient(145deg, #071126, #100a24 68%, #140a2a);
     backdrop-filter: blur(22px) saturate(140%);
     -webkit-backdrop-filter: blur(22px) saturate(140%);
 
@@ -395,7 +423,11 @@
 
     border-radius: 20px;
 
-    box-shadow: 0 20px 60px #000000;
+    box-shadow:
+        inset 0 0 0 1px rgba(82,109,255,0.18),
+        0 0 22px rgba(18,223,255,0.16),
+        0 0 38px rgba(183,62,255,0.14),
+        0 20px 60px rgba(0,0,0,0.75);
 
     transition:
         opacity 300ms ease,
@@ -425,7 +457,7 @@
     border-radius: 13px;
 
     color:
-        #eeeeee;
+        rgba(232,239,255,0.9);
 
     font-size: 0.82rem;
 
@@ -449,11 +481,13 @@
     background:
         linear-gradient(
             90deg,
-            rgba(0,229,255,0.08),
-            rgba(139,92,246,0.08)
+            rgba(18,223,255,0.16),
+            rgba(82,109,255,0.12),
+            rgba(227,76,255,0.16)
         );
 
     padding-left: 21px;
+    box-shadow: 0 0 16px rgba(18,223,255,0.12), 0 0 18px rgba(183,62,255,0.1);
 }
 
 
@@ -466,12 +500,15 @@
     background:
         linear-gradient(
             90deg,
-            rgba(0,229,255,0.11),
-            rgba(139,92,246,0.11)
+            rgba(18,223,255,0.16),
+            rgba(82,109,255,0.12),
+            rgba(227,76,255,0.16)
         );
 
     box-shadow:
-        inset 2px 0 0 var(--cyan);
+        inset 2px 0 0 var(--cyan),
+        0 0 16px rgba(18,223,255,0.12),
+        0 0 18px rgba(183,62,255,0.1);
 }
 
 
@@ -532,8 +569,9 @@
             background:
                 radial-gradient(
                     circle,
-                    rgba(0,229,255,0.10),
-                    rgba(139,92,246,0.05),
+                    rgba(18,223,255,0.16),
+                    rgba(82,109,255,0.1),
+                    rgba(227,76,255,0.08),
                     transparent 70%
                 );
 
@@ -628,7 +666,9 @@
                     90deg,
                     #fff,
                     var(--cyan),
-                    #fff
+                var(--blue),
+                var(--violet),
+                #fff
                 );
 
             background-size: 200% auto;
@@ -725,14 +765,14 @@
 
             padding: 30px;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid transparent;
 
             border-radius:
                 var(--radius);
 
             background:
-                var(--surface);
+                linear-gradient(var(--surface), var(--surface)) padding-box,
+                linear-gradient(125deg, rgba(18,223,255,0.24), rgba(82,109,255,0.16), rgba(227,76,255,0.24)) border-box;
 
             backdrop-filter:
                 blur(14px);
@@ -754,17 +794,15 @@
                 translateY(-5px);
 
             background:
-                var(--surface-hover);
-
-            border-color:
-                var(--border-hover);
+                linear-gradient(var(--surface-hover), var(--surface-hover)) padding-box,
+                linear-gradient(125deg, rgba(18,223,255,0.6), rgba(82,109,255,0.42), rgba(227,76,255,0.6)) border-box;
 
             box-shadow:
                 0 15px 45px
                 rgba(0,0,0,0.25),
 
-                0 0 30px
-                rgba(0,229,255,0.04);
+                0 0 24px rgba(18,223,255,0.12),
+                0 0 32px rgba(183,62,255,0.1);
         }
 
 
@@ -785,18 +823,19 @@
 
             text-align: center;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid transparent;
 
             border-radius:
                 24px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,229,255,0.06),
-                    rgba(139,92,246,0.07)
-                );
+                linear-gradient(rgba(5,12,31,0.86), rgba(10,8,27,0.86)) padding-box,
+                linear-gradient(120deg, rgba(18,223,255,0.48), rgba(82,109,255,0.32), rgba(227,76,255,0.48)) border-box;
+
+            box-shadow:
+                0 0 24px rgba(18,223,255,0.08),
+                0 0 36px rgba(183,62,255,0.08),
+                inset 0 0 30px rgba(66,125,255,0.08);
         }
 
 
@@ -815,7 +854,7 @@
             transform: translateX(-50%);
 
             background:
-                var(--cyan);
+                linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
 
             opacity: 0.05;
 
@@ -868,13 +907,9 @@
             border-radius: 999px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    var(--cyan),
-                    var(--violet)
-                );
+                linear-gradient(110deg, var(--cyan), var(--blue) 52%, var(--violet));
 
-            color: #050505;
+            color: #fff;
 
             font-weight: 700;
 
@@ -896,8 +931,8 @@
                 translateY(-3px);
 
             box-shadow:
-                0 10px 30px
-                rgba(0,229,255,0.18);
+                0 10px 30px rgba(18,223,255,0.28),
+                0 0 36px rgba(183,62,255,0.22);
         }
 
 
@@ -999,6 +1034,7 @@
         }
 
     </style>
+    <link rel="stylesheet" href="brand-theme.css">
 
 </head>
 
@@ -1326,18 +1362,17 @@
 <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookies">
   <div class="cookie-content">
     <p class="cookie-text">
-      Táto stránka používa cookies na analýzu návštevnosti (Google Analytics).
-      Pomáhajú nám pochopiť, ako návštevníci stránku využívajú.
-      <a href="privacy.html" class="cookie-link" target="_blank" rel="noopener">
-        Viac informácií
+      We use Google Analytics cookies only if you accept. See our
+      <a href="policy.html" class="cookie-link">
+        Privacy Policy
       </a>.
     </p>
     <div class="cookie-buttons">
       <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">
-        Odmietnuť
+        Decline
       </button>
       <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">
-        Prijať
+        Accept
       </button>
     </div>
   </div>
