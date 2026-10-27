@@ -76,7 +76,7 @@
             justify-content: space-between;
             align-items: center;
 
-            padding: 1rem 2rem;
+            padding: 0.55rem 2rem;
 
             z-index: 1000;
         }
@@ -96,36 +96,22 @@
 
 
         .logo {
-            position: relative;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-            color: #fff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 0.12rem;
-            white-space: nowrap;
-            transition: transform 300ms ease, text-shadow 300ms ease;
+            transition: transform 300ms ease, filter 300ms ease;
+        }
+
+        .logo img {
+            display: block;
+            width: 200px;
+            height: 65px;
+            object-fit: contain;
         }
 
         .logo:hover {
             transform: translateY(-1px);
-            text-shadow: 0 0 18px rgba(0,229,255,.35);
-        }
-
-        .logo::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 24px;
-            height: 2px;
-            background: linear-gradient(90deg, #00e5ff, #8b5cf6);
-            border-radius: 10px;
-            transition: width 300ms cubic-bezier(.16,1,.3,1), box-shadow 300ms cubic-bezier(.16,1,.3,1);
-        }
-
-        .logo:hover::after {
-            width: 100%;
-            box-shadow: 0 0 12px rgba(0,229,255,.55);
+            filter: drop-shadow(0 0 10px rgba(0,229,255,.35));
         }
 
         .main-nav {
@@ -544,7 +530,7 @@
 
             @media (max-width: 800px) {
                 .header {
-                    padding: 0.9rem 1.1rem;
+                    padding: 0.5rem 1.1rem;
                 }
 
                 .main-nav {
@@ -554,6 +540,7 @@
                 .menu-toggle {
                     display: flex;
                 }
+
             }
 
         }
@@ -602,7 +589,7 @@
             .header {
 
                 padding:
-                    0.9rem 1rem;
+                    0.5rem 1rem;
             }
 
             .hero-content {
@@ -873,22 +860,35 @@
 
         .why-work-section,
         .selected-projects-section {
-            padding: clamp(4.5rem, 8vw, 7.6rem) 1.5rem;
+            padding: clamp(4.5rem, 8vw, 7.6rem);
             background:
                 radial-gradient(ellipse at 10% 50%, rgba(18, 223, 255, 0.055), transparent 45%),
                 linear-gradient(145deg, #050914 0%, #080d1c 52%, #070916 100%);
         }
 
+        .why-work-section {
+            padding-bottom: clamp(2rem, 4vw, 4rem);
+        }
+
+        .why-work-section,
+        .selected-projects-section {
+            overflow-x: clip;
+        }
+
         .why-work-inner {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             align-items: center;
             gap: 2rem;
-            width: min(100%, 2000px);
+            width: min(100%, 1900px);
             margin: 0 auto;
         }
 
-        .why-work-copy h2,
+        .why-work-copy h2 {
+            font-size: clamp(5.2rem, 4.5vw, 3.55rem);
+            
+        }
+
         .selected-projects-heading h2 {
             margin: 0 0 1.2rem;
             color: #f4f7ff;
@@ -913,64 +913,40 @@
             font-size: 0.96rem;
         }
 
-        .benefit-row {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.8rem;
-            max-width: 560px;
-            margin: 2rem 0;
-        }
-
-        .benefit-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.65rem;
-            color: rgba(234, 240, 255, 0.82);
-            font-size: 0.78rem;
-            line-height: 1.45;
-        }
-
-        .benefit-icon {
-            display: grid;
-            place-items: center;
-            width: 38px;
-            height: 38px;
-            border: 1px solid rgba(18, 223, 255, 0.28);
-            border-radius: 13px;
-            color: #8cefff;
-            background: linear-gradient(135deg, rgba(18, 223, 255, 0.1), rgba(139, 92, 246, 0.15));
-        }
-
-        .why-work-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding-bottom: 0.42rem;
-            border-bottom: 1px solid rgba(18, 223, 255, 0.45);
-            color: #86ecff;
-            font-size: 0.92rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
         .why-work-section .why-work-chart {
-            width: calc(100% + 3rem);
-            max-width: none;
-            margin-inline: -1.5rem;
-            justify-self: center;
+            width: 100%;
+            max-width: 1100px;
+            min-width: 0;
+            margin-inline: auto;
+            justify-self: end;
         }
 
-        @media (min-width: 2100px) {
+        @media (min-width: 1100px) {
             .why-work-inner {
-                grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
-                gap: clamp(2.5rem, 4vw, 4rem);
+                grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+                grid-template-rows: auto auto;
+                align-items: start;
+                column-gap: clamp(2rem, 4vw, 4rem);
+                row-gap: 0;
+            }
+
+            .why-work-copy {
+                grid-column: 1;
+                grid-row: 1;
+                align-self: center;
+                padding-right: 5vw;
             }
 
             .why-work-section .why-work-chart {
-                width: 100%;
-                margin-inline: 0;
-                justify-self: stretch;
+                display: block;
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .why-work-section .monthly-allocation {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                justify-self: center;
             }
         }
 
@@ -1038,7 +1014,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            min-height: 260px;
+            min-height: 0;
             padding: 1.1rem 1rem 1.2rem;
         }
 
@@ -1109,7 +1085,7 @@
             }
 
             .showcase-content {
-                min-height: 225px;
+                min-height: 0;
             }
         }
 
@@ -1120,11 +1096,6 @@
                 padding-right: 1rem;
             }
 
-            .why-work-section .why-work-chart {
-                width: calc(100% + 2rem);
-                margin-inline: -1rem;
-            }
-
             .project-showcase-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -1132,16 +1103,6 @@
 
             .showcase-content {
                 min-height: 0;
-            }
-
-            .benefit-row {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1rem;
-            }
-
-            .benefit-item {
-                flex-direction: row;
-                align-items: center;
             }
 
         }
@@ -1429,6 +1390,23 @@
           }
       }
 
+      @media (min-width: 1100px) {
+          .why-work-section .why-work-chart svg {
+              width: 100%;
+              height: auto;
+          }
+
+          .why-work-section .monthly-allocation {
+              width: 100%;
+              height: auto;
+              max-width: 760px;
+              justify-self: center;
+              margin: 30px auto 0;
+              padding: clamp(16px, 1.3vw, 20px);
+              border-radius: 16px;
+          }
+      }
+
       @media (prefers-reduced-motion: no-preference) {
           .monthly-allocation__bar {
               transform-origin: left center;
@@ -1544,7 +1522,9 @@
 
     <header class="header">
         <div class="header-inner">
-            <a href="https://abcweb.ing" class="logo">ABCweb.ing</a>
+            <a href="https://abcweb.ing" class="logo" aria-label="ABCweb.ing home">
+                <img src="images/ABC%20logo.png" alt="ABCweb.ing">
+            </a>
 
             <nav class="main-nav" aria-label="Main navigation">
                 <a href="https://abcweb.ing/" class="active" aria-current="page">Home</a>
@@ -1683,29 +1663,8 @@
                 <p class="why-work-lead">
                     Running a business already asks a lot of you. Practical help with your digital work can mean fewer loose ends, less time spent troubleshooting and more room to focus on your customers.
                 </p>
-                <p class="why-work-supporting">
-                    Choose the support you need — one task, ongoing assistance or help improving the way your online work gets done.
-                </p>
+                
 
-                <div class="benefit-row" aria-label="Benefits">
-                    <div class="benefit-item">
-                        <span class="benefit-icon"><i class="far fa-clock" aria-hidden="true"></i></span>
-                        <span>Practical<br>solutions</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon"><i class="fas fa-handshake-angle" aria-hidden="true"></i></span>
-                        <span>Flexible<br>support</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
-                        <span>Focus on<br>your business</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
-                        <span>Modern<br>tools &amp; AI</span>
-                    </div>
-                </div>
-                <a href="about.html" class="why-work-link">A little more about me <span aria-hidden="true">↗</span></a>
             </div>
 
             <div class="why-work-chart task-graphic page-scroll-reveal page-scroll-reveal--right" aria-label="Small business tasks chart">
@@ -1790,7 +1749,7 @@
 <g id="task-finance" class="task-card" data-task="finance" tabindex="0" role="button" aria-label="Finance and invoicing, 5 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="25" y="174" width="330" height="103" rx="20" fill="#071329" fill-opacity="0.96" stroke="#FFC85C" stroke-opacity="0.96" stroke-width="2.2"/><rect x="26.5" y="175.5" width="327" height="100" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="53" cy="225.5" r="23" fill="#FFC85C" fill-opacity="0.10" stroke="#FFC85C" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(32,204.5)" style="color:#FFC85C"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h20l8 8v28H8z"/><path d="M28 4v9h8M14 20h16M14 26h11"/><text x="21" y="36" text-anchor="middle" stroke="none" fill="currentColor" font-family="Arial,sans-serif" font-weight="800" font-size="13">£</text></g></g><text x="87" y="213" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Finance &amp; invoicing</text><text x="87" y="240" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Invoices, receipts, basic admin</text><text x="338" y="210" text-anchor="end" fill="#FFC85C" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">5%</text></g>
 <g id="task-planning" class="task-card" data-task="planning" tabindex="0" role="button" aria-label="Planning and strategy, 3 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="365" y="40" width="315" height="95" rx="20" fill="#071329" fill-opacity="0.96" stroke="#B4C3E4" stroke-opacity="0.96" stroke-width="2.2"/><rect x="366.5" y="41.5" width="312" height="92" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="393" cy="87.5" r="23" fill="#B4C3E4" fill-opacity="0.10" stroke="#B4C3E4" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(372,66.5)" style="color:#B4C3E4"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="23" r="16"/><circle cx="21" cy="23" r="9"/><circle cx="21" cy="23" r="2.4"/><path d="M22 22 38 6M30 6h8v8"/></g></g><text x="427" y="79" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Planning &amp; strategy</text><text x="427" y="106" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Goals, priorities, decisions</text><text x="663" y="76" text-anchor="end" fill="#B4C3E4" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">3%</text></g>
 </svg>
-                <section class="monthly-allocation" aria-labelledby="monthly-allocation-title">
+    <section class="monthly-allocation" aria-labelledby="monthly-allocation-title">
                     <div class="monthly-allocation__header">
                         <div>
                             <p class="monthly-allocation__eyebrow">Technical Virtual Assistant</p>
@@ -1871,6 +1830,7 @@
                     <p class="monthly-allocation__note"><strong>Illustrative figures only.</strong> The hours and percentages show one possible allocation of a 20-hour monthly package, not a fixed plan or a guarantee of time savings. Your allocation can be adjusted to your agreed priorities.</p>
                 </section>
             </div>
+        
         </div>
     </section>
 
@@ -2141,7 +2101,8 @@
             if (!fluidAvailable || reduceMotion.matches || document.hidden) {
                 return 'static';
             }
-            return manualMode || (hasForcedMode ? forcedMode : automaticMode);
+            return manualMode ||
+                (mobileViewport.matches && hasForcedMode ? forcedMode : automaticMode);
         }
 
         function applyBackgroundMode() {
@@ -2179,7 +2140,42 @@
             applyBackgroundMode();
         });
 
-        reduceMotion.addEventListener('change', applyBackgroundMode);
+        let performanceCheckId = 0;
+
+        function selectAutomaticMode() {
+            const checkId = ++performanceCheckId;
+
+            if (!mobileViewport.matches) {
+                automaticMode = 'full';
+                manualMode = null;
+                applyBackgroundMode();
+                return;
+            }
+
+            if (hasForcedMode) {
+                automaticMode = forcedMode;
+                applyBackgroundMode();
+                return;
+            }
+
+            if (reduceMotion.matches) {
+                automaticMode = 'static';
+                applyBackgroundMode();
+                return;
+            }
+
+            testAnimationSmoothness().then((isSmooth) => {
+                if (performanceCheckId !== checkId || !mobileViewport.matches) {
+                    return;
+                }
+
+                automaticMode = isSmooth ? 'full' : 'static';
+                applyBackgroundMode();
+            });
+        }
+
+        reduceMotion.addEventListener('change', selectAutomaticMode);
+        mobileViewport.addEventListener('change', selectAutomaticMode);
         document.addEventListener('visibilitychange', applyBackgroundMode);
         fluidFrame.addEventListener('load', applyBackgroundMode);
         window.addEventListener('message', (event) => {
@@ -2193,17 +2189,7 @@
             applyBackgroundMode();
         });
 
-        if (hasForcedMode) {
-            automaticMode = forcedMode;
-            applyBackgroundMode();
-        } else if (reduceMotion.matches) {
-            applyBackgroundMode();
-        } else {
-            testAnimationSmoothness().then((isSmooth) => {
-                automaticMode = isSmooth ? 'full' : 'static';
-                applyBackgroundMode();
-            });
-        }
+        selectAutomaticMode();
 
         document.querySelectorAll('.home-service-more').forEach((button) => {
             button.addEventListener('click', () => {
