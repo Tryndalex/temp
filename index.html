@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en" data-background-mode="static" data-background-controls="hidden">
 
 <head>
     <link rel="apple-touch-icon" href="images/favicon.png">
@@ -21,7 +21,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abcweb.ing/">
     <meta name="twitter:card" content="summary_large_image">
-
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -278,6 +277,12 @@
             overflow: hidden;
         }
 
+        html[data-background-mode="static"] .hero {
+            background:
+                radial-gradient(ellipse at 22% 28%, rgba(18, 223, 255, 0.2), transparent 42%),
+                radial-gradient(ellipse at 78% 72%, rgba(227, 76, 255, 0.18), transparent 44%),
+                linear-gradient(145deg, #070910, #090b1c 58%, #100a20);
+        }
 
         .hero::before {
             content: "";
@@ -297,6 +302,14 @@
             height: 100%;
             border: 0;
             z-index: 0;
+        }
+
+        html[data-background-mode="static"] .hero-background {
+            visibility: hidden;
+        }
+
+        html[data-background-mode="static"] .hero-content {
+            animation: none !important;
         }
 
 
@@ -335,20 +348,20 @@
             }
         }
 
-        @keyframes mobile-orbit-float {
-            0%,
-            100% {
-                transform: translate3d(0, 0, 0);
-            }
-
-            50% {
-                transform: translate3d(0, -5px, 0);
-            }
-        }
-
         @media (prefers-reduced-motion: reduce) {
+            .hero {
+                background:
+                    radial-gradient(ellipse at 22% 28%, rgba(18, 223, 255, 0.2), transparent 42%),
+                    radial-gradient(ellipse at 78% 72%, rgba(227, 76, 255, 0.18), transparent 44%),
+                    linear-gradient(145deg, #070910, #090b1c 58%, #100a20);
+            }
+
+            .hero-background {
+                visibility: hidden;
+            }
+
             .hero-content {
-                animation: none;
+                animation: none !important;
             }
 
             .hero-logo {
@@ -429,7 +442,7 @@
             }
         }
 
-
+        
 
         /* =========================================================
            stop / play button
@@ -441,6 +454,10 @@
             z-index: 4;
             width: 280px;
             height: 112px;
+        }
+
+        html[data-background-controls="hidden"] .animation-control-group {
+            display: none;
         }
 
         .animation-control-note {
@@ -544,620 +561,6 @@
 
 
         /* =========================================================
-           SHARED CIRCLE STYLE AND ORBIT INTERACTIONS
-        ========================================================= */
-
-        .circle-orbit {
-            position: absolute;
-            z-index: 3;
-            width: 190px;
-            height: 190px;
-        }
-
-        .circle-card,
-        .service-orbit-center,
-        .orbit-child {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0);
-            border-radius: 50%;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-            box-shadow:
-                0 12px 36px rgba(0, 0, 0, 0.18),
-                inset 0 0 24px rgba(255, 255, 255, 0.04);
-            transition:
-                transform 550ms cubic-bezier(.16,1,.3,1),
-                background-color 300ms ease,
-                box-shadow 300ms ease;
-        }
-
-        .circle-card {
-            z-index: 2;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.12rem;
-            will-change: transform;
-        }
-
-        .about-orbit {
-            top: 18%;
-            left: 14%;
-            animation: float1 9s ease-in-out infinite;
-        }
-
-        .about-orbit .card-1 {
-            top: 50%;
-            left: 50%;
-            width: 140px;
-            height: 140px;
-            background: #00e5ff85;
-            transform: translate(-50%, -50%);
-        }
-
-        .about-orbit .card-1::after {
-            content: "Discover our approach";
-            position: absolute;
-            inset: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            line-height: 1.25;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 180ms ease;
-        }
-
-        .contact-orbit {
-            bottom: 15%;
-            left: 20%;
-            animation: float3 10s ease-in-out infinite;
-        }
-
-        .contact-orbit .card-3 {
-            top: 50%;
-            left: 50%;
-            width: 115px;
-            height: 115px;
-            background: rgba(24, 119, 242, 0.3);
-            transform: translate(-50%, -50%);
-        }
-
-        .contact-orbit .card-3::after {
-            content: "Get in touch";
-            position: absolute;
-            inset: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            line-height: 1.25;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 180ms ease;
-        }
-
-        .projects-orbit {
-            right: 17%;
-            bottom: 12%;
-            animation: float4 14s ease-in-out infinite;
-        }
-
-        .projects-orbit .card-4 {
-            top: 50%;
-            left: 50%;
-            width: 165px;
-            height: 165px;
-            background: rgba(255, 180, 0, 0.3);
-            transform: translate(-50%, -50%);
-        }
-
-        .projects-orbit .card-4::after {
-            content: "View our projects";
-            position: absolute;
-            inset: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            line-height: 1.25;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 180ms ease;
-        }
-
-        .services-orbit {
-            top: 12%;
-            right: 10%;
-            animation: float2 12s ease-in-out infinite;
-        }
-
-        .about-orbit .card-1:hover,
-        .about-orbit .card-1:focus-visible,
-        .about-orbit .card-1:focus {
-            transform: translate(-50%, -50%) scale(1.3);
-        }
-
-        .service-orbit-menu {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: grid;
-            width: min(34vw, 420px);
-            aspect-ratio: 1;
-            place-items: center;
-            transform: translate(-50%, -50%);
-        }
-
-        .service-orbit-center {
-            z-index: 2;
-            width: 140px;
-            aspect-ratio: 1;
-            background-color: rgba(255, 3, 129, 0.379);
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.12rem;
-            position: relative;
-        }
-
-        .service-orbit-center::after {
-            content: "Explore our services";
-            position: absolute;
-            inset: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            line-height: 1.25;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 180ms ease;
-        }
-
-        .service-orbit-center:hover::after,
-        .service-orbit-center:focus-visible::after,
-        .service-orbit-center:focus::after {
-            opacity: 1;
-        }
-
-        .service-orbit-center:hover,
-        .service-orbit-center:focus-visible,
-        .service-orbit-center:focus {
-            color: transparent;
-        }
-
-        .orbit-child {
-            --x: 0px;
-            --y: 0px;
-            --size: 58px;
-            z-index: 1;
-            top: 50%;
-            left: 50%;
-            width: var(--size);
-            height: var(--size);
-            padding: 6px;
-            flex-direction: column;
-            gap: 4px;
-            background-color: var(--circle-color, rgba(255, 255, 255, 0.31));
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.015em;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(-50%, -50%) translate(0, 0) scale(0.25);
-            transition:
-                opacity 220ms ease var(--delay, 0ms),
-                transform 650ms cubic-bezier(.16,1,.3,1) var(--delay, 0ms),
-                background-color 250ms ease,
-                box-shadow 250ms ease;
-        }
-
-        .services-orbit .service-orbit-design {
-            --x: -115px;
-            --y: -90px;
-            --size: 62px;
-            --circle-color: rgba(244, 230, 198, 0.3);
-        }
-
-        .about-orbit .about-approach {
-            --x: -105px;
-            --y: -55px;
-            --size: 62px;
-            --circle-color: rgba(217, 241, 3, 0.3);
-            display: none;
-        }
-
-        .about-orbit .about-portfolio {
-            --x: 95px;
-            --y: -75px;
-            --size: 72px;
-            --circle-color: rgba(13, 217, 253, 0.3);
-        }
-
-        .about-orbit .about-pricing {
-            --x: 40px;
-            --y: 95px;
-            --size: 58px;
-            --circle-color: rgba(223, 14, 94, 0.3);
-        }
-
-        .services-orbit .service-orbit-development {
-            --x: 97.5px;
-            --y: -92.5px;
-            --size: 74px;
-            --circle-color: rgba(83, 255, 77, 0.3);
-        }
-
-        .services-orbit .service-orbit-seo {
-            --x: 130px;
-            --y: 27.5px;
-            --size: 63px;
-            --circle-color: rgba(236, 180, 10, 0.3);
-        }
-
-        .services-orbit .service-orbit-social {
-            --x: 52.5px;
-            --y: 115px;
-            --size: 58px;
-            --circle-color: rgba(136, 218, 22, 0.3);
-        }
-
-        .services-orbit .service-orbit-ai {
-            --x: -105px;
-            --y: 92.5px;
-            --size: 71px;
-            --circle-color: rgba(15, 93, 156, 0.3);
-        }
-
-        .projects-orbit .project-1 {
-            --x: -120px;
-            --y: 0px;
-            --size: 64px;
-            --circle-color: rgba(19, 243, 243, 0.3);
-        }
-
-        .projects-orbit .project-2 {
-            --x: -105px;
-            --y: 60px;
-            --size: 56px;
-            --circle-color: rgba(13, 217, 253, 0.3);
-        }
-
-        .projects-orbit .project-3 {
-            --x: -65px;
-            --y: 110px;
-            --size: 60px;
-            --circle-color: rgba(0, 255, 170, 0.3);
-        }
-
-        .projects-orbit .project-4 {
-            --x: 0px;
-            --y: 125px;
-            --size: 68px;
-            --circle-color: rgba(255, 70, 140, 0.3);
-        }
-
-        .contact-orbit .contact-1 {
-            --x: -105px;
-            --y: -105px;
-            --size: 54px;
-            --circle-color: rgba(24, 119, 242, 0.3);
-        }
-
-        .contact-orbit .contact-2 {
-            --x: -145px;
-            --y: -50px;
-            --size: 62px;
-            --circle-color: rgba(225, 48, 108, 0.3);
-        }
-
-        .contact-orbit .contact-3 {
-            --x: -155px;
-            --y: 15px;
-            --size: 50px;
-            --circle-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .contact-orbit .contact-4 {
-            --x: -145px;
-            --y: 80px;
-            --size: 58px;
-            --circle-color: rgba(0, 180, 255, 0.3);
-        }
-
-        .contact-orbit .contact-5 {
-            --x: -105px;
-            --y: 135px;
-            --size: 66px;
-            --circle-color: rgba(37, 211, 102, 0.3);
-        }
-
-        .circle-card,
-        .service-orbit-center,
-        .orbit-child {
-            border: 1px solid transparent;
-            background:
-                linear-gradient(145deg, rgba(4, 17, 42, 0.96), rgba(10, 9, 29, 0.96) 58%, rgba(30, 8, 48, 0.96)) padding-box,
-                linear-gradient(135deg, #12dfff, #526dff 52%, #e34cff) border-box;
-            box-shadow:
-                0 0 14px rgba(18, 223, 255, 0.16),
-                0 0 24px rgba(183, 62, 255, 0.12),
-                inset 0 0 18px rgba(66, 125, 255, 0.12);
-        }
-
-        .about-orbit .card-1,
-        .services-orbit .service-orbit-center,
-        .contact-orbit .card-3,
-        .projects-orbit .card-4 {
-            background:
-                linear-gradient(145deg, rgba(4, 17, 42, 0.96), rgba(10, 9, 29, 0.96) 58%, rgba(30, 8, 48, 0.96)) padding-box,
-                linear-gradient(135deg, #12dfff, #526dff 52%, #e34cff) border-box;
-        }
-
-        .circle-card,
-        .service-orbit-center {
-            text-shadow:
-                0 0 8px rgba(117, 227, 255, 0.72),
-                0 0 18px rgba(117, 91, 255, 0.45);
-        }
-
-        .circle-orbit:hover .orbit-child,
-        .circle-orbit:focus-within .orbit-child,
-        .circle-orbit.active .orbit-child {
-            opacity: 0.9;
-            pointer-events: auto;
-            transform:
-                translate(-50%, -50%)
-                translate(var(--x), var(--y))
-                scale(1);
-        }
-
-        .circle-card:hover,
-        .circle-card:focus-visible,
-        .circle-card:focus,
-        .service-orbit-center:hover,
-        .service-orbit-center:focus-visible,
-        .service-orbit-center:focus {
-            z-index: 4;
-            box-shadow:
-                0 0 24px rgba(18, 223, 255, 0.48),
-                0 0 48px rgba(183, 62, 255, 0.36),
-                inset 0 0 24px rgba(80, 137, 255, 0.22);
-            transform: scale(1.3);
-        }
-
-        .contact-orbit .card-3:hover,
-        .contact-orbit .card-3:focus-visible,
-        .contact-orbit .card-3:focus,
-        .projects-orbit .card-4:hover,
-        .projects-orbit .card-4:focus-visible,
-        .projects-orbit .card-4:focus {
-            transform: translate(-50%, -50%) scale(1.3);
-        }
-
-        .projects-orbit .card-4:hover,
-        .projects-orbit .card-4:focus-visible,
-        .projects-orbit .card-4:focus {
-            color: transparent;
-        }
-
-        .about-orbit .card-1:hover,
-        .about-orbit .card-1:focus-visible,
-        .about-orbit .card-1:focus {
-            color: transparent;
-        }
-
-        .about-orbit .card-1:hover::after,
-        .about-orbit .card-1:focus-visible::after,
-        .about-orbit .card-1:focus::after {
-            opacity: 1;
-        }
-
-        .contact-orbit .card-3:hover,
-        .contact-orbit .card-3:focus-visible,
-        .contact-orbit .card-3:focus {
-            color: transparent;
-        }
-
-        .contact-orbit .card-3:hover::after,
-        .contact-orbit .card-3:focus-visible::after,
-        .contact-orbit .card-3:focus::after {
-            opacity: 1;
-        }
-
-        .projects-orbit .card-4:hover::after,
-        .projects-orbit .card-4:focus-visible::after,
-        .projects-orbit .card-4:focus::after {
-            opacity: 1;
-        }
-
-        .about-orbit.active .card-1,
-        .contact-orbit.active .card-3,
-        .projects-orbit.active .card-4 {
-            transform: translate(-50%, -50%) scale(1.3);
-            color: transparent;
-        }
-
-        .services-orbit.active .service-orbit-center {
-            transform: scale(1.3);
-            color: transparent;
-        }
-
-        .about-orbit.active .card-1::after,
-        .services-orbit.active .service-orbit-center::after,
-        .contact-orbit.active .card-3::after,
-        .projects-orbit.active .card-4::after {
-            opacity: 1;
-        }
-
-        .circle-orbit .orbit-child:hover,
-        .circle-orbit .orbit-child:focus-visible {
-            z-index: 5;
-            outline: none;
-            opacity: 0.9;
-            box-shadow:
-                0 0 20px rgba(18, 223, 255, 0.42),
-                0 0 36px rgba(183, 62, 255, 0.28),
-                inset 0 0 20px rgba(80, 137, 255, 0.2);
-            transform:
-                translate(-50%, -50%)
-                translate(var(--x), var(--y))
-                scale(1.7);
-        }
-
-        .about-orbit .card-1,
-        .services-orbit .service-orbit-center,
-        .contact-orbit .card-3,
-        .projects-orbit .card-4 {
-            box-shadow:
-                0 0 14px rgba(18, 223, 255, 0.16),
-                0 0 24px rgba(183, 62, 255, 0.12),
-                inset 0 0 18px rgba(66, 125, 255, 0.12);
-        }
-
-        .about-orbit .card-1:hover,
-        .about-orbit .card-1:focus-visible,
-        .about-orbit .card-1:focus,
-        .services-orbit .service-orbit-center:hover,
-        .services-orbit .service-orbit-center:focus-visible,
-        .services-orbit .service-orbit-center:focus,
-        .contact-orbit .card-3:hover,
-        .contact-orbit .card-3:focus-visible,
-        .contact-orbit .card-3:focus,
-        .projects-orbit .card-4:hover,
-        .projects-orbit .card-4:focus-visible,
-        .projects-orbit .card-4:focus {
-            box-shadow:
-                0 0 24px rgba(18, 223, 255, 0.48),
-                0 0 48px rgba(183, 62, 255, 0.36),
-                inset 0 0 24px rgba(80, 137, 255, 0.22);
-        }
-
-        .contact-orbit .orbit-child i {
-            font-size: 18px;
-            line-height: 1;
-        }
-
-
-        /* =========================================================
-           CONTACT ICONS
-        ========================================================= */
-
-       
-
-
-        /* =========================================================
-           FLOAT ANIMATIONS
-        ========================================================= */
-
-        @keyframes float1 {
-
-            0%,
-            100% {
-
-                transform:
-                    translate3d(0, 0, 0);
-            }
-
-            50% {
-
-                transform:
-                    translate3d(
-                        20px,
-                        -30px,
-                        0
-                    );
-            }
-        }
-
-        @keyframes float2 {
-
-            0%,
-            100% {
-
-                transform:
-                    translate3d(0, 0, 0);
-            }
-
-            50% {
-
-                transform:
-                    translate3d(
-                        -18px,
-                        18px,
-                        0
-                    );
-            }
-        }
-
-
-        @keyframes float3 {
-
-            0%,
-            100% {
-
-                transform:
-                    translate3d(0, 0, 0);
-            }
-
-            50% {
-
-                transform:
-                    translate3d(
-                        25px,
-                        -20px,
-                        0
-                    );
-            }
-        }
-
-
-        @keyframes float4 {
-
-            0%,
-            100% {
-
-                transform:
-                    translate3d(0, 0, 0);
-            }
-
-            50% {
-
-                transform:
-                    translate3d(
-                        -20px,
-                        -25px,
-                        0
-                    );
-            }
-        }
-
-
-        /* =========================================================
            FOOTER
         ========================================================= */
 
@@ -1174,37 +577,6 @@
         ========================================================= */
 
         @media (max-width: 600px) {
-
-            .about-orbit .card-1:hover,
-            .about-orbit .card-1:focus-visible,
-            .about-orbit .card-1:focus,
-            .about-orbit.active .card-1,
-            .contact-orbit .card-3:hover,
-            .contact-orbit .card-3:focus-visible,
-            .contact-orbit .card-3:focus,
-            .contact-orbit.active .card-3,
-            .projects-orbit .card-4:hover,
-            .projects-orbit .card-4:focus-visible,
-            .projects-orbit .card-4:focus,
-            .projects-orbit.active .card-4 {
-                transform: translate(-50%, -50%) scale(1.15);
-            }
-
-            .services-orbit .service-orbit-center:hover,
-            .services-orbit .service-orbit-center:focus-visible,
-            .services-orbit .service-orbit-center:focus,
-            .services-orbit.active .service-orbit-center {
-                transform: scale(1.15);
-            }
-
-            .about-orbit .card-1::after,
-            .contact-orbit .card-3::after,
-            .projects-orbit .card-4::after,
-            .service-orbit-center::after {
-                inset: 8px;
-                font-size: 0.68rem;
-                line-height: 1.2;
-            }
 
             html,
             body {
@@ -1233,170 +605,934 @@
                     0.9rem 1rem;
             }
 
-            .about-orbit {
-                top: 4%;
-                left: calc(25% - 95px);
-                animation: mobile-orbit-float 5.5s ease-in-out infinite;
-            }
-
-            .services-orbit {
-                top: 5%;
-                right: calc(25% - 95px);
-                animation: mobile-orbit-float 6s ease-in-out infinite -1.5s;
-            }
-
-            .contact-orbit {
-                bottom: 18%;
-                left: calc(25% - 80px);
-                animation: mobile-orbit-float 6.5s ease-in-out infinite -3s;
-            }
-
-            .projects-orbit {
-                right: calc(25% - 89px);
-                bottom: 25%;
-                animation: mobile-orbit-float 5.8s ease-in-out infinite -4.5s;
-            }
-
-
-
-
-
             .hero-content {
                 width: min(78vw, 70dvh, 360px);
                 flex: 0 0 auto;
                 bottom: 50px;
             }
 
+        }
 
-            .service-orbit-menu {
-    
-                transform: translate(-50%, -50%);
+        .home-services-section {
+            position: relative;
+            padding: 6rem 1.5rem;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 12% 18%, rgba(18, 223, 255, 0.09), transparent 40%),
+                radial-gradient(ellipse at 88% 75%, rgba(227, 76, 255, 0.09), transparent 44%),
+                linear-gradient(145deg, #070910, #090b1c 58%, #100a20);
+        }
+
+        .home-services-inner {
+            width: min(100%, 1120px);
+            margin: 0 auto;
+        }
+
+        .home-services-intro {
+            max-width: 760px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .home-services-eyebrow {
+            margin: 0 0 0.8rem;
+            color: #8cefff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+        }
+
+        .home-services-intro h2 {
+            margin: 0 0 1.2rem;
+            color: #e9faff;
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            line-height: 1.15;
+            letter-spacing: 0.04rem;
+            text-shadow:
+                0 0 12px rgba(18, 223, 255, 0.35),
+                0 0 28px rgba(82, 109, 255, 0.22);
+        }
+
+        .home-services-intro .text-gradient {
+            color: #71eaff;
+            background: linear-gradient(105deg, #12dfff 0%, #8aa7ff 44%, #e34cff 82%, #12dfff 100%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .home-services-intro > p:last-child {
+            max-width: 680px;
+            margin: 0 auto;
+            color: rgba(241, 241, 241, 0.72);
+            font-size: clamp(1rem, 2vw, 1.12rem);
+            line-height: 1.8;
+        }
+
+        .home-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .home-service-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1.65rem;
+            border: 1px solid transparent;
+            border-radius: 22px;
+            background:
+                linear-gradient(145deg, rgba(4, 17, 42, 0.91), rgba(10, 9, 29, 0.93) 58%, rgba(30, 8, 48, 0.91)) padding-box,
+                linear-gradient(135deg, rgba(18, 223, 255, 0.52), rgba(82, 109, 255, 0.32) 52%, rgba(227, 76, 255, 0.48)) border-box;
+            box-shadow:
+                0 0 16px rgba(18, 223, 255, 0.07),
+                0 0 24px rgba(183, 62, 255, 0.06),
+                inset 0 0 22px rgba(66, 125, 255, 0.035);
+            transition: transform 280ms ease, box-shadow 280ms ease;
+        }
+
+        .home-service-card:nth-child(3n + 1) {
+            --reveal-delay: 0ms;
+        }
+
+        .home-service-card:nth-child(3n + 2) {
+            --reveal-delay: 80ms;
+        }
+
+        .home-service-card:nth-child(3n) {
+            --reveal-delay: 160ms;
+        }
+
+        html.scroll-reveal-ready .home-service-card:not(.is-visible) {
+            opacity: 0;
+            transform: translateX(-64px);
+        }
+
+        html.scroll-reveal-ready .home-service-card:nth-child(even):not(.is-visible) {
+            transform: translateX(64px);
+        }
+
+        html.scroll-reveal-ready .home-service-card {
+            transition:
+                opacity 650ms ease var(--reveal-delay),
+                transform 650ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay),
+                box-shadow 280ms ease;
+        }
+
+        html.scroll-reveal-ready .home-service-card.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .home-service-card:hover,
+        .home-service-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow:
+                0 0 22px rgba(18, 223, 255, 0.15),
+                0 0 34px rgba(183, 62, 255, 0.12),
+                inset 0 0 24px rgba(66, 125, 255, 0.07);
+        }
+
+        .home-service-icon {
+            width: 46px;
+            height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+            border: 1px solid rgba(140, 239, 255, 0.28);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(18, 223, 255, 0.14), rgba(139, 92, 246, 0.18));
+            color: #8cefff;
+            box-shadow: 0 0 18px rgba(18, 223, 255, 0.08);
+            font-size: 1.1rem;
+        }
+
+        .home-service-card h3 {
+            margin: 0 0 0.8rem;
+            color: #f1f7ff;
+            font-size: 1.15rem;
+            line-height: 1.35;
+        }
+
+        .home-service-card p {
+            margin: 0;
+            color: rgba(241, 241, 241, 0.72);
+            font-size: 0.96rem;
+            line-height: 1.75;
+        }
+
+        .home-service-more {
+            padding: 0;
+            border: 0;
+            background: none;
+            color: #8cefff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .home-service-more:hover,
+        .home-service-more:focus-visible {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-shadow: 0 0 12px rgba(18, 223, 255, 0.48);
+        }
+
+        @media (max-width: 900px) {
+            .home-services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+            .home-service-card {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 42px;
+                grid-template-areas:
+                    "title icon"
+                    "description description";
+                align-items: center;
+                column-gap: 0.75rem;
             }
 
-            .service-orbit-center {
-                width: 80px;
-                font-size: 0.8rem;
+            .home-service-card h3 {
+                grid-area: title;
+                margin: 0;
             }
 
-            .services-orbit .service-orbit-design {
-                --x: -64.1px;
-                --y: -37px;
+            .home-service-icon {
+                grid-area: icon;
+                width: 42px;
+                height: 42px;
+                justify-self: end;
+                margin: 0;
             }
 
-            .services-orbit .service-orbit-development {
-                --x: 0px;
-                --y: -74px;
+            .home-service-card p {
+                grid-area: description;
+                margin-top: 0.65rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .home-services-section {
+                padding: 4.25rem 1rem;
             }
 
-            .services-orbit .service-orbit-seo {
-                --x: 64.1px;
-                --y: -37px;
+            .home-services-intro {
+                margin-bottom: 2rem;
             }
 
-            .services-orbit .service-orbit-social {
-                --x: 64.1px;
-                --y: 37px;
+            .home-services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .services-orbit .service-orbit-ai {
-                --x: -64.1px;
-                --y: 37px;
-            }
-
-            .about-orbit .card-1 {
-                width: 80px;
-                height: 80px;
-            }
-
-            .about-orbit .about-approach {
-                --x: -64.1px;
-                --y: 37px;
-            }
-
-            .about-orbit .about-portfolio {
-                --x: 64.1px;
-                --y: -37px;
-            }
-
-            .about-orbit .about-pricing {
-                --x: 0px;
-                --y: 74px;
-            }
-
-            .contact-orbit .card-3,
-            .projects-orbit .card-4 {
-                width: 90px;
-                height: 90px;
-            }
-
-            .orbit-child {
-                --size: 44px;
-                font-size: 8px;
-            }
-
-            .projects-orbit .project-1 {
-                --x: -64.1px;
-                --y: -37px;
-            }
-
-            .projects-orbit .project-2 {
-                --x: -64.1px;
-                --y: 37px;
-            }
-
-            .projects-orbit .project-3 {
-                --x: 0px;
-                --y: 74px;
-            }
-
-            .projects-orbit .project-4 {
-                --x: 64.1px;
-                --y: -37px;
-            }
-
-            .contact-orbit .contact-1 {
-                --x: -64.1px;
-                --y: -37px;
-            }
-
-            .contact-orbit .contact-2 {
-                --x: -64.1px;
-                --y: 37px;
-            }
-
-            .contact-orbit .contact-3 {
-                --x: 0px;
-                --y: 74px;
-            }
-
-            .contact-orbit .contact-4 {
-                --x: 64.1px;
-                --y: 37px;
-            }
-
-            .contact-orbit .contact-5 {
-                --x: 64.1px;
-                --y: -37px;
-            }
-
-            .circle-orbit .orbit-child {
-                --size: 44px;
-            }
-
-            .contact-orbit .orbit-child i {
-                font-size: 14px;
+            .home-service-card {
+                padding: 1.35rem;
+                border-radius: 18px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .about-orbit,
-            .services-orbit,
-            .contact-orbit,
-            .projects-orbit {
-                animation: none;
+            .home-service-card {
+                transition: none !important;
+            }
+
+            html.scroll-reveal-ready .home-service-card:not(.is-visible) {
+                opacity: 1;
+                transform: none;
+            }
+
+            .home-service-card:hover,
+            .home-service-card:focus-within {
+                transform: none;
             }
         }
-    </style>
+
+        .text-gradient {
+            color: #71eaff;
+            background: linear-gradient(105deg, #12dfff 0%, #8aa7ff 44%, #e34cff 82%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-eyebrow {
+            margin: 0 0 0.8rem;
+            color: #72eaff;
+            font-size: 0.72rem;
+            line-height: 1.4;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .why-work-section,
+        .selected-projects-section {
+            padding: clamp(4.5rem, 8vw, 7.6rem) 1.5rem;
+            background:
+                radial-gradient(ellipse at 10% 50%, rgba(18, 223, 255, 0.055), transparent 45%),
+                linear-gradient(145deg, #050914 0%, #080d1c 52%, #070916 100%);
+        }
+
+        .why-work-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            gap: 2rem;
+            width: min(100%, 2000px);
+            margin: 0 auto;
+        }
+
+        .why-work-copy h2,
+        .selected-projects-heading h2 {
+            margin: 0 0 1.2rem;
+            color: #f4f7ff;
+            font-size: clamp(2.2rem, 4.5vw, 3.55rem);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+        }
+
+        .why-work-lead {
+            max-width: 560px;
+            margin: 0 0 1rem;
+            color: rgba(237, 242, 255, 0.84);
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .why-work-supporting {
+            max-width: 540px;
+            margin: 0 0 1.9rem;
+            color: rgba(220, 230, 249, 0.72);
+            line-height: 1.8;
+            font-size: 0.96rem;
+        }
+
+        .benefit-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.8rem;
+            max-width: 560px;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.65rem;
+            color: rgba(234, 240, 255, 0.82);
+            font-size: 0.78rem;
+            line-height: 1.45;
+        }
+
+        .benefit-icon {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(18, 223, 255, 0.28);
+            border-radius: 13px;
+            color: #8cefff;
+            background: linear-gradient(135deg, rgba(18, 223, 255, 0.1), rgba(139, 92, 246, 0.15));
+        }
+
+        .why-work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding-bottom: 0.42rem;
+            border-bottom: 1px solid rgba(18, 223, 255, 0.45);
+            color: #86ecff;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .why-work-section .why-work-chart {
+            width: calc(100% + 3rem);
+            max-width: none;
+            margin-inline: -1.5rem;
+            justify-self: center;
+        }
+
+        @media (min-width: 2100px) {
+            .why-work-inner {
+                grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+                gap: clamp(2.5rem, 4vw, 4rem);
+            }
+
+            .why-work-section .why-work-chart {
+                width: 100%;
+                margin-inline: 0;
+                justify-self: stretch;
+            }
+        }
+
+        .selected-projects-section {
+            padding-top: clamp(4.5rem, 7vw, 6.5rem);
+            padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
+            background:
+                radial-gradient(ellipse at 95% 8%, rgba(139, 92, 246, 0.085), transparent 38%),
+                linear-gradient(180deg, #070a16, #050914 70%, #070a16);
+        }
+
+        .selected-projects-inner {
+            width: min(100%, 1180px);
+            margin: 0 auto;
+        }
+
+        .selected-projects-heading {
+            margin-bottom: 2rem;
+        }
+
+        .selected-projects-heading h2 {
+            margin-bottom: 0.6rem;
+        }
+
+        .selected-projects-heading > p:last-child {
+            max-width: 720px;
+            margin: 0;
+            color: rgba(228, 237, 255, 0.72);
+            line-height: 1.75;
+        }
+
+        .project-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .showcase-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid rgba(75, 132, 255, 0.2);
+            border-radius: 17px;
+            background: linear-gradient(155deg, rgba(7, 17, 39, 0.96), rgba(6, 9, 25, 0.98));
+        }
+
+        .showcase-image {
+            display: block;
+            aspect-ratio: 1.5 / 1;
+        }
+
+        .showcase-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            box-shadow: none;
+            filter: none;
+            object-fit: cover;
+            object-position: center;
+            transform: none;
+            transition: none;
+        }
+
+        .showcase-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 260px;
+            padding: 1.1rem 1rem 1.2rem;
+        }
+
+        .project-kicker {
+            margin: 0 0 0.5rem;
+            color: #81eaff;
+            font-size: 0.61rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .showcase-content h3 {
+            margin: 0 0 0.55rem;
+            color: #f2f5ff;
+            font-size: 1.07rem;
+            line-height: 1.3;
+        }
+
+        .showcase-content h3 span {
+            color: #9a8cff;
+        }
+
+        .showcase-content > p:not(.project-kicker) {
+            flex: 1;
+            margin: 0 0 0.9rem;
+            color: rgba(228, 237, 255, 0.7);
+            font-size: 0.81rem;
+            line-height: 1.65;
+        }
+
+        .project-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag-row span {
+            padding: 0.3rem 0.48rem;
+            border: 1px solid rgba(128, 153, 255, 0.22);
+            border-radius: 999px;
+            background: rgba(85, 100, 190, 0.08);
+            color: rgba(225, 239, 255, 0.8);
+            font-size: 0.62rem;
+        }
+
+        .showcase-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #8cefff;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .showcase-link:focus-visible,
+        .showcase-link:hover {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        @media (max-width: 1050px) {
+            .project-showcase-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .showcase-content {
+                min-height: 225px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .why-work-section,
+            .selected-projects-section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .why-work-section .why-work-chart {
+                width: calc(100% + 2rem);
+                margin-inline: -1rem;
+            }
+
+            .project-showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .showcase-content {
+                min-height: 0;
+            }
+
+            .benefit-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+
+            .benefit-item {
+                flex-direction: row;
+                align-items: center;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+      .task-graphic {
+          width: 100%;
+          max-width: 1440px;
+          margin-inline: auto;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          background: transparent;
+      }
+
+      .task-graphic svg {
+          display: block;
+          width: 100%;
+          height: auto;
+          min-width: 0;
+      }
+
+      .monthly-allocation {
+          --ma-text: #f4f8ff;
+          --ma-muted: #b9c8e4;
+          box-sizing: border-box;
+          width: min(calc(100% - 32px), 1050px);
+          margin: 30px auto 48px;
+          padding: clamp(20px, 3.5vw, 34px);
+          border: 1px solid rgba(102, 145, 205, 0.28);
+          border-radius: 24px;
+          color: var(--ma-text);
+          background: linear-gradient(145deg, rgba(7, 19, 41, 0.62), rgba(5, 12, 27, 0.48));
+          box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.035);
+      }
+
+      .monthly-allocation *,
+      .monthly-allocation *::before,
+      .monthly-allocation *::after {
+          box-sizing: border-box;
+      }
+
+      .monthly-allocation__header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 18px;
+          margin-bottom: 10px;
+      }
+
+      .monthly-allocation__eyebrow {
+          margin: 0 0 7px;
+          color: #69e9fa;
+          font-size: 0.75rem;
+          font-weight: 750;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+      }
+
+      .monthly-allocation h2 {
+          margin: 0;
+          color: var(--ma-text);
+          font-size: clamp(1.45rem, 3vw, 2rem);
+          line-height: 1.15;
+          letter-spacing: -0.025em;
+      }
+
+      .monthly-allocation__total {
+          flex: 0 0 auto;
+          padding: 10px 13px;
+          border: 1px solid rgba(34, 211, 238, 0.36);
+          border-radius: 13px;
+          background: rgba(34, 211, 238, 0.07);
+          text-align: right;
+      }
+
+      .monthly-allocation__total strong,
+      .monthly-allocation__total span {
+          display: block;
+          white-space: nowrap;
+      }
+
+      .monthly-allocation__total strong {
+          color: #70f1ff;
+          font-size: 1.2rem;
+          line-height: 1.15;
+      }
+
+      .monthly-allocation__total span {
+          margin-top: 3px;
+          color: var(--ma-muted);
+          font-size: 0.7rem;
+      }
+
+      .monthly-allocation__intro {
+          max-width: 780px;
+          margin: 0 0 24px;
+          color: var(--ma-muted);
+          font-size: 0.94rem;
+          line-height: 1.65;
+      }
+
+      .monthly-allocation__items {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px 28px;
+      }
+
+      .monthly-allocation__item {
+          min-width: 0;
+      }
+
+      html.page-scroll-reveal-ready .page-scroll-reveal {
+          opacity: 0;
+          transition: opacity 560ms ease, transform 700ms cubic-bezier(0.22, 0.68, 0, 1);
+      }
+
+      html.page-scroll-reveal-ready .page-scroll-reveal--left {
+          transform: translateX(-36px);
+      }
+
+      html.page-scroll-reveal-ready .page-scroll-reveal--right {
+          transform: translateX(36px);
+      }
+
+      html.page-scroll-reveal-ready .page-scroll-reveal--up {
+          transform: translateY(24px);
+      }
+
+      html.page-scroll-reveal-ready .page-scroll-reveal.is-scroll-visible {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+      }
+
+      html.page-scroll-reveal-ready .project-showcase-grid .showcase-card:nth-child(2n) {
+          transition-delay: 80ms;
+      }
+
+      html.page-scroll-reveal-ready .project-showcase-grid .showcase-card:nth-child(3n) {
+          transition-delay: 150ms;
+      }
+
+      .monthly-allocation-reveal-ready .monthly-allocation__item {
+          opacity: 0;
+          transform: translateX(-72px);
+          transition: opacity 480ms ease, transform 680ms cubic-bezier(0.22, 0.68, 0, 1);
+      }
+
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(even) {
+          transform: translateX(72px);
+      }
+
+      .monthly-allocation-reveal-ready .monthly-allocation.is-scroll-visible .monthly-allocation__item {
+          opacity: 1;
+          transform: translateX(0);
+      }
+
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(1) { transition-delay: 0ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(2) { transition-delay: 55ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(3) { transition-delay: 110ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(4) { transition-delay: 165ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(5) { transition-delay: 220ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(6) { transition-delay: 275ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(7) { transition-delay: 330ms; }
+      .monthly-allocation-reveal-ready .monthly-allocation__item:nth-child(8) { transition-delay: 385ms; }
+
+      .monthly-allocation__row {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto auto;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 9px;
+      }
+
+      .monthly-allocation__name {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          min-width: 0;
+          color: #edf4ff;
+          font-size: 0.9rem;
+          font-weight: 620;
+          line-height: 1.35;
+      }
+
+      .monthly-allocation__dot {
+          flex: 0 0 9px;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: var(--item-color);
+          box-shadow: 0 0 9px color-mix(in srgb, var(--item-color), transparent 36%);
+      }
+
+      .monthly-allocation__hours {
+          color: #d9e5f8;
+          font-size: 0.84rem;
+          font-weight: 650;
+          white-space: nowrap;
+          font-variant-numeric: tabular-nums;
+      }
+
+      .monthly-allocation__percent {
+          width: 42px;
+          color: var(--item-color);
+          font-size: 0.85rem;
+          font-weight: 800;
+          text-align: right;
+          font-variant-numeric: tabular-nums;
+      }
+
+      .monthly-allocation__track {
+          height: 5px;
+          overflow: hidden;
+          border-radius: 999px;
+          background: rgba(156, 180, 218, 0.13);
+      }
+
+      .monthly-allocation__bar {
+          width: var(--item-percent);
+          height: 100%;
+          border-radius: inherit;
+          background: var(--item-color);
+          box-shadow: 0 0 12px color-mix(in srgb, var(--item-color), transparent 42%);
+      }
+
+      .monthly-allocation__note {
+          margin: 24px 0 0;
+          padding-top: 17px;
+          border-top: 1px solid rgba(134, 164, 211, 0.17);
+          color: #aebfdb;
+          font-size: 0.78rem;
+          line-height: 1.65;
+      }
+
+      .monthly-allocation__note strong {
+          color: #dce8fa;
+          font-weight: 650;
+      }
+
+      @media (max-width: 680px) {
+          .monthly-allocation {
+              width: calc(100% - 22px);
+              margin-top: 20px;
+              padding: 20px 16px;
+              border-radius: 18px;
+          }
+
+          .monthly-allocation__header {
+              gap: 10px;
+          }
+
+          .monthly-allocation__items {
+              grid-template-columns: minmax(0, 1fr);
+              gap: 16px;
+          }
+
+          .monthly-allocation__intro {
+              margin-bottom: 20px;
+              font-size: 0.9rem;
+          }
+
+          .monthly-allocation__row {
+              gap: 8px;
+          }
+
+          .monthly-allocation__name {
+              font-size: 0.86rem;
+          }
+
+          .monthly-allocation__hours,
+          .monthly-allocation__percent {
+              font-size: 0.8rem;
+          }
+
+          .monthly-allocation__total {
+              padding: 8px 9px;
+          }
+
+          .monthly-allocation__total strong {
+              font-size: 1.05rem;
+          }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+          .monthly-allocation__bar {
+              transform-origin: left center;
+              animation: monthlyAllocationGrow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+          }
+
+          @keyframes monthlyAllocationGrow {
+              from { transform: scaleX(0.6); opacity: 0.55; }
+              to { transform: scaleX(1); opacity: 1; }
+          }
+      }
+
+      /* Soft, task-coloured highlighting shared by each donut slice and its matching card. */
+  .task-slice, .task-card { cursor: pointer; outline: none; }
+  .task-slice {
+    transition: stroke-width 420ms cubic-bezier(.22,.61,.36,1), opacity 420ms ease, filter 420ms ease;
+  }
+  .task-card { transition: opacity 420ms ease, filter 420ms ease; }
+  .task-connector { transition: stroke-width 420ms ease, filter 420ms ease; }
+  .task-anchor > circle { transition: stroke 420ms ease, fill 420ms ease, stroke-width 420ms ease, filter 420ms ease; }
+  .task-mobile-connector { pointer-events: none; }
+  .task-card {
+    transition: opacity 320ms ease, filter 320ms ease;
+  }
+  .task-card.is-expanded {
+    filter: url(#chartShadow);
+    opacity: 1;
+    transition: none;
+  }
+  .task-card.is-expanded text {
+    font-size: 17px !important;
+    filter: none !important;
+    text-rendering: geometricPrecision;
+  }
+  .task-card.is-expanded text[font-size="26"] {
+    font-size: 24px !important;
+  }
+  .task-graphic svg.is-mobile-expanded .task-connector {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .task-card.is-expanded > rect:first-child {
+    stroke-width: 3px;
+  }
+
+  .task-slice.is-active {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-width: 5.4px !important;
+    animation: sliceColorPulse 2.8s ease-in-out infinite;
+  }
+  .task-card.is-active > rect:first-child {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-width: 2.9px !important;
+    animation: cardColorPulse 2.8s ease-in-out infinite;
+  }
+  .task-card.is-active > rect:nth-child(2) {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-opacity: .22 !important;
+  }
+  .task-card.is-active text {
+    filter: drop-shadow(0 0 2px var(--task-color, #16D9F5));
+  }
+  .task-connector.is-active {
+    stroke: var(--task-color, currentColor) !important;
+    stroke-width: 4.4px !important;
+    animation: connectorColorPulse 2.8s ease-in-out infinite;
+  }
+  .task-anchor.is-active > circle:first-child {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-width: 3.5px !important;
+    filter: drop-shadow(0 0 4px var(--task-color, #16D9F5));
+  }
+  .task-anchor.is-active > circle:last-child {
+    fill: var(--task-color, #16D9F5) !important;
+    filter: drop-shadow(0 0 3px var(--task-color, #16D9F5));
+  }
+  .task-slice:focus-visible {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-width: 5.8px !important;
+  }
+  .task-card:focus-visible > rect:first-child {
+    stroke: var(--task-color, #16D9F5) !important;
+    stroke-width: 3px !important;
+  }
+
+  @keyframes sliceColorPulse {
+    0%, 100% { filter: drop-shadow(0 0 2px var(--task-color)) drop-shadow(0 0 4px var(--task-color)); }
+    50% { filter: drop-shadow(0 0 3px var(--task-color)) drop-shadow(0 0 8px var(--task-color)); }
+  }
+  @keyframes cardColorPulse {
+    0%, 100% { stroke-opacity: .78; filter: drop-shadow(0 0 1px var(--task-color)); }
+    50% { stroke-opacity: 1; filter: drop-shadow(0 0 4px var(--task-color)); }
+  }
+  @keyframes connectorColorPulse {
+    0%, 100% { filter: drop-shadow(0 0 1px var(--task-color)); }
+    50% { filter: drop-shadow(0 0 4px var(--task-color)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .task-slice, .task-card, .task-connector, .task-anchor > circle { transition: none; }
+    .task-slice.is-active, .task-card.is-active > rect:first-child, .task-connector.is-active { animation: none; }
+  }
+
+        </style>
 
 </head>
 
@@ -1450,217 +1586,14 @@
 
 
         <!-- =====================================================
-             ABOUT
-        ===================================================== -->
-
-        <div class="circle-orbit about-orbit">
-            <a href="about.html" class="circle-card card-1">
-                <span>ABOUT</span>
-            </a>
-            <a href="pristup.html" class="orbit-child about-approach" style="--delay: 0ms">
-                Approach
-            </a>
-            <a href="portfolio.html" class="orbit-child about-portfolio" style="display: none; --delay: 45ms">
-                Portfolio
-            </a>
-            <a href="cennik.html" class="orbit-child about-pricing" style="display: none; --delay: 90ms">
-                Pricing
-            </a>
-        </div>
-
-
-        <!-- =====================================================
-             SERVICES
-        ===================================================== -->
-
-        <div class="circle-orbit services-orbit">
-
-            <nav class="service-orbit-menu" aria-label="Services">
-                <a href="services.html" class="service-orbit-center">
-                    Services
-                </a>
-                <a href="design.html" class="orbit-child service-orbit-design" style="--delay: 0ms">
-                    Design
-                </a>
-                <a href="development.html" class="orbit-child service-orbit-development" style="--delay: 35ms">
-                    Development
-                </a>
-                <a href="seo.html" class="orbit-child service-orbit-seo" style="--delay: 70ms">
-                    SEO
-                </a>
-                <a href="services.html" class="orbit-child service-orbit-social" style="--delay: 105ms">
-                    Social Media
-                </a>
-                <a href="AI.html" class="orbit-child service-orbit-ai" style="--delay: 140ms">
-                    AI implementation
-                </a>
-            </nav>
-
-        </div>
-
-
-        <!-- =====================================================
-             CONTACT
-        ===================================================== -->
-
-        <div class="circle-orbit contact-orbit">
-
-
-            <a
-                href="contact.html"
-                class="circle-card card-3">
-
-                <span>
-                    CONTACT
-                </span>
-
-            </a>
-
-
-            <!-- FACEBOOK -->
-
-            <a
-                href="#"
-                class="orbit-child contact-1"
-                aria-label="Facebook">
-
-                <i class="fab fa-facebook-f"></i>
-
-            </a>
-
-
-            <!-- INSTAGRAM -->
-
-            <a
-                href="#"
-                class="orbit-child contact-2"
-                aria-label="Instagram">
-
-                <i class="fab fa-instagram"></i>
-
-            </a>
-
-
-            <!-- EMAIL -->
-
-            <a
-                href="mailto:info@abcweb.ing"
-                class="orbit-child contact-3"
-                aria-label="Email">
-
-                <i class="fas fa-envelope"></i>
-
-            </a>
-
-
-            <!-- TELEPHONE -->
-
-            <a
-                href="tel:+44748608115"
-                class="orbit-child contact-4"
-                aria-label="Telephone">
-
-                <i class="fas fa-phone"></i>
-
-            </a>
-
-
-            <!-- WHATSAPP -->
-
-            <a
-                href="https://wa.me/44748608115"
-                class="orbit-child contact-5"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp">
-
-                <i class="fab fa-whatsapp"></i>
-
-            </a>
-
-
-        </div>
-
-
-        <!-- =====================================================
-             PROJECTS
-        ===================================================== -->
-
-        <div class="circle-orbit projects-orbit">
-
-
-            <a
-                href="projects.html"
-                class="circle-card card-4">
-
-                <span>
-                    PROJECTS
-                </span>
-
-            </a>
-
-
-            <!-- TATICLEAN -->
-
-            <a
-                href="https://taticlean.co.uk"
-                class="orbit-child project-1"
-                target="_blank"
-                rel="noopener">
-
-                TATICLEAN
-
-            </a>
-
-
-            <!-- ABCTIP -->
-
-            <a
-                href="https://abctip.sk"
-                class="orbit-child project-2"
-                target="_blank"
-                rel="noopener">
-
-                ABCTIP
-
-            </a>
-
-
-            <!-- KELTEX -->
-
-            <a
-                href="https://keltex.sk"
-                class="orbit-child project-3"
-                target="_blank"
-                rel="noopener">
-
-                KELTEX
-
-            </a>
-
-
-            <!-- WRAP & ROLL -->
-
-            <a
-                href="https://tryndalex.github.io/WrapAndRoll/"
-                class="orbit-child project-4">
-
-                WRAP&ROLL
-
-            </a>
-
-
-        </div>
-
-        <!-- =====================================================
              HERO CONTENT
         ===================================================== -->
 
-        <div class="hero-content">
+        <div class="hero-content page-scroll-reveal page-scroll-reveal--up">
             <img
                 class="hero-logo"
-                src="images/Neon%20Virtual%20Assistant%20VA%20Badge.png"
-                alt="Neon Virtual Assistant — websites, WordPress, bookings, Airbnb, IT support and AI workflows">
+                src="images/logova.png"
+                alt="ABCweb.ing Technical Virtual Assistant — websites, WordPress, bookings, Airbnb, IT support and AI workflows">
         </div>
 
 
@@ -1684,30 +1617,324 @@
                 id="animationControl"
                 class="animation-control"
                 type="button"
-                aria-label="Pause animation">
-                <i class="fas fa-pause"></i>
+                aria-label="Play animation">
+                <i class="fas fa-play"></i>
             </button>
         </div>
 
     </section>
 
-    <section id="about" class="about-section">
-        <div class="about-section-content">
-            <h2>About You</h2>
-            <h3>You Run the Business. I'll Help You Make It Work Better.</h3>
-            <p>
-                Running a business takes time, energy and the right technology. I help small business owners, 
-                entrepreneurs, local service providers and property managers simplify their 
-                daily operations through professional websites, 
-                technical support and virtual assistance.
-            </p>
-            <img src="images/Neon Virtual Assistant VA Badge.png" style="width: 150px; height: 150px;" alt="">
-            <p>Whether you need a new website, WordPress support, booking management, IT solutions or smarter AI-powered workflows,
-                 I'll help you spend less 
-                time on technical tasks and more time growing your business.
-            </p>
-            <span>Find out how I can help your business.</span> <br>
-            <br><a href="about.html" style="color: #00e5ff;">Explore My Services →</a>
+    <section id="services" class="home-services-section" aria-labelledby="home-services-title">
+        <div class="home-services-inner">
+            <div class="home-services-intro page-scroll-reveal page-scroll-reveal--up">
+                <p class="home-services-eyebrow">Services / Digital support</p>
+                <h2 id="home-services-title">How I Can Help Your <span class="text-gradient">Business</span></h2>
+                <p>
+                    Practical digital support to help you grow, stay organised and focus on what matters.
+                    From your website to the everyday tasks behind your business, get help that fits your needs.
+                </p>
+            </div>
+
+            <div class="home-services-grid">
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-code"></i></span>
+                    <h3>Web Development</h3>
+                    <p><span>Need a website that looks professional and works across devices? I create modern,</span><span hidden> responsive websites that present your business clearly and help turn visitors into enquiries.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></span>
+                    <h3>SEO &amp; Social Media</h3>
+                    <p><span>Want to be easier to find online? I help improve on-page and local SEO</span><span hidden>, strengthen website content and support a more consistent social media presence.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-screwdriver-wrench"></i></span>
+                    <h3>Website Management</h3>
+                    <p><span>Already have a website? Get help with content updates, routine</span><span hidden> maintenance, troubleshooting and improvements, without having to manage every detail yourself.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-list-check"></i></span>
+                    <h3>Virtual Assistant</h3>
+                    <p><span>Need an extra pair of hands? Get help with online research, organising information, routine</span><span hidden> administration and other agreed tasks that take time away from your priorities.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-laptop-code"></i></span>
+                    <h3>Technical Virtual Assistant</h3>
+                    <p><span>Get practical help with website platforms, booking systems, software setup</span><span hidden>, integrations and technical tasks that are slowing your business down.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+
+                <article class="home-service-card">
+                    <span class="home-service-icon" aria-hidden="true"><i class="fas fa-house-chimney"></i></span>
+                    <h3>Airbnb &amp; Rental Support</h3>
+                    <p><span>Spend less time on the digital side of hosting. Get help with listing</span><span hidden> updates, guest communication, booking administration and other routine online tasks.</span> <button class="home-service-more" type="button" aria-expanded="false">... more</button></p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-work-section" aria-labelledby="why-work-title">
+        <div class="why-work-inner">
+            <div class="why-work-copy page-scroll-reveal page-scroll-reveal--left">
+                <p class="section-eyebrow">Why work with me</p>
+                <h2 id="why-work-title">More time for the <span class="text-gradient">things that matter.</span></h2>
+                <p class="why-work-lead">
+                    Running a business already asks a lot of you. Practical help with your digital work can mean fewer loose ends, less time spent troubleshooting and more room to focus on your customers.
+                </p>
+                <p class="why-work-supporting">
+                    Choose the support you need — one task, ongoing assistance or help improving the way your online work gets done.
+                </p>
+
+                <div class="benefit-row" aria-label="Benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon"><i class="far fa-clock" aria-hidden="true"></i></span>
+                        <span>Practical<br>solutions</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon"><i class="fas fa-handshake-angle" aria-hidden="true"></i></span>
+                        <span>Flexible<br>support</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+                        <span>Focus on<br>your business</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                        <span>Modern<br>tools &amp; AI</span>
+                    </div>
+                </div>
+                <a href="about.html" class="why-work-link">A little more about me <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="why-work-chart task-graphic page-scroll-reveal page-scroll-reveal--right" aria-label="Small business tasks chart">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 1020" role="group" aria-labelledby="graphic-title graphic-desc" aria-label="Interactive small business tasks chart">
+<title id="graphic-title">Small business tasks a Technical Virtual Assistant can help with</title>
+<desc id="graphic-desc">A neon cyan-to-magenta donut chart with eight business task categories and percentage shares, styled to match the supplied VA logo. The percentages are examples, not universal industry statistics.</desc>
+<defs>
+  <linearGradient id="rim" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="0" stop-color="#00F5FF"/><stop offset="0.24" stop-color="#17CFFF"/><stop offset="0.48" stop-color="#397BFF"/><stop offset="0.72" stop-color="#B23CFF"/><stop offset="1" stop-color="#FF36D9"/></linearGradient>
+  <radialGradient id="hole" cx="35%" cy="25%" r="90%"><stop offset="0" stop-color="#132348"/><stop offset="0.68" stop-color="#081329"/><stop offset="1" stop-color="#030917"/></radialGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#176BFF" stop-opacity="0.16"/><stop offset="0.62" stop-color="#593CFF" stop-opacity="0.07"/><stop offset="1" stop-color="#030917" stop-opacity="0"/></radialGradient>
+  <filter id="softGlow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="13"/></filter>
+  <filter id="ringBloom" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5.5"/></filter>
+  <filter id="segmentBloom" x="-18%" y="-18%" width="136%" height="136%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blurAlpha"/><feFlood flood-color="#3C7CFF" flood-opacity="0.42" result="glowColor"/><feComposite in="glowColor" in2="blurAlpha" operator="in" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="chartShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="11" stdDeviation="11" flood-color="#030817" flood-opacity="0.43"/></filter>
+  <filter id="cardShadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#020716" flood-opacity="0.22"/></filter>
+  <linearGradient id="g-website" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#70FFFF"/><stop offset="0.56" stop-color="#20DFFF"/><stop offset="1" stop-color="#168CFF"/></linearGradient>
+  <linearGradient id="g-social" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9DB4FF"/><stop offset="0.52" stop-color="#6876FF"/><stop offset="1" stop-color="#714AFF"/></linearGradient>
+  <linearGradient id="g-it" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F58AFF"/><stop offset="0.6" stop-color="#DE59FF"/><stop offset="1" stop-color="#A538E8"/></linearGradient>
+  <linearGradient id="g-bookings" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA6E9"/><stop offset="0.55" stop-color="#FF65D7"/><stop offset="1" stop-color="#D83AAE"/></linearGradient>
+  <linearGradient id="g-automation" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#91FFE1"/><stop offset="0.55" stop-color="#3AEBCB"/><stop offset="1" stop-color="#10B6A2"/></linearGradient>
+  <linearGradient id="g-customer" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8AF0FF"/><stop offset="0.55" stop-color="#43CAFF"/><stop offset="1" stop-color="#288EFF"/></linearGradient>
+  <linearGradient id="g-finance" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF7C2"/><stop offset="0.6" stop-color="#FFDA72"/><stop offset="1" stop-color="#F5A936"/></linearGradient>
+  <linearGradient id="g-planning" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3F5FF"/><stop offset="1" stop-color="#B0C4F4"/></linearGradient>
+
+  <filter id="activeSegmentGlow" x="-45%" y="-45%" width="190%" height="190%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/>
+    <feFlood flood-color="#FFFFFF" flood-opacity="0.78" result="glowColor"/>
+    <feComposite in="glowColor" in2="blur" operator="in" result="glow"/>
+    <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="activeOutlineGlow" x="-30%" y="-45%" width="160%" height="190%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+    <feFlood flood-color="#FFFFFF" flood-opacity="0.8" result="glowColor"/>
+    <feComposite in="glowColor" in2="blur" operator="in" result="glow"/>
+    <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<path class="task-connector" data-task="website" d="M 900 315 L 970 315 L 1007 270 L 1035 245" fill="none" stroke="#16D9F5" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="social" d="M 926 645 L 980 645 L 1017 596 L 1050 565" fill="none" stroke="#6A68FF" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="it" d="M 680 747 L 740 790 L 890 790 L 985 855" fill="none" stroke="#CF49FF" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="bookings" d="M 493 612 L 455 700 L 450 790 L 500 835" fill="none" stroke="#F345C5" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="automation" d="M 478 416 L 430 430 L 400 575 L 375 650" fill="none" stroke="#20D5B0" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="customer" d="M 550 305 L 470 305 L 410 345 L 366 397" fill="none" stroke="#25B8FF" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="finance" d="M 657 248 L 520 248 L 420 225 L 355 225" fill="none" stroke="#FFC85C" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="task-connector" data-task="planning" d="M 699 240 L 699 185 L 664 155 L 620 135" fill="none" stroke="#B4C3E4" stroke-opacity="0.98" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="task-donut" filter="url(#chartShadow)">
+<circle id="donut-border-glow" cx="720" cy="495" r="255" fill="none" stroke="url(#rim)" stroke-width="13" opacity="0.7" filter="url(#ringBloom)"/>
+<path id="slice-website" class="task-slice" data-task="website" tabindex="0" role="button" aria-label="Website and online presence, 25 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 720 240 A 255 255 0 0 1 975 495 L 870 495 A 150 150 0 0 0 720 345 Z" fill="url(#g-website)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-social" class="task-slice" data-task="social" tabindex="0" role="button" aria-label="Social media and content, 20 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 975 495 A 255 255 0 0 1 798.8 737.52 L 766.35 637.66 A 150 150 0 0 0 870 495 Z" fill="url(#g-social)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-it" class="task-slice" data-task="it" tabindex="0" role="button" aria-label="IT support, 15 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 798.8 737.52 A 255 255 0 0 1 570.11 701.3 L 631.83 616.35 A 150 150 0 0 0 766.35 637.66 Z" fill="url(#g-it)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-bookings" class="task-slice" data-task="bookings" tabindex="0" role="button" aria-label="Bookings and admin, 15 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 570.11 701.3 A 255 255 0 0 1 465 495 L 570 495 A 150 150 0 0 0 631.83 616.35 Z" fill="url(#g-bookings)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-automation" class="task-slice" data-task="automation" tabindex="0" role="button" aria-label="AI and automation, 10 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 465 495 A 255 255 0 0 1 513.7 345.11 L 598.65 406.83 A 150 150 0 0 0 570 495 Z" fill="url(#g-automation)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-customer" class="task-slice" data-task="customer" tabindex="0" role="button" aria-label="Customer support, 7 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 513.7 345.11 A 255 255 0 0 1 597.15 271.54 L 647.74 363.55 A 150 150 0 0 0 598.65 406.83 Z" fill="url(#g-customer)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-finance" class="task-slice" data-task="finance" tabindex="0" role="button" aria-label="Finance and invoicing, 5 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 597.15 271.54 A 255 255 0 0 1 672.22 244.52 L 691.89 347.66 A 150 150 0 0 0 647.74 363.55 Z" fill="url(#g-finance)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<path id="slice-planning" class="task-slice" data-task="planning" tabindex="0" role="button" aria-label="Planning and strategy, 3 percent" aria-pressed="false" filter="url(#segmentBloom)" d="M 672.22 244.52 A 255 255 0 0 1 720 240 L 720 345 A 150 150 0 0 0 691.89 347.66 Z" fill="url(#g-planning)" stroke="#07132A" stroke-width="4" stroke-linejoin="round"/>
+<circle id="donut-brand-rim" cx="720" cy="495" r="255" fill="none" stroke="url(#rim)" stroke-width="4.8" opacity="1"/>
+<circle cx="720" cy="495" r="252.5" fill="none" stroke="#DDFBFF" stroke-width="1.15" opacity="0.72"/>
+<circle cx="720" cy="495" r="150" fill="url(#hole)" stroke="#233967" stroke-width="2.5"/>
+<circle cx="720" cy="495" r="139" fill="none" stroke="#14264B" stroke-width="1.5"/>
+</g>
+<g id="chart-centre" text-anchor="middle">
+  <text x="720" y="458" fill="#C4D8FF" font-family="Inter,Arial,sans-serif" font-size="15.5" font-weight="750" letter-spacing="1.9">SMALL BUSINESS</text>
+  <text x="720" y="493" fill="#FFFFFF" font-family="Inter,Arial,sans-serif" font-size="26.5" font-weight="850" letter-spacing="0.15">TASKS I CAN</text>
+  <text x="720" y="526" fill="#FFFFFF" font-family="Inter,Arial,sans-serif" font-size="26.5" font-weight="850" letter-spacing="0.15">HELP WITH</text>
+  <rect x="664" y="545" width="112" height="4.5" rx="2.25" fill="url(#rim)"/>
+</g>
+<g id="anchor-website" class="task-anchor" data-task="website" aria-hidden="true"><circle cx="900" cy="315" r="10" fill="#06132A" stroke="#16D9F5" stroke-width="3"/><circle cx="900" cy="315" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-social" class="task-anchor" data-task="social" aria-hidden="true"><circle cx="926" cy="645" r="10" fill="#06132A" stroke="#6A68FF" stroke-width="3"/><circle cx="926" cy="645" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-it" class="task-anchor" data-task="it" aria-hidden="true"><circle cx="680" cy="747" r="10" fill="#06132A" stroke="#CF49FF" stroke-width="3"/><circle cx="680" cy="747" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-bookings" class="task-anchor" data-task="bookings" aria-hidden="true"><circle cx="493" cy="612" r="10" fill="#06132A" stroke="#F345C5" stroke-width="3"/><circle cx="493" cy="612" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-automation" class="task-anchor" data-task="automation" aria-hidden="true"><circle cx="478" cy="416" r="10" fill="#06132A" stroke="#20D5B0" stroke-width="3"/><circle cx="478" cy="416" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-customer" class="task-anchor" data-task="customer" aria-hidden="true"><circle cx="550" cy="305" r="10" fill="#06132A" stroke="#25B8FF" stroke-width="3"/><circle cx="550" cy="305" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-finance" class="task-anchor" data-task="finance" aria-hidden="true"><circle cx="657" cy="248" r="10" fill="#06132A" stroke="#FFC85C" stroke-width="3"/><circle cx="657" cy="248" r="3.6" fill="#FFFFFF"/></g>
+<g id="anchor-planning" class="task-anchor" data-task="planning" aria-hidden="true"><circle cx="699" cy="240" r="10" fill="#06132A" stroke="#B4C3E4" stroke-width="3"/><circle cx="699" cy="240" r="3.6" fill="#FFFFFF"/></g>
+<g id="task-website" class="task-card" data-task="website" tabindex="0" role="button" aria-label="Website and online presence, 25 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="1035" y="160" width="365" height="112" rx="20" fill="#071329" fill-opacity="0.96" stroke="#16D9F5" stroke-opacity="0.96" stroke-width="2.2"/><rect x="1036.5" y="161.5" width="362" height="109" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="1063" cy="216.0" r="23" fill="#16D9F5" fill-opacity="0.10" stroke="#16D9F5" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(1042,195.0)" style="color:#16D9F5"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="39" height="31" rx="4"/><path d="M3 13h38"/><circle cx="8" cy="9" r=".8" fill="currentColor"/><circle cx="13" cy="9" r=".8" fill="currentColor"/><circle cx="18" cy="9" r=".8" fill="currentColor"/><path d="M10 22h14M10 28h9M29 21l7 7-4 1-2 4z"/></g></g><text x="1097" y="192" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="16.2" font-weight="720">Website &amp; online</text><text x="1097" y="211" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="16.2" font-weight="720">presence</text><text x="1097" y="238" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Updates, security, content, SEO basics</text><text x="1383" y="196" text-anchor="end" fill="#16D9F5" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">25%</text></g>
+<g id="task-social" class="task-card" data-task="social" tabindex="0" role="button" aria-label="Social media and content, 20 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="1050" y="510" width="355" height="106" rx="20" fill="#071329" fill-opacity="0.96" stroke="#6A68FF" stroke-opacity="0.96" stroke-width="2.2"/><rect x="1051.5" y="511.5" width="352" height="103" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="1078" cy="563.0" r="23" fill="#6A68FF" fill-opacity="0.10" stroke="#6A68FF" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(1057,542.0)" style="color:#6A68FF"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="22" r="5"/><circle cx="33" cy="10" r="5"/><circle cx="33" cy="34" r="5"/><path d="M14.5 19.5 28.5 12.5M14.5 24.5 28.5 31.5"/></g></g><text x="1112" y="549" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Social media &amp; content</text><text x="1112" y="576" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Posts, scheduling, page updates</text><text x="1388" y="546" text-anchor="end" fill="#6A68FF" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">20%</text></g>
+<g id="task-it" class="task-card" data-task="it" tabindex="0" role="button" aria-label="IT support, 15 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="985" y="815" width="415" height="108" rx="20" fill="#071329" fill-opacity="0.96" stroke="#CF49FF" stroke-opacity="0.96" stroke-width="2.2"/><rect x="986.5" y="816.5" width="412" height="105" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="1013" cy="869.0" r="23" fill="#CF49FF" fill-opacity="0.10" stroke="#CF49FF" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(992,848.0)" style="color:#CF49FF"><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M27 7a11 11 0 0 0-13.5 13.5L5 29l10 10 8.5-8.5A11 11 0 0 0 37 17l-7 7-7-7z"/><path d="m11 33 4 4"/></g></g><text x="1047" y="854" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">IT support</text><text x="1047" y="881" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Devices, software, troubleshooting</text><text x="1383" y="851" text-anchor="end" fill="#CF49FF" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">15%</text></g>
+<g id="task-bookings" class="task-card" data-task="bookings" tabindex="0" role="button" aria-label="Bookings and admin, 15 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="380" y="835" width="380" height="108" rx="20" fill="#071329" fill-opacity="0.96" stroke="#F345C5" stroke-opacity="0.96" stroke-width="2.2"/><rect x="381.5" y="836.5" width="377" height="105" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="408" cy="889.0" r="23" fill="#F345C5" fill-opacity="0.10" stroke="#F345C5" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(387,868.0)" style="color:#F345C5"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="36" height="31" rx="4"/><path d="M4 17h36M13 4v8M31 4v8M12 24h4M22 24h4M32 24h1M12 31h4M22 31h4"/></g></g><text x="442" y="874" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Bookings &amp; admin</text><text x="442" y="901" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Calendars, forms, routine admin</text><text x="743" y="871" text-anchor="end" fill="#F345C5" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">15%</text></g>
+<g id="task-automation" class="task-card" data-task="automation" tabindex="0" role="button" aria-label="AI and automation, 10 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="20" y="620" width="355" height="110" rx="20" fill="#071329" fill-opacity="0.96" stroke="#20D5B0" stroke-opacity="0.96" stroke-width="2.2"/><rect x="21.5" y="621.5" width="352" height="107" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="48" cy="675.0" r="23" fill="#20D5B0" fill-opacity="0.10" stroke="#20D5B0" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(27,654.0)" style="color:#20D5B0"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="26" height="26" rx="5"/><path d="M15 3v6M22 3v6M29 3v6M15 35v6M22 35v6M29 35v6M3 15h6M3 22h6M3 29h6M35 15h6M35 22h6M35 29h6"/><text x="22" y="26" text-anchor="middle" stroke="none" fill="currentColor" font-family="Arial,sans-serif" font-weight="800" font-size="11">AI</text></g></g><text x="82" y="659" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">AI &amp; automation</text><text x="82" y="686" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Workflows, integrations, setup</text><text x="358" y="656" text-anchor="end" fill="#20D5B0" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">10%</text></g>
+<g id="task-customer" class="task-card" data-task="customer" tabindex="0" role="button" aria-label="Customer support, 7 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="18" y="367" width="348" height="104" rx="20" fill="#071329" fill-opacity="0.96" stroke="#25B8FF" stroke-opacity="0.96" stroke-width="2.2"/><rect x="19.5" y="368.5" width="345" height="101" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="46" cy="419.0" r="23" fill="#25B8FF" fill-opacity="0.10" stroke="#25B8FF" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(25,398.0)" style="color:#25B8FF"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h27a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5H18l-8 6v-6a5 5 0 0 1-5-5z"/><circle cx="14" cy="19" r="1.2" fill="currentColor"/><circle cx="21" cy="19" r="1.2" fill="currentColor"/><circle cx="28" cy="19" r="1.2" fill="currentColor"/></g></g><text x="80" y="406" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Customer support</text><text x="80" y="433" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Replies, FAQs, follow-ups</text><text x="349" y="403" text-anchor="end" fill="#25B8FF" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">7%</text></g>
+<g id="task-finance" class="task-card" data-task="finance" tabindex="0" role="button" aria-label="Finance and invoicing, 5 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="25" y="174" width="330" height="103" rx="20" fill="#071329" fill-opacity="0.96" stroke="#FFC85C" stroke-opacity="0.96" stroke-width="2.2"/><rect x="26.5" y="175.5" width="327" height="100" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="53" cy="225.5" r="23" fill="#FFC85C" fill-opacity="0.10" stroke="#FFC85C" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(32,204.5)" style="color:#FFC85C"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h20l8 8v28H8z"/><path d="M28 4v9h8M14 20h16M14 26h11"/><text x="21" y="36" text-anchor="middle" stroke="none" fill="currentColor" font-family="Arial,sans-serif" font-weight="800" font-size="13">£</text></g></g><text x="87" y="213" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Finance &amp; invoicing</text><text x="87" y="240" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Invoices, receipts, basic admin</text><text x="338" y="210" text-anchor="end" fill="#FFC85C" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">5%</text></g>
+<g id="task-planning" class="task-card" data-task="planning" tabindex="0" role="button" aria-label="Planning and strategy, 3 percent" aria-pressed="false" filter="url(#cardShadow)"><rect x="365" y="40" width="315" height="95" rx="20" fill="#071329" fill-opacity="0.96" stroke="#B4C3E4" stroke-opacity="0.96" stroke-width="2.2"/><rect x="366.5" y="41.5" width="312" height="92" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/><circle cx="393" cy="87.5" r="23" fill="#B4C3E4" fill-opacity="0.10" stroke="#B4C3E4" stroke-opacity="0.55" stroke-width="1.4"/><g transform="translate(372,66.5)" style="color:#B4C3E4"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="23" r="16"/><circle cx="21" cy="23" r="9"/><circle cx="21" cy="23" r="2.4"/><path d="M22 22 38 6M30 6h8v8"/></g></g><text x="427" y="79" fill="#F4F8FF" font-family="Inter,Arial,sans-serif" font-size="17.2" font-weight="720">Planning &amp; strategy</text><text x="427" y="106" fill="#B9C8E4" font-family="Inter,Arial,sans-serif" font-size="12.4" font-weight="450">Goals, priorities, decisions</text><text x="663" y="76" text-anchor="end" fill="#B4C3E4" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="850">3%</text></g>
+</svg>
+                <section class="monthly-allocation" aria-labelledby="monthly-allocation-title">
+                    <div class="monthly-allocation__header">
+                        <div>
+                            <p class="monthly-allocation__eyebrow">Technical Virtual Assistant</p>
+                            <h2 id="monthly-allocation-title">Monthly Support Allocation</h2>
+                        </div>
+                        <div class="monthly-allocation__total" aria-label="20 hours per month">
+                            <strong>20 hours</strong>
+                            <span>per month</span>
+                        </div>
+                    </div>
+                    <p class="monthly-allocation__intro">Illustrative example of how tasks could be allocated in a 20-hour monthly TVA package. Every business and project is different, so support is tailored to your needs. Times are rounded to the nearest half hour.</p>
+                    <div class="monthly-allocation__items">
+                        <div class="monthly-allocation__item" style="--item-color:#16D9F5; --item-percent:25%" aria-label="Website and online presence: 5 hours, 25 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Website &amp; online presence</span></div>
+                                <span class="monthly-allocation__hours">5 hours</span>
+                                <span class="monthly-allocation__percent">25%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#6A68FF; --item-percent:20%" aria-label="Social media and content: 4 hours, 20 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Social media &amp; content</span></div>
+                                <span class="monthly-allocation__hours">4 hours</span>
+                                <span class="monthly-allocation__percent">20%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#CF49FF; --item-percent:15%" aria-label="IT support: 3 hours, 15 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>IT support</span></div>
+                                <span class="monthly-allocation__hours">3 hours</span>
+                                <span class="monthly-allocation__percent">15%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#F345C5; --item-percent:15%" aria-label="Bookings and admin: 3 hours, 15 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Bookings &amp; admin</span></div>
+                                <span class="monthly-allocation__hours">3 hours</span>
+                                <span class="monthly-allocation__percent">15%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#20D5B0; --item-percent:10%" aria-label="AI and automation: 2 hours, 10 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>AI &amp; automation</span></div>
+                                <span class="monthly-allocation__hours">2 hours</span>
+                                <span class="monthly-allocation__percent">10%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#25B8FF; --item-percent:7%" aria-label="Customer support: 1 hour 30 minutes, 7 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Customer support</span></div>
+                                <span class="monthly-allocation__hours">1 hr 30 min</span>
+                                <span class="monthly-allocation__percent">7%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#FFC85C; --item-percent:5%" aria-label="Finance and invoicing: 1 hour, 5 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Finance &amp; invoicing</span></div>
+                                <span class="monthly-allocation__hours">1 hour</span>
+                                <span class="monthly-allocation__percent">5%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                        <div class="monthly-allocation__item" style="--item-color:#B4C3E4; --item-percent:3%" aria-label="Planning and strategy: 30 minutes, 3 percent">
+                            <div class="monthly-allocation__row">
+                                <div class="monthly-allocation__name"><span class="monthly-allocation__dot" aria-hidden="true"></span><span>Planning &amp; strategy</span></div>
+                                <span class="monthly-allocation__hours">30 min</span>
+                                <span class="monthly-allocation__percent">3%</span>
+                            </div>
+                            <div class="monthly-allocation__track" aria-hidden="true"><div class="monthly-allocation__bar"></div></div>
+                        </div>
+                    </div>
+                    <p class="monthly-allocation__note"><strong>Illustrative figures only.</strong> The hours and percentages show one possible allocation of a 20-hour monthly package, not a fixed plan or a guarantee of time savings. Your allocation can be adjusted to your agreed priorities.</p>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section id="latest-work" class="selected-projects-section" aria-labelledby="latest-work-title">
+        <div class="selected-projects-inner">
+            <div class="selected-projects-heading page-scroll-reveal page-scroll-reveal--up">
+                <p class="section-eyebrow">Selected projects</p>
+                <h2 id="latest-work-title">Latest <span class="text-gradient">Work</span></h2>
+                <p>A selection of websites and digital projects built around different businesses, audiences and goals.</p>
+            </div>
+
+            <div class="project-showcase-grid">
+                <article class="showcase-card page-scroll-reveal page-scroll-reveal--left">
+                    <a class="showcase-image" href="https://taticlean.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Tati Cleaning website">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Bright, clean home interior representing Tati Cleaning" loading="lazy" decoding="async">
+                    </a>
+                    <div class="showcase-content">
+                        <p class="project-kicker">UK business website</p>
+                        <h3>Tati Cleaning</h3>
+                        <p>A clear, welcoming online presence for a professional cleaning company serving Reading and nearby areas.</p>
+                        <div class="project-tag-row"><span>Web Development</span><span>Local SEO</span></div>
+                        <a class="showcase-link" href="https://taticlean.co.uk/" target="_blank" rel="noopener noreferrer">Visit website <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="showcase-card page-scroll-reveal page-scroll-reveal--right">
+                    <a class="showcase-image" href="https://abctip.sk/" target="_blank" rel="noopener noreferrer" aria-label="Visit ABCtip website">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Laptop and digital learning workspace representing ABCtip" loading="lazy" decoding="async">
+                    </a>
+                    <div class="showcase-content">
+                        <p class="project-kicker">Digital learning project</p>
+                        <h3>ABC tip</h3>
+                        <p>A Slovak online project focused on useful information and helping people feel more confident with digital skills.</p>
+                        <div class="project-tag-row"><span>Web Development</span><span>Content</span></div>
+                        <a class="showcase-link" href="https://abctip.sk/" target="_blank" rel="noopener noreferrer">Visit website <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="showcase-card page-scroll-reveal page-scroll-reveal--left">
+                    <a class="showcase-image" href="https://keltex.sk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Keltex website">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Contemporary house exterior representing Keltex construction" loading="lazy" decoding="async">
+                    </a>
+                    <div class="showcase-content">
+                        <p class="project-kicker">Construction company</p>
+                        <h3>Keltex</h3>
+                        <p>A modern web presence for a construction business, designed to present its services clearly and professionally.</p>
+                        <div class="project-tag-row"><span>Web Development</span><span>SEO</span></div>
+                        <a class="showcase-link" href="https://keltex.sk/" target="_blank" rel="noopener noreferrer">Visit website <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="showcase-card page-scroll-reveal page-scroll-reveal--right">
+                    <a class="showcase-image" href="https://tryndalex.github.io/WrapAndRoll/" target="_blank" rel="noopener noreferrer" aria-label="View Wrap and Roll website concept">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A bowl of Asian noodles representing the Wrap and Roll restaurant concept" loading="lazy" decoding="async">
+                    </a>
+                    <div class="showcase-content">
+                        <p class="project-kicker">Restaurant website concept</p>
+                        <h3>Wrap <span>&amp;</span> Roll</h3>
+                        <p>A food-led website concept for a Vietnamese kitchen in Helsinki, built around atmosphere, menu content and restaurant storytelling.</p>
+                        <div class="project-tag-row"><span>Creative Design</span><span>In progress</span></div>
+                        <a class="showcase-link" href="https://tryndalex.github.io/WrapAndRoll/" target="_blank" rel="noopener noreferrer">View project <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -1717,7 +1944,7 @@
          FOOTER
     ========================================================= -->
 
-    <footer class="footer">
+    <footer class="footer page-scroll-reveal page-scroll-reveal--up">
 
         <p>
             © 2026 ABCweb.ing. All rights reserved.
@@ -1732,15 +1959,6 @@
 
     <script>
 
-        /*
-         * Všetky tri skupiny:
-         * SERVICES
-         * PROJECTS
-         * CONTACT
-         */
-
-        const orbits = document.querySelectorAll('.circle-orbit');
-        let touchInput = window.matchMedia('(hover: none)').matches;
         const mobileViewport = window.matchMedia('(max-width: 600px)');
         const heroLogo = document.querySelector('.hero-logo');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -1752,8 +1970,16 @@
             logoTilt.targetX = 0;
             logoTilt.targetY = 0;
             logoTilt.targetScale = 1;
-            if (!reduceMotion.matches) {
+            if (!reduceMotion.matches &&
+                document.documentElement.dataset.backgroundMode === 'full') {
                 requestHeroLogoTiltFrame();
+            } else {
+                logoTilt.currentX = 0;
+                logoTilt.currentY = 0;
+                logoTilt.currentScale = 1;
+                heroLogo.style.setProperty('--tilt-x', '0deg');
+                heroLogo.style.setProperty('--tilt-y', '0deg');
+                heroLogo.style.setProperty('--tilt-scale', '1');
             }
         }
 
@@ -1790,7 +2016,8 @@
         }
 
         heroLogo.addEventListener('pointermove', (event) => {
-            if (reduceMotion.matches) {
+            if (reduceMotion.matches ||
+                document.documentElement.dataset.backgroundMode !== 'full') {
                 return;
             }
 
@@ -1829,40 +2056,7 @@
             }
         });
 
-        document.addEventListener('pointerdown', (event) => {
-            touchInput =
-                event.pointerType === 'touch' ||
-                window.matchMedia('(hover: none)').matches;
-        });
-
-        document.addEventListener('click', (event) => {
-            const target = event.target;
-
-            if (!(target instanceof Element)) {
-                return;
-            }
-
-            const center = target.closest(
-                '.circle-orbit > .circle-card, .circle-orbit .service-orbit-center'
-            );
-
-            if (center && touchInput && event.detail > 0) {
-                const orbit = center.closest('.circle-orbit');
-
-                if (!orbit.classList.contains('active')) {
-                    event.preventDefault();
-                    orbits.forEach((item) => {
-                        item.classList.toggle('active', item === orbit);
-                    });
-                    return;
-                }
-            }
-
-            if (!target.closest('.circle-orbit')) {
-                orbits.forEach((orbit) => orbit.classList.remove('active'));
-            }
-        });
-                const fluidFrame = document.querySelector('.hero-background');
+        const fluidFrame = document.querySelector('.hero-background');
         const animationControl = document.getElementById('animationControl');
                 const menuToggle = document.getElementById('menuToggle');
                 const mobileNav = document.getElementById('mobileNav');
@@ -1897,27 +2091,172 @@
                     }
                 });
 
-                let animationPaused = false;
+        const forcedMode = new URLSearchParams(window.location.search).get('performance');
+        const hasForcedMode = forcedMode === 'full' || forcedMode === 'static';
+        let automaticMode = 'static';
+        let manualMode = null;
+        let fluidAvailable = true;
 
-        animationControl.addEventListener('click', () => {
-            animationPaused = !animationPaused;
+        // Smoothness is measured first; low CPU and memory hints only raise the FPS bar together.
+        function prefersConservativeMode() {
+            const cores = navigator.hardwareConcurrency;
+            const memory = navigator.deviceMemory;
+            return Number.isFinite(cores) && Number.isFinite(memory) && cores <= 2 && memory <= 2;
+        }
 
-            fluidFrame.contentWindow.postMessage(
-                {
-                    type: animationPaused ? 'pause' : 'play'
-                },
-                '*'
-            );
+        function testAnimationSmoothness() {
+            return new Promise((resolve) => {
+                if (typeof window.requestAnimationFrame !== 'function') {
+                    resolve(false);
+                    return;
+                }
 
-            animationControl.innerHTML = animationPaused
-                ? '<i class="fas fa-play"></i>'
-                : '<i class="fas fa-pause"></i>';
+                const testDuration = 240;
+                let firstFrame = null;
+                let frameCount = 0;
 
+                function measureFrame(timestamp) {
+                    if (firstFrame === null) {
+                        firstFrame = timestamp;
+                    }
+                    frameCount += 1;
+
+                    const elapsed = timestamp - firstFrame;
+                    if (elapsed >= testDuration) {
+                        const measuredFps = (frameCount - 1) * 1000 / elapsed;
+                        // A 48 FPS baseline tolerates minor jitter; jointly low specs require 54 FPS.
+                        const minimumFps = prefersConservativeMode() ? 54 : 48;
+                        resolve(measuredFps >= minimumFps);
+                        return;
+                    }
+
+                    window.requestAnimationFrame(measureFrame);
+                }
+
+                window.requestAnimationFrame(measureFrame);
+            });
+        }
+
+        function getEffectiveMode() {
+            if (!fluidAvailable || reduceMotion.matches || document.hidden) {
+                return 'static';
+            }
+            return manualMode || (hasForcedMode ? forcedMode : automaticMode);
+        }
+
+        function applyBackgroundMode() {
+            const mode = getEffectiveMode();
+            const root = document.documentElement;
+            root.dataset.backgroundMode = mode;
+            root.dataset.backgroundControls =
+                automaticMode === 'full' && !reduceMotion.matches && fluidAvailable
+                    ? 'visible'
+                    : 'hidden';
+
+            if (fluidFrame.contentWindow) {
+                fluidFrame.contentWindow.postMessage({ type: mode === 'full' ? 'play' : 'pause' }, '*');
+            }
+
+            animationControl.innerHTML = mode === 'full'
+                ? '<i class="fas fa-pause"></i>'
+                : '<i class="fas fa-play"></i>';
             animationControl.setAttribute(
                 'aria-label',
-                animationPaused ? 'Play animation' : 'Pause animation'
+                reduceMotion.matches
+                    ? 'Animation disabled by reduced-motion preference'
+                    : !fluidAvailable
+                        ? 'Animated background unavailable'
+                    : mode === 'full' ? 'Pause animation' : 'Play animation'
             );
+            animationControl.disabled = reduceMotion.matches || !fluidAvailable;
+        }
+
+        animationControl.addEventListener('click', () => {
+            if (reduceMotion.matches) {
+                return;
+            }
+            manualMode = getEffectiveMode() === 'full' ? 'static' : 'full';
+            applyBackgroundMode();
         });
+
+        reduceMotion.addEventListener('change', applyBackgroundMode);
+        document.addEventListener('visibilitychange', applyBackgroundMode);
+        fluidFrame.addEventListener('load', applyBackgroundMode);
+        window.addEventListener('message', (event) => {
+            if (event.source !== fluidFrame.contentWindow ||
+                event.origin !== window.location.origin ||
+                !event.data || event.data.type !== 'unavailable') {
+                return;
+            }
+
+            fluidAvailable = false;
+            applyBackgroundMode();
+        });
+
+        if (hasForcedMode) {
+            automaticMode = forcedMode;
+            applyBackgroundMode();
+        } else if (reduceMotion.matches) {
+            applyBackgroundMode();
+        } else {
+            testAnimationSmoothness().then((isSmooth) => {
+                automaticMode = isSmooth ? 'full' : 'static';
+                applyBackgroundMode();
+            });
+        }
+
+        document.querySelectorAll('.home-service-more').forEach((button) => {
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                const additionalText = button.previousElementSibling;
+
+                if (!(additionalText instanceof HTMLElement)) {
+                    throw new Error('Service description is missing its additional text.');
+                }
+
+                additionalText.hidden = isExpanded;
+                button.setAttribute('aria-expanded', String(!isExpanded));
+                button.textContent = isExpanded ? '... more' : '... less';
+            });
+        });
+
+        const serviceCards = document.querySelectorAll('.home-service-card');
+        if (!reduceMotion.matches && 'IntersectionObserver' in window) {
+            document.documentElement.classList.add('scroll-reveal-ready');
+
+            const serviceCardObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    entry.target.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, { threshold: 0.15 });
+
+            serviceCards.forEach((card) => serviceCardObserver.observe(card));
+
+            const pageRevealItems = document.querySelectorAll('.page-scroll-reveal');
+            if (pageRevealItems.length) {
+                document.documentElement.classList.add('page-scroll-reveal-ready');
+                const pageRevealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        entry.target.classList.toggle('is-scroll-visible', entry.isIntersecting);
+                    });
+                }, { threshold: 0.08 });
+
+                pageRevealItems.forEach((item) => pageRevealObserver.observe(item));
+            }
+
+            const monthlyAllocation = document.querySelector('.monthly-allocation');
+            if (monthlyAllocation) {
+                document.documentElement.classList.add('monthly-allocation-reveal-ready');
+
+                const monthlyAllocationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        entry.target.classList.toggle('is-scroll-visible', entry.isIntersecting);
+                    });
+                }, { threshold: 0.05 });
+
+                monthlyAllocationObserver.observe(monthlyAllocation);
+            }
+        }
 
     </script>
 
@@ -1940,6 +2279,286 @@
         </div>
     <script src="cookies.js" defer></script>
 
+
+    <script>
+(() => {
+  const svg = document.querySelector('.task-graphic svg');
+  if (!svg) return;
+
+  const controls = [...svg.querySelectorAll('.task-slice[data-task], .task-card[data-task]')];
+  const cards = [...svg.querySelectorAll('.task-card[data-task]')];
+  const linkedParts = [...svg.querySelectorAll('[data-task]')];
+  const cardBounds = new Map(cards.map((card) => [card.dataset.task, card.getBBox()]));
+  const originalTransforms = new Map(cards.map((card) => [card, card.getAttribute('transform')]));
+  const originalNextSiblings = new Map(cards.map((card) => [card, card.nextSibling]));
+  const originalViewBox = svg.viewBox.baseVal;
+  const viewBoxWidth = originalViewBox.width;
+  const viewBoxHeight = originalViewBox.height;
+  const mobileViewport = window.matchMedia('(max-width: 600px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileConnector = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  mobileConnector.setAttribute('class', 'task-mobile-connector');
+  mobileConnector.setAttribute('fill', 'none');
+  mobileConnector.setAttribute('stroke-linecap', 'round');
+  mobileConnector.setAttribute('stroke-width', '5');
+  mobileConnector.setAttribute('display', 'none');
+  svg.append(mobileConnector);
+  const taskColors = {
+    website: '#16D9F5', social: '#6A68FF', it: '#CF49FF', bookings: '#F345C5',
+    automation: '#20D5B0', customer: '#25B8FF', finance: '#FFC85C', planning: '#B4C3E4'
+  };
+  linkedParts.forEach((node) => {
+    node.style.setProperty('--task-color', taskColors[node.dataset.task] || '#16D9F5');
+  });
+  let hoveredTask = null;
+  let focusedTask = null;
+  let selectedTask = null;
+  let expandedCard = null;
+  let expandedTask = null;
+  let closingTask = null;
+  let mobileAnimationFrame = 0;
+  let mobileAnimationToken = 0;
+
+  function getCardTransform(card) {
+    const transform = card.getAttribute('transform');
+    const match = transform && transform.match(/translate\(([-\d.]+)[,\s]+([-\d.]+)\)\s*scale\(([-\d.]+)\)/);
+    return match
+      ? { x: Number(match[1]), y: Number(match[2]), scale: Number(match[3]) }
+      : { x: 0, y: 0, scale: 1 };
+  }
+
+  function setCardTransform(card, transform) {
+    card.setAttribute('transform', `translate(${transform.x} ${transform.y}) scale(${transform.scale})`);
+  }
+
+  function animateCardTransform(card, from, to, onComplete, onUpdate) {
+    const token = ++mobileAnimationToken;
+    cancelAnimationFrame(mobileAnimationFrame);
+    mobileAnimationFrame = 0;
+    if (reducedMotion.matches) {
+      setCardTransform(card, to);
+      onUpdate?.(to);
+      onComplete?.();
+      return;
+    }
+
+    const startTime = performance.now();
+    const duration = 420;
+
+    function frame(timestamp) {
+      if (token !== mobileAnimationToken) return;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      const current = {
+        x: from.x + (to.x - from.x) * eased,
+        y: from.y + (to.y - from.y) * eased,
+        scale: from.scale + (to.scale - from.scale) * eased
+      };
+      setCardTransform(card, current);
+      onUpdate?.(current);
+
+      if (progress < 1) {
+        mobileAnimationFrame = requestAnimationFrame(frame);
+      } else {
+        mobileAnimationFrame = 0;
+        onComplete?.();
+      }
+    }
+
+    mobileAnimationFrame = requestAnimationFrame(frame);
+  }
+
+  function restoreCardPosition(card) {
+    const nextSibling = originalNextSiblings.get(card);
+    if (nextSibling && nextSibling.parentNode === svg) {
+      svg.insertBefore(card, nextSibling);
+    } else {
+      svg.append(card);
+    }
+  }
+
+  function updateMobileConnector(task, transform) {
+    const bounds = cardBounds.get(task);
+    const anchor = svg.querySelector(`.task-anchor[data-task="${task}"] circle`);
+    if (!bounds || !anchor) {
+      throw new Error(`Missing mobile chart connector elements for task "${task}".`);
+    }
+
+    const startX = Number(anchor.getAttribute('cx'));
+    const startY = Number(anchor.getAttribute('cy'));
+    const cardLeft = transform.x + bounds.x * transform.scale;
+    const cardWidth = bounds.width * transform.scale;
+    const endX = Math.max(cardLeft, Math.min(startX, cardLeft + cardWidth));
+    const endY = transform.y + bounds.y * transform.scale;
+    const curve = Math.max(24, (endY - startY) * 0.45);
+    mobileConnector.setAttribute('d', `M ${startX} ${startY} C ${startX} ${startY + curve} ${endX} ${endY - curve} ${endX} ${endY}`);
+    mobileConnector.setAttribute('stroke', taskColors[task] || '#16D9F5');
+  }
+
+  function updateMobileCard() {
+    const expanded = mobileViewport.matches && Boolean(selectedTask);
+    const card = expanded ? cards.find((item) => item.dataset.task === selectedTask) : null;
+    cards.forEach((card) => {
+      const task = card.dataset.task;
+      card.classList.toggle('is-expanded', (expanded && task === selectedTask) || (!expanded && task === closingTask));
+      card.setAttribute('aria-expanded', String(Boolean(expanded && task === selectedTask)));
+    });
+
+    if (expanded && (!card || !cardBounds.has(selectedTask))) {
+      throw new Error(`Missing mobile chart card for task "${selectedTask}".`);
+    }
+
+    if (!expanded && expandedTask) {
+      const closingCard = expandedCard;
+      if (!closingCard) {
+        throw new Error('The active mobile chart card could not be found.');
+      }
+      const from = getCardTransform(closingCard);
+      const originalTransform = originalTransforms.get(closingCard);
+      closingTask = expandedTask;
+      expandedTask = null;
+      animateCardTransform(closingCard, from, { x: 0, y: 0, scale: 1 }, () => {
+        if (expandedTask) return;
+        if (originalTransform) {
+          closingCard.setAttribute('transform', originalTransform);
+        } else {
+          closingCard.removeAttribute('transform');
+        }
+        restoreCardPosition(closingCard);
+        closingCard.classList.remove('is-expanded');
+        closingTask = null;
+        expandedCard = null;
+        svg.classList.remove('is-mobile-expanded');
+        mobileConnector.setAttribute('display', 'none');
+        svg.setAttribute('viewBox', `0 0 ${viewBoxWidth} ${viewBoxHeight}`);
+      }, (transform) => updateMobileConnector(closingTask, transform));
+      return;
+    }
+
+    if (!expanded) return;
+
+    let selectionChanged = false;
+    if (expandedTask !== selectedTask) {
+      cancelAnimationFrame(mobileAnimationFrame);
+      mobileAnimationToken += 1;
+      closingTask = null;
+      if (expandedCard && expandedCard !== card) {
+        expandedCard.classList.remove('is-expanded');
+        const originalTransform = originalTransforms.get(expandedCard);
+        if (originalTransform) {
+          expandedCard.setAttribute('transform', originalTransform);
+        } else {
+          expandedCard.removeAttribute('transform');
+        }
+        restoreCardPosition(expandedCard);
+      }
+      expandedTask = selectedTask;
+      selectionChanged = true;
+    }
+
+    const bounds = cardBounds.get(selectedTask);
+    const anchor = svg.querySelector(`.task-anchor[data-task="${selectedTask}"] circle`);
+    if (!anchor) {
+      throw new Error(`Missing mobile chart elements for task "${selectedTask}".`);
+    }
+
+    const targetWidth = viewBoxWidth * 0.8;
+    const scale = targetWidth / bounds.width;
+    const targetX = (viewBoxWidth - targetWidth) / 2;
+    const targetY = 1070;
+    const translateX = targetX - bounds.x * scale;
+    const translateY = targetY - bounds.y * scale;
+    svg.setAttribute('viewBox', `0 0 ${viewBoxWidth} 1450`);
+    svg.classList.add('is-mobile-expanded');
+
+    mobileConnector.setAttribute('display', 'inline');
+    if (card.parentNode !== svg || mobileConnector.parentNode !== svg) {
+      svg.append(mobileConnector, card);
+    }
+    expandedCard = card;
+    if (selectionChanged) {
+      const from = getCardTransform(card);
+      updateMobileConnector(selectedTask, from);
+      animateCardTransform(
+        card,
+        from,
+        { x: translateX, y: translateY, scale },
+        undefined,
+        (transform) => updateMobileConnector(selectedTask, transform)
+      );
+    } else if (!mobileAnimationFrame) {
+      const target = { x: translateX, y: translateY, scale };
+      setCardTransform(card, target);
+      updateMobileConnector(selectedTask, target);
+    }
+  }
+
+  function renderState() {
+    const activeTasks = new Set([hoveredTask, focusedTask, selectedTask].filter(Boolean));
+    linkedParts.forEach((node) => {
+      const task = node.dataset.task;
+      node.classList.toggle('is-active', activeTasks.has(task));
+      node.classList.toggle('is-hovered', task === hoveredTask);
+      node.classList.toggle('is-focused', task === focusedTask);
+      node.classList.toggle('is-selected', task === selectedTask);
+    });
+    controls.forEach((node) => {
+      node.setAttribute('aria-pressed', String(node.dataset.task === selectedTask));
+    });
+    updateMobileCard();
+  }
+
+  function toggleSelection(task) {
+    selectedTask = selectedTask === task ? null : task;
+    renderState();
+  }
+
+  function closeSelectionFromBackground(event) {
+    if (!mobileViewport.matches || !selectedTask || !(event.target instanceof Element)) return;
+    if (event.target.closest('.task-slice[data-task], .task-card[data-task]')) return;
+    selectedTask = null;
+    renderState();
+  }
+
+  controls.forEach((node) => {
+    const task = node.dataset.task;
+    node.addEventListener('pointerenter', () => { hoveredTask = task; renderState(); });
+    node.addEventListener('pointerleave', () => {
+      if (hoveredTask === task) hoveredTask = null;
+      renderState();
+    });
+    node.addEventListener('focus', () => { focusedTask = task; renderState(); });
+    node.addEventListener('blur', () => {
+      if (focusedTask === task) focusedTask = null;
+      renderState();
+    });
+    node.addEventListener('click', () => toggleSelection(task));
+    node.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleSelection(task);
+      }
+      if (event.key === 'Escape') {
+        selectedTask = null;
+        renderState();
+      }
+    });
+  });
+
+  svg.addEventListener('click', closeSelectionFromBackground);
+  document.addEventListener('click', (event) => {
+    if (!svg.contains(event.target)) {
+      closeSelectionFromBackground(event);
+    }
+  });
+  mobileViewport.addEventListener('change', renderState);
+  window.addEventListener('resize', renderState);
+  renderState();
+})();
+
+    </script>
 </body>
 
 </html>
